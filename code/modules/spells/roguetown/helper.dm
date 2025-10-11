@@ -19,4 +19,6 @@
 		return 1
 	if(HAS_TRAIT(target, TRAIT_DEPRAVED))
 		return 1
+	if(HAS_TRAIT(target, TRAIT_WITCH))
+		return 1
 	return 0

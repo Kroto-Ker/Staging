@@ -1,7 +1,7 @@
 /obj/effect/proc_holder/spell/invoked/bonechill
 	name = "Bone Chill"
 	desc = "Chill the target with necrotic energy. Severely reduces speed and weakens physical prowess."
-	cost = 2
+	cost = 3
 	overlay_state = "profane"
 	releasedrain = 30
 	chargetime = 5
@@ -11,6 +11,7 @@
 	chargedloop = null
 	sound = 'sound/magic/whiteflame.ogg'
 	spell_tier = 2
+	chargedloop = /datum/looping_sound/invokegen
 	associated_skill = /datum/skill/magic/arcane
 	gesture_required = TRUE // Potential offensive use, need a target
 	antimagic_allowed = TRUE
