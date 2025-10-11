@@ -9,3 +9,14 @@
 	if(HAS_TRAIT(target, TRAIT_ARCYNE_T1))
 		return 1
 	return 0
+
+/proc/get_user_evilness(mob/target)
+	if(HAS_TRAIT(target, TRAIT_CABAL))
+		return 1
+	if(HAS_TRAIT(target, TRAIT_HORDE))
+		return 1
+	if(HAS_TRAIT(target, TRAIT_COMMIE))
+		return 1
+	if(HAS_TRAIT(target, TRAIT_DEPRAVED))
+		return 1
+	return 0
