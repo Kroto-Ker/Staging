@@ -314,7 +314,7 @@ Necra's Censer (by ARefrigerator)
 	name = "Necra's censer"
 	desc = "A small bronze censer that expels an otherworldly mist."
 	icon = 'icons/roguetown/items/artefactsten.dmi'
-	icon_state = "necrartefact"
+	icon_state = "necraartefact"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	item_state = "necra_censer"
