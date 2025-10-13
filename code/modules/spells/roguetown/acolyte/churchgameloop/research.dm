@@ -548,7 +548,7 @@ var/global/list/PATRON_ARTIFACTS = list(
 	else
 		html += "<div style='margin-top:6px;color:#9b59b6;'>Reroll available in: <b>[mins]:[secs_str]</b></div>"
 			html += "<div style='color:#e74c3c; text-align:center; margin:6px 0;'>"
-	html += "<b>Attention:</b> To accept a quest, click <b>Spawn</b>. This will spawn a quest item you must use under the listed conditions to receive the reward. The item lasts for <b>3 minutes</b> and will then be deleted."
+	html += "<b>Attention:</b> To accept a quest, click <b>Get special item</b>. This will spawn a quest item you must use under the listed conditions to receive the reward. The item lasts for <b>3 minutes</b> and will then be deleted."
 	html += "</div>"
 	html += "</center><hr>"
 
