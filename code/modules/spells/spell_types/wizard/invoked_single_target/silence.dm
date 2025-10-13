@@ -25,18 +25,18 @@
 /obj/effect/proc_holder/spell/invoked/silence/cast(list/targets, mob/user = usr)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		if(HAS_TRAIT(target, TRAIT_COUNTERCOUNTERSPELL) || HAS_TRAIT(target, TRAIT_ANTIMAGIC))
+		if(HAS_TRAIT(target, TRAIT_COUNTERCOUNTERSPELL) || HAS_TRAIT(target, TRAIT_ANTIMAGIC || HAS_TRAIT(target, TRAIT_MUTE))
 			to_chat(user, "<span class='warning'>The spell fizzles, it won't work on them!</span>")
 			revert_cast()
 			return
-		if(HAS_TRAIT(target, TRAIT_ARCYNE_T3) || HAS_TRAIT(target, TRAIT_ARCYNE_T4))
+		if(target.get_skill_level(/datum/skill/magic/arcane) > 2 || target.get_skill_level(/datum/skill/magic/holy) > 2)
 			to_chat(user, "<span class='warning'>Their magic is too strong, it won't work on them!</span>")
 			revert_cast()
 			return
 		ADD_TRAIT(target, TRAIT_MUTE, MAGIC_TRAIT)
 		playsound(get_turf(target), 'sound/magic/zizo_snuff.ogg', 80, TRUE, soundping = TRUE)
 		to_chat(target, span_warning("The wind in my voice goes still. I can't speak!"))
-		var/dur = max((10 * (user.get_skill_level(associated_skill))))
+		var/dur = max((9 * (user.get_skill_level(associated_skill, 5))))
 		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = dur SECONDS)
 		return TRUE
 
