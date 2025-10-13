@@ -2,7 +2,7 @@
 #define MIRACLE_RADIAL_DMI 'icons/mob/actions/roguespells.dmi'
 
 #ifndef QUEST_COOLDOWN_DS
-#define QUEST_COOLDOWN_DS (30*60*10)
+#define QUEST_COOLDOWN_DS (15*60*10)
 #endif
 #ifndef QUEST_REWARD_FAVOR
 #define QUEST_REWARD_FAVOR 250
@@ -547,7 +547,11 @@ var/global/list/PATRON_ARTIFACTS = list(
 		html += "<div style='margin-top:6px;'><a href='?src=[REF(src)];q_reroll=1' style='background:#8e44ad;color:#fff;padding:3px 8px;border-radius:6px;text-decoration:none;'><b>Reroll</b></a></div>"
 	else
 		html += "<div style='margin-top:6px;color:#9b59b6;'>Reroll available in: <b>[mins]:[secs_str]</b></div>"
+			html += "<div style='color:#e74c3c; text-align:center; margin:6px 0;'>"
+	html += "<b>Attention:</b> To accept a quest, click <b>Spawn</b>. This will spawn a quest item you must use under the listed conditions to receive the reward. The item lasts for <b>3 minutes</b> and will then be deleted."
+	html += "</div>"
 	html += "</center><hr>"
+
 
 	if(!H.quest_ui_entries || !length(H.quest_ui_entries))
 		html += "<i>No quests right now. Check back later.</i>"

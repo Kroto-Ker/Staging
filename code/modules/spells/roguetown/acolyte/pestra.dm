@@ -40,7 +40,7 @@
 				to_chat(user, span_warning("The body is wracked by toxicity."))
 			if(150 to INFINITY)
 				to_chat(user, span_necrosis("The body is devastated by toxicity."))
-		
+
 		return TRUE
 	revert_cast()
 	return FALSE
@@ -281,11 +281,11 @@
 		if(ispath(user.patron?.type, /datum/patron/divine) && (target.real_name in GLOB.excommunicated_players))
 			to_chat(user, span_warning("Pestra gives no answer back to clean their body from the rot."))
 			revert_cast()
-			return FALSE		
+			return FALSE
 		if(HAS_TRAIT(target, TRAIT_CURSE_NECRA))
 			to_chat(user, span_warning("Pestra gives no answer to even clean their body from the rot."))
 			revert_cast()
-			return FALSE			
+			return FALSE
 
 		if(GLOB.tod == "night")
 			to_chat(user, span_warning("Let there be light."))
@@ -367,7 +367,7 @@
 	clothes_req = FALSE
 	releasedrain = 30
 	chargedrain = 0
-	chargetime = 3
+	chargetime = 100
 	range = 1
 	ignore_los = FALSE
 	warnie = "sydwarning"
@@ -381,28 +381,31 @@
 	miracle = TRUE
 
 /obj/effect/proc_holder/spell/invoked/regrow_limbs/cast(list/targets, mob/living/user = usr)
-	if(ishuman(targets[1]))
-		var/mob/living/carbon/human/H = targets[1]
-		if(H.anti_magic_check(TRUE, TRUE))
-			return FALSE
-		var/list/missing = H.get_missing_limbs()
-		if(length(missing))
-			H.visible_message(
-				span_info("[user] raises a hand — flesh knits upon [H]!"),
-				span_notice("Warmth courses through me as limbs reform!")
-			)
-		else
-			to_chat(user, span_info("[H] has no missing limbs to restore."))
-			return TRUE
-		H.regenerate_limbs(0, missing)
-		if(!(H.mob_biotypes & MOB_UNDEAD))
-			for(var/obj/item/bodypart/L as anything in H.bodyparts)
-				L.rotted = FALSE
-				L.skeletonized = FALSE
-		H.update_body()
+	if(!ishuman(targets[1]))
+		revert_cast()
+		return FALSE
+
+	var/mob/living/carbon/human/H = targets[1]
+	if(H.anti_magic_check(TRUE, TRUE))
+		return FALSE
+
+	var/list/missing = H.get_missing_limbs()
+	if(!length(missing))
+		to_chat(user, span_info("[H] has no missing limbs to restore."))
 		return TRUE
-	revert_cast()
-	return FALSE
+	H.visible_message(
+		span_info("[user] raises a hand - flesh knits upon [H]!"),
+		span_notice("Warmth courses through me as limbs reform!")
+	)
+
+	H.regenerate_limbs(0)
+	if(!(H.mob_biotypes & MOB_UNDEAD))
+		for(var/obj/item/bodypart/L as anything in H.bodyparts)
+			L.rotted = FALSE
+			L.skeletonized = FALSE
+
+	H.update_body()
+	return TRUE
 
 /obj/effect/proc_holder/spell/invoked/pestratouch
 	name = "Pestra's touch"
@@ -411,7 +414,7 @@
 	clothes_req = FALSE
 	releasedrain = 0
 	chargedrain = 0
-	chargetime = 0
+	chargetime = 100
 	range = 1
 	ignore_los = FALSE
 	movement_interrupt = FALSE
@@ -497,12 +500,7 @@
 	else
 		to_chat(user, span_notice("Reagents detected: none."))
 
-	var/blood_u = 0
-	if(H.reagents && hascall(H.reagents, "get_reagent_amount"))
-		blood_u = H.reagents.get_reagent_amount(/datum/reagent/blood)
-	else if("blood_volume" in H.vars && isnum(H.vars["blood_volume"]))
-		blood_u = H.vars["blood_volume"]
-	to_chat(user, span_info("Blood volume: [round(blood_u, 0.1)]u"))
+	to_chat(user, span_info("Blood volume: [round(((isnum(H.blood_volume) && H.blood_volume > 0) ? H.blood_volume : (H.reagents && hascall(H.reagents, "get_reagent_amount") ? H.reagents.get_reagent_amount(/datum/reagent/blood) : 0)), 0.1)]u"))
 
 	var/tox = _dg_safe_num(H, list("toxloss"))
 	var/oxy = _dg_safe_num(H, list("oxyloss", "oxygen_loss"))

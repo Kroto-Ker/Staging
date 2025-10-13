@@ -310,10 +310,10 @@ proc/_rt_calc_antag_bonus(mob/living/carbon/human/H)
 	_reward_owner(QUEST_REWARD_FAVOR)
 	qdel(src)
 
-// 4) donate 500 mammon
+// 4) donate 250 mammon
 /obj/item/quest_token/coin_chest
 	name = "tithe chest"
-	desc = "Feed it with mammon. At 500 or more, the chest vanishes."
+	desc = "Feed it with mammon. At 250 or more, the chest vanishes."
 	icon_state = "questbox"
 	var/sum = 0
 
@@ -328,7 +328,7 @@ proc/_rt_calc_antag_bonus(mob/living/carbon/human/H)
 		sum += C.get_real_price()
 		qdel(C)
 		to_chat(user, span_notice("Deposited. Current tithe: [sum]."))
-		if(sum >= 500)
+		if(sum >= 250)
 			to_chat(user, span_notice("The chest accepts the tithe."))
 			_reward_owner(QUEST_REWARD_FAVOR)
 			qdel(src)
@@ -664,8 +664,8 @@ proc/_rt_calc_antag_bonus(mob/living/carbon/human/H)
 	))
 
 	pool += list(list(
-		"kind"=4, "title"="Tithe of 500",
-		"desc"="Donate at least 500 mammon into the chest.",
+		"kind"=4, "title"="Tithe of 250",
+		"desc"="Donate at least 250 mammon into the chest.",
 		"reward"=QUEST_REWARD_FAVOR,
 		"token_path"=/obj/item/quest_token/coin_chest,
 		"params"=list()
