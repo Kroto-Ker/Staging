@@ -35,7 +35,7 @@
 	if(playing && user.get_active_held_item() != src)
 		playing = FALSE
 		groupplaying = FALSE
-		soundloop.stop()
+		soundloop.stop(user)
 		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/getonmobprop(tag)
@@ -60,7 +60,7 @@
 	groupplaying = FALSE
 	playing = FALSE
 	if(soundloop)
-		soundloop.stop()
+		soundloop.stop(user)
 		user.remove_status_effect(/datum/status_effect/buff/playing_music)
 
 /obj/item/rogue/instrument/attack_self(mob/living/user)
@@ -72,10 +72,10 @@
 	if(playing)
 		playing = FALSE
 		groupplaying = FALSE
-		soundloop.stop()
+		soundloop.stop(user)
 		user.remove_status_effect(/datum/status_effect/buff/playing_music)
-//		if(not_held)
-//			user.remove_status_effect(/datum/status_effect/buff/harpy_sing)
+		if(not_held)
+			user.remove_status_effect(/datum/status_effect/buff/harpy_sing)
 		return
 	else
 		var/playdecision = alert(user, "Would you like to start a band?", "Band Play", "Yes", "No")
@@ -93,7 +93,7 @@
 			if(!choice || !user)
 				return
 				
-			if(playing || !(src in user.held_items) || user.get_inactive_held_item())
+			if(playing || !(src in user.held_items) && !(not_held) || user.get_inactive_held_item())
 				return
 				
 			if(choice == "Upload New Song")
@@ -105,7 +105,7 @@
 
 				if(!infile)
 					return
-				if(playing || !(src in user.held_items) || user.get_inactive_held_item())
+				if(playing || !(src in user.held_items) && !(not_held) || user.get_inactive_held_item())
 					return
 
 				var/filename = "[infile]"
@@ -126,7 +126,7 @@
 					song_list[songname] = curfile
 				return
 			curfile = song_list[choice]
-			if(!user || playing || !(src in user.held_items))
+			if(!user || playing || !(src in user.held_items) && !(not_held) )
 				return
 			if(user.mind)
 				switch(user.get_skill_level(/datum/skill/misc/music))
@@ -155,26 +155,26 @@
 						soundloop.stress2give = stressevent
 					else
 						soundloop.stress2give = stressevent
-			if(!(src in user.held_items))
+			if(!(src in user.held_items) && !(not_held))
 				return
 			if(user.get_inactive_held_item())
 				playing = FALSE
-				soundloop.stop()
+				soundloop.stop(user)
 				user.remove_status_effect(/datum/status_effect/buff/playing_music)
 				return
 			if(curfile)
 				playing = TRUE
 				soundloop.mid_sounds = list(curfile)
 				soundloop.cursound = null
-				soundloop.start()
+				soundloop.start(user)
 				user.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
-//				if(not_held)
-//					user.apply_status_effect(/datum/status_effect/buff/harpy_sing)
+				if(not_held)
+					user.apply_status_effect(/datum/status_effect/buff/harpy_sing)
 				GLOB.scarlet_round_stats[STATS_SONGS_PLAYED]++
 			else
 				playing = FALSE
 				groupplaying = FALSE
-				soundloop.stop()
+				soundloop.stop(user)
 				user.remove_status_effect(/datum/status_effect/buff/playing_music)
 		if(groupplaying)
 			var/pplnearby =view(7,loc)
@@ -205,7 +205,7 @@
 					bandinstrumentsband.groupplaying = TRUE
 					bandinstrumentsband.soundloop.mid_sounds = bandinstrumentsband.curfile
 					bandinstrumentsband.soundloop.cursound = null
-					bandinstrumentsband.soundloop.start()
+					bandinstrumentsband.soundloop.start(user)
 					for(var/mob/living/carbon/human/A in bandmates)
 						A.apply_status_effect(/datum/status_effect/buff/playing_music, stressevent, note_color)
 
