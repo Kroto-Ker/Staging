@@ -4,7 +4,8 @@
 /datum/species/harpy
 	name = "Harpy"
 	id = "harpy"
-	desc = "Harpies, or less ceremoniously known as 'magpies,' resemble the half-kin in appearance at first glance. \
+	desc = "<b>Harpy</b><br>\
+	Harpies, or less ceremoniously known as 'magpies,' resemble the half-kin in appearance at first glance. \
 	One would rightfully assume they are similar in nature- with accuracy even, much to the harpies' chagrin. \
 	Harpies have been uplifted and reconnected to divinity by Eora, having developed culture of music and song which caught the attention of such a goddess. \
 	Their songs and voices may be their own, or proud mimicking other voices they've heard with unnatural accuracy. \

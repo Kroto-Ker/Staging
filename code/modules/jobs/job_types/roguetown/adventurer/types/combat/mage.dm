@@ -49,7 +49,7 @@
 		/obj/item/recipe_book/survival = 1,
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 		/obj/item/recipe_book/magic = 1,
-		/obj/item/chalk = 1
+		/obj/item/ritechalk = 1,
 		)
 
 	H.dna.species.soundpack_m = new /datum/voicepack/male/wizard()
