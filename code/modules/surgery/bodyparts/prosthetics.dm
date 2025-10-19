@@ -2,9 +2,9 @@
 
 /obj/item/bodypart/l_arm/prosthetic/woodleft
 	name = "wooden left arm"
-	desc = "A left arm of wood."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	desc = "A left arm made out of wood."
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
+	icon_state = "pr_wood_arm_r"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -20,8 +20,8 @@
 /obj/item/bodypart/l_arm/prosthetic/bronzeleft
 	name = "bronze left arm"
 	desc = "A replacement left arm, engineered out of bronze."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "bprarm"
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi' // copying here for clarity or whatever
+	icon_state = "pr_bronze_arm_l"
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -52,9 +52,9 @@
 
 /obj/item/bodypart/r_arm/prosthetic/woodright
 	name = "wooden right arm"
-	desc = "A right arm of wood."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prarm"
+	desc = "A right arm made out of wood."
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
+	icon_state = "pr_wood_arm_r"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -67,11 +67,11 @@
 	fingers = FALSE //can't swing weapons but can pick stuff up and punch
 	anvilrepair = /datum/skill/craft/carpentry
 
-/obj/item/bodypart/r_arm/prosthetic/bronzeright
+/obj/item/bodypart/r_arm/prosthetic/bronzeright // look here
 	name = "bronze right arm"
 	desc = "A replacement right arm, engineered out of bronze."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "bprarm"
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
+	icon_state = "pr_bronze_arm_r"
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -104,9 +104,9 @@
 
 /obj/item/bodypart/l_leg/prosthetic
 	name = "wooden left leg"
-	desc = "A left leg made of wood."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	desc = "A left leg made out of wood."
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi' // someone make fucking onmob sprites HOLY SHIT....
+	icon_state = "pr_wood_leg_l"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -121,8 +121,8 @@
 /obj/item/bodypart/l_leg/prosthetic/bronzeleft
 	name = "bronze left leg"
 	desc = "A replacement left leg, engineered out of bronze."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "bpleg"
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
+	icon_state = "pr_bronze_leg_l"
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -154,9 +154,9 @@
 
 /obj/item/bodypart/r_leg/prosthetic
 	name = "wooden right leg"
-	desc = "A right leg made of wood."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "prleg"
+	desc = "A right leg made out of wood."
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
+	icon_state = "pr_wood_leg_r"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -171,8 +171,8 @@
 /obj/item/bodypart/r_leg/prosthetic/bronzeright
 	name = "bronze right leg"
 	desc = "A replacement right leg, engineered out of bronze."
-	icon = 'icons/roguetown/items/misc.dmi'
-	icon_state = "bpleg"
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
+	icon_state = "pr_bronze_leg_r"
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -201,3 +201,13 @@
 			H.pegleg++
 		user.visible_message("<span class='notice'>[user] attaches [src] to [H].</span>")
 		return 1
+
+/obj/item/bodypart/head/continuity_head
+	name = "continuity head"
+	dismemberable = TRUE
+	resistance_flags = FIRE_PROOF
+	obj_flags = CAN_BE_HIT
+//	status = BODYPART_ROBOTIC
+	max_damage = 250 // +50 more hp compared to the normal ass head
+	icon = 'icons/roguetown/items/gems.dmi'
+	icon_state = "quartz_fail"
