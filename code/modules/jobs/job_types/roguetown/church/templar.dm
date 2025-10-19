@@ -19,7 +19,7 @@
 
 	give_bank_account = TRUE
 
-	job_traits = list(TRAIT_RITUALIST, TRAIT_STEELHEARTED)
+	job_traits = list(TRAIT_RITUALIST, TRAIT_STEELHEARTED, TRAIT_CLERGY)
 
 	job_subclasses = list(
 		/datum/advclass/templar/monk,
@@ -54,7 +54,7 @@
 	category_tags = list(CTAG_TEMPLAR)
 	cmode_music = 'sound/music/combat_holy.ogg'
 
-	traits_applied = list(TRAIT_CIVILIZEDBARBARIAN, TRAIT_DODGEEXPERT)
+	traits_applied = list(TRAIT_CIVILIZEDBARBARIAN, TRAIT_DODGEEXPERT, TRAIT_CLERGY)
 	subclass_stats = list(
 		STATKEY_STR = 3,
 		STATKEY_CON = 2,

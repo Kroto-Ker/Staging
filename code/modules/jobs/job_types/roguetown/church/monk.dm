@@ -24,7 +24,7 @@
 		/datum/virtue/utility/blueblooded,
 	)
 
-	job_traits = list(TRAIT_RITUALIST, TRAIT_GRAVEROBBER)
+	job_traits = list(TRAIT_RITUALIST, TRAIT_GRAVEROBBER, TRAIT_CLERGY)
 	advclass_cat_rolls = list(CTAG_ACOLYTE = 2)
 	job_subclasses = list(
 		/datum/advclass/acolyte
