@@ -191,6 +191,7 @@
 		target.apply_status_effect(/datum/status_effect/buff/flylordstriage)
 
 /obj/structure/ritualcircle/pestra/proc/pestra_continuity(mob/living/carbon/human/victim, mob/living/carbon/human/transfer_target)
+	ADD_TRAIT(victim, TRAIT_NOSSDINDICATOR, TRAIT_GENERIC)
 	transfer_target.ckey = victim.ckey
 	transfer_target.mind = victim.mind
 	victim.set_current_skill_holder(transfer_target)
@@ -227,6 +228,7 @@
 					weapon.wielded = TRUE
 				break
 		victim.retaliate(transfer_target)
+		REMOVE_TRAIT(victim, TRAIT_NOSSDINDICATOR, TRAIT_GENERIC)
 
 /obj/structure/ritualcircle/dendor
 	name = "Rune of Beasts"
