@@ -861,10 +861,10 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 
 /area/rogue/outdoors/exposed/church
 	icon_state = "church"
-	droning_sound = 'sound/music/area/monastery.ogg'
+	droning_sound = sound('sound/music/area/monastery.ogg', volume = 50)
 	droning_sound_dusk = null
 	droning_sound_night = null
-	church_area = TRUE
+	droning_sound_dawn = 'sound/music/area/churchdawn.ogg'
 
 /area/rogue/indoors/town/church/chapel
 	icon_state = "chapel"
