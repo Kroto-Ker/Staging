@@ -1853,6 +1853,12 @@
 /mob/living/simple_animal/hostile/rogue/haunt,
 /turf/open/floor/rogue/wood,
 /area/rogue/indoors/shelter/mountains/decap)
+"axx" = (
+/obj/structure/roguemachine/noticeboard{
+	pixel_y = 9
+	},
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/exposed/church)
 "axz" = (
 /obj/structure/toilet,
 /turf/open/floor/rogue/dirt,
@@ -263217,7 +263223,7 @@ sNZ
 pSg
 pSg
 fii
-fii
+nHu
 ecM
 ecM
 ecM
@@ -263669,7 +263675,7 @@ sNZ
 pSg
 pSg
 pSg
-nHu
+tte
 ecM
 ecM
 iHB
@@ -264121,8 +264127,8 @@ sNZ
 sNZ
 pSg
 pSg
-fii
-ecM
+tte
+axx
 ecM
 ecM
 xhe
@@ -264573,7 +264579,7 @@ seL
 sNZ
 ibp
 pSg
-pSg
+tte
 ecM
 ecM
 xcV
@@ -265025,7 +265031,7 @@ seL
 seL
 ibp
 pSg
-neu
+tte
 ecM
 ecM
 ecM
