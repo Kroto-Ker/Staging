@@ -16752,7 +16752,7 @@
 /area/rogue/indoors/town/church/chapel)
 "erH" = (
 /obj/structure/roguemachine/scomm/l,
-/turf/open/floor/rogue/herringbone,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/church/chapel)
 "erL" = (
 /obj/structure/mineral_door/wood/donjon/stone{
@@ -72892,7 +72892,10 @@
 /obj/item/natural/bundle/stick{
 	pixel_x = 14
 	},
-/turf/open/floor/rogue/hexstone,
+/obj/structure/fluff/walldeco/church/line{
+	dir = 8
+	},
+/turf/open/floor/rogue/church,
 /area/rogue/indoors/town/church/chapel)
 "tex" = (
 /obj/structure/bookcase,
@@ -77272,12 +77275,6 @@
 /obj/structure/vine,
 /turf/open/floor/rogue/greenstone,
 /area/rogue/under/cave/dungeon1/gethsmane/inner)
-"ulH" = (
-/obj/structure/stairs{
-	dir = 1
-	},
-/turf/open/floor/rogue/naturalstone,
-/area/rogue/under/cave)
 "ulI" = (
 /obj/structure/flora/roguetree/pine/dead,
 /turf/open/floor/rogue/dirt,
@@ -81741,7 +81738,7 @@
 	pixel_y = 10
 	},
 /obj/machinery/light/rogue/wallfire/candle/blue,
-/turf/open/floor/rogue/hexstone,
+/turf/open/floor/rogue/cobble/mossy,
 /area/rogue/indoors/town/church/chapel)
 "vto" = (
 /turf/open/floor/rogue/churchbrick,
@@ -149892,7 +149889,7 @@ toJ
 toJ
 toJ
 bhJ
-seg
+bhJ
 seg
 toJ
 toJ
@@ -150344,8 +150341,8 @@ toJ
 toJ
 toJ
 bhJ
+bhJ
 seg
-ulH
 toJ
 toJ
 toJ
@@ -150796,8 +150793,8 @@ toJ
 toJ
 bhJ
 bhJ
+bhJ
 seg
-ulH
 toJ
 toJ
 toJ
@@ -151248,7 +151245,7 @@ bhJ
 bhJ
 bhJ
 miF
-seg
+miF
 seg
 toJ
 eSj
@@ -257500,7 +257497,7 @@ vtn
 fIj
 fIj
 erH
-iRn
+fIj
 frX
 pdy
 qtm
@@ -257947,7 +257944,7 @@ gML
 ieK
 gTY
 gTY
-pdy
+bML
 tev
 bqS
 dNM
@@ -258399,7 +258396,7 @@ hTF
 uqg
 kwy
 rVo
-pdy
+bML
 vNR
 fWy
 nUE
@@ -259303,8 +259300,8 @@ hFT
 oKc
 gTY
 oKc
-bML
-bML
+pdy
+pdy
 pdy
 hFT
 pdy
@@ -373629,7 +373626,7 @@ eGx
 qwK
 qwK
 cxA
-aBB
+dnJ
 dnJ
 dnJ
 dnJ
@@ -374081,7 +374078,7 @@ eGx
 qwK
 qwK
 cxA
-aBB
+dnJ
 dnJ
 dnJ
 dnJ
