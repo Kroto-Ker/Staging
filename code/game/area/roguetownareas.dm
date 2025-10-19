@@ -23,52 +23,35 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	var/church_area = FALSE
 	var/ceiling_protected = FALSE //Prevents tunneling into these from above
 
-#define APPLY_AREA_BUFF(mobref, trait, buffpath) if(HAS_TRAIT(mobref, trait) && !mobref.has_status_effect(buffpath)) mobref.apply_status_effect(buffpath)
-#define REMOVE_AREA_BUFF(mobref, buffpath) if(mobref.has_status_effect(buffpath)) mobref.remove_status_effect(buffpath)
+/area/rogue/Entered(mob/living/carbon/human/guy)
+
+	. = ..()
+	if((src.town_area == TRUE) && HAS_TRAIT(guy, TRAIT_GUARDSMAN) && !guy.has_status_effect(/datum/status_effect/buff/guardbuffone)) //man at arms
+		guy.apply_status_effect(/datum/status_effect/buff/guardbuffone)
 
 /area/rogue/Entered(mob/living/carbon/human/guy)
+
 	. = ..()
-	if(!guy) return
+	if((src.tavern_area == TRUE) && HAS_TRAIT(guy, TRAIT_TAVERN_FIGHTER) && !guy.has_status_effect(/datum/status_effect/buff/barkeepbuff)) // THE FIGHTER
+		guy.apply_status_effect(/datum/status_effect/buff/barkeepbuff)
 
-	// town_area -> man at arms
-	if(src.town_area == TRUE)
-		APPLY_AREA_BUFF(guy, TRAIT_GUARDSMAN, /datum/status_effect/buff/guardbuffone) //man at arms
+/area/rogue/Entered(mob/living/carbon/human/guy)
 
-	// tavern_area -> inner inkeeper
-	if(src.tavern_area == TRUE)
-		APPLY_AREA_BUFF(guy, TRAIT_TAVERN_FIGHTER, /datum/status_effect/buff/barkeepbuff) // innkeeper
-
-	// warden_area -> Warden
-	if(src.warden_area == TRUE)
-		APPLY_AREA_BUFF(guy, TRAIT_WOODSMAN, /datum/status_effect/buff/wardenbuff) // Warden
-
-	// cell_area -> Dungeoneer
-	if(src.cell_area == TRUE)
-		APPLY_AREA_BUFF(guy, TRAIT_DUNGEONMASTER, /datum/status_effect/buff/dungeoneerbuff) // Dungeoneer
-
-	// church_area -> Templar/Priest/Churchling/Acolyte
-	if(src.church_area == TRUE)
-		APPLY_AREA_BUFF(guy, TRAIT_CLERGY, /datum/status_effect/buff/churchbuff) // Templar/Priest/Churchling/Acolyte
-
-/area/rogue/Exited(mob/living/carbon/human/guy)
 	. = ..()
-	if(!guy) return
+	if((src.warden_area == TRUE) && HAS_TRAIT(guy, TRAIT_WOODSMAN) && !guy.has_status_effect(/datum/status_effect/buff/wardenbuff)) // Warden
+		guy.apply_status_effect(/datum/status_effect/buff/wardenbuff)
 
-	if(src.town_area == TRUE)
-		REMOVE_AREA_BUFF(guy, /datum/status_effect/buff/guardbuffone) //man at arms
+/area/rogue/Entered(mob/living/carbon/human/guy)
 
-	if(src.tavern_area == TRUE)
-		REMOVE_AREA_BUFF(guy, /datum/status_effect/buff/barkeepbuff) // innerkeeper
+	. = ..()
+	if((src.cell_area == TRUE) && HAS_TRAIT(guy, TRAIT_DUNGEONMASTER) && !guy.has_status_effect(/datum/status_effect/buff/dungeoneerbuff)) // Dungeoneer
+		guy.apply_status_effect(/datum/status_effect/buff/dungeoneerbuff)
 
-	if(src.warden_area == TRUE)
-		REMOVE_AREA_BUFF(guy, /datum/status_effect/buff/wardenbuff) // Warden
+/area/rogue/Entered(mob/living/carbon/human/guy)
 
-	if(src.cell_area == TRUE)
-		REMOVE_AREA_BUFF(guy, /datum/status_effect/buff/dungeoneerbuff) // Dungeoneer
-	
-	if(src.church_area == TRUE)
-		REMOVE_AREA_BUFF(guy, /datum/status_effect/buff/churchbuff) // Templar/Priest/Churchling/Acolyte
-
+	. = ..()
+	if((src.church_area == TRUE) && HAS_TRAIT(guy, TRAIT_CLERGY) && !guy.has_status_effect(/datum/status_effect/buff/churchbuff)) // Templar/Priest/Churchling/Acolyte
+		guy.apply_status_effect(/datum/status_effect/buff/churchbuff)
 
 /area/rogue/indoors
 	name = "indoors rt"
@@ -84,6 +67,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	soundenv = 2
 	plane = INDOOR_PLANE
 	converted_type = /area/rogue/outdoors
+
 
 
 /area/rogue/indoors/banditcamp
@@ -729,7 +713,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 ////     TOWN AREAS
 ////
 ///
-///
 //
 
 
@@ -859,7 +842,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	converted_type = /area/rogue/outdoors/exposed/tavern
 	tavern_area = TRUE
-	
 /area/rogue/outdoors/exposed/tavern
 	icon_state = "tavern"
 	droning_sound = 'sound/silence.ogg'
@@ -882,7 +864,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/monastery.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	droning_sound_dawn = null
+	droning_sound_dawn = 'sound/music/area/churchdawn.ogg'
 
 /area/rogue/indoors/town/church/chapel
 	icon_state = "chapel"
@@ -986,7 +968,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound_night = null
 	converted_type = /area/rogue/indoors/shelter/town/sargoth
 	first_time_text = "SARGOTH"
-
 /area/rogue/indoors/shelter/town/sargoth
 	icon_state = "sargoth"
 	droning_sound = 'sound/music/area/sargoth.ogg'
