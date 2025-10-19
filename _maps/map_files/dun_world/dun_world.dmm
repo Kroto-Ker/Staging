@@ -4321,7 +4321,10 @@
 /area/rogue/indoors/shelter/mountains/decap)
 "ben" = (
 /obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/tree/jungle/small,
+/obj/structure/flora/maple/b{
+	pixel_x = -32;
+	layer = 6
+	},
 /turf/open/floor/rogue/grass,
 /area/rogue/indoors/town/church/chapel)
 "beq" = (
@@ -52189,6 +52192,10 @@
 	},
 /turf/open/floor/rogue/ruinedwood,
 /area/rogue/outdoors/beach)
+"nHu" = (
+/obj/machinery/light/rogue/firebowl/stump,
+/turf/open/floor/rogue/cobblerock,
+/area/rogue/outdoors/exposed/church)
 "nHx" = (
 /obj/structure/chair/wood/rogue{
 	dir = 4
@@ -63064,6 +63071,14 @@
 /obj/structure/flora/roguegrass/water,
 /turf/open/water/cleanshallow,
 /area/rogue/under/cave/goblindungeon)
+"qBQ" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/maple/c{
+	pixel_x = -32;
+	layer = 6
+	},
+/turf/open/floor/rogue/grass,
+/area/rogue/indoors/town/church/chapel)
 "qCd" = (
 /obj/structure/closet/crate/roguecloset/inn,
 /turf/open/floor/rogue/wood,
@@ -264680,7 +264695,7 @@ sNZ
 pSg
 pSg
 pSg
-fii
+nHu
 ecM
 ecM
 iHB
@@ -266488,11 +266503,11 @@ sNZ
 sNZ
 sNZ
 pSg
-pSg
+nHu
 ecM
 ecM
 ecM
-pSg
+nHu
 pSg
 pSg
 pSg
@@ -378149,7 +378164,7 @@ gTe
 efc
 hEE
 keF
-ben
+qBQ
 hDm
 vVy
 cwL
