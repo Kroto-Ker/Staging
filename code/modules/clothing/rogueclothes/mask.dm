@@ -373,7 +373,7 @@
 		ADD_TRAIT(user, TRAIT_PACIFISM, "cursedmask")
 		ADD_TRAIT(user, TRAIT_SPELLCOCKBLOCK, "cursedmask")
 		if(HAS_TRAIT(user, TRAIT_RITUALIST))
-			user.apply_status_effect(/datum/status_effect/debuff/ritesexpended)
+			user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_high)
 		var/timer = 5 MINUTES //Base timer is 5 minutes, additional time added per bounty amount
 
 		if(bounty_amount >= 10)

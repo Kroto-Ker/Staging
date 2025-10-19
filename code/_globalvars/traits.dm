@@ -5,6 +5,7 @@
 */
 GLOBAL_LIST_INIT(traits_by_type, list(
 	/mob = list(
+		TRAIT_RITES_BLOCKED,
 		TRAIT_HERETIC_DEVOUT,
 		TRAIT_PACIFISM,
 		TRAIT_LEPROSY,
