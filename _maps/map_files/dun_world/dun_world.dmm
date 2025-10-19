@@ -39104,7 +39104,8 @@
 "klB" = (
 /obj/structure/gate/bars/preopen{
 	name = "Bog gates";
-	redstone_id = "BogGates"
+	redstone_id = "BogGates";
+	gid = "BogGates"
 	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/woods)
@@ -57511,11 +57512,12 @@
 /turf/open/floor/rogue/blocks/newstone/alt,
 /area/rogue/indoors/town)
 "pez" = (
+/obj/machinery/light/rogue/torchholder/r,
 /obj/structure/winch{
 	redstone_id = "BogGates";
-	name = "Bog gates"
+	name = "Bog gates";
+	gid = "BogGates"
 	},
-/obj/machinery/light/rogue/torchholder/r,
 /turf/open/floor/rogue/cobble,
 /area/rogue/indoors/shelter/woods)
 "peG" = (
@@ -69974,7 +69976,7 @@
 /area/rogue/indoors/town)
 "spQ" = (
 /obj/structure/roguemachine/mail{
-	mailtag = "Wardens";
+	mailtag = "WardensSouth";
 	pixel_y = -32
 	},
 /turf/open/floor/rogue/wood,
