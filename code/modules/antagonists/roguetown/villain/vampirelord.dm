@@ -328,7 +328,6 @@ GLOBAL_LIST_EMPTY(vampire_objects)
 	set_eye_color(V, "#ff0000", "#ff0000")
 	eyes.update_accessory_colors()
 	V.update_body()
-	V.update_hair()
 	V.update_body_parts(redraw = TRUE)
 	V.mob_biotypes = MOB_UNDEAD
 	V.vampire_disguise()

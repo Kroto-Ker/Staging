@@ -76,7 +76,6 @@
 	L.hairstyle = "Bald"
 	L.facial_hairstyle = "Shaved"
 	L.update_body()
-	L.update_hair()
 	L.update_body_parts(redraw = TRUE)
 
 /datum/antagonist/lich/proc/equip_lich()

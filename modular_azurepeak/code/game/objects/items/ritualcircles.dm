@@ -153,7 +153,7 @@
 			var/mob/living/carbon/human/transfer_target
 			for(target in valid_bodies)
 				var/target_head = target.get_bodypart(BODY_ZONE_HEAD)
-				if(istype(target_head, /obj/item/bodypart/head/continuity_head))
+				if(istype(target_head, /obj/item/bodypart/head/prosthetic/continuity_head))
 					transfer_target = target
 					to_chat(user, span_hierophant("This shall suffice..."))
 					break
@@ -168,11 +168,11 @@
 				var/mob/living/carbon/human/victim = input(user, "Choose a host") as null|anything in valids_on_rune
 				if(!victim || QDELETED(victim) || !Adjacent(victim) || !user || QDELETED(user) || !Adjacent(user))
 					return
-				if(do_after(user, 1))
+				if(do_after(user, 20)) // jak this number
 					user.say("Pestra, Pestra, let me continue, anew!!")
-					if(do_after(user, 1))
+					if(do_after(user, 20)) // jak this number
 						user.say("To live, for as long as I wish!!")
-						if(do_after(user, 3))
+						if(do_after(user, 20)) // jak this number
 							icon_state = "pestra_active"
 //							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_high)
 							spawn(120)
@@ -209,8 +209,8 @@
 	if(victim.language_holder)
 		transfer_target.language_holder = victim.language_holder
 	transfer_target.update_action_buttons()
-	transfer_target.revive(full_heal = TRUE)
-	spawn(10)
+	transfer_target.revive(full_heal = TRUE) // ???
+	spawn(60) // jak this number
 		victim.faction -= "neutral" // or just make the list empty idk
 		victim.say("What have I done!!", forced = TRUE)
 		victim.emote("scream", forced = TRUE)
@@ -703,12 +703,11 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 		var/list/body_parts = target.bodyparts.Copy()
 		for(var/obj/item/bodypart/part in body_parts)
 			part.skeletonize(FALSE)
-		target.update_body_parts()
 		var/list/eyes_replaced = target.internal_organs.Copy()
 		var/obj/item/organ/eyes/eyes = target.getorganslot(eyes_replaced) // #define ORGAN_SLOT_PENIS "penis" ORGAN_SLOT_TESTICLES "testicles" ORGAN_SLOT_BREASTS "breasts" ORGAN_SLOT_VAGINA "vagina" do I wanna bother
 		eyes = new /obj/item/organ/eyes/night_vision/zombie
 		eyes.Insert(target)
-		target.update_body_parts()
+		target.update_body_parts(TRUE)
 		target.ritual_skeletonization = TRUE
 
 

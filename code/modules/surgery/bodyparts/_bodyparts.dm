@@ -498,7 +498,6 @@
 
 //we inform the bodypart of the changes that happened to the owner, or give it the informations from a source mob.
 /obj/item/bodypart/proc/update_limb(dropping_limb, mob/living/carbon/source)
-//	to_chat(world, "we just called update_limb()")
 	var/mob/living/carbon/C
 	if(source)
 		C = source
@@ -674,7 +673,7 @@
 		limb.icon_state = "pr_[limb_material]_[body_zone]"
 		if(aux_zone)
 			if(!hideaux)
-				aux = image(limb.icon, "pr_[aux_zone]", -aux_layer, image_dir)
+				aux = image(limb.icon, "pr_[limb_material]_[aux_zone]", -aux_layer, image_dir)
 				. += aux
 
 
@@ -727,7 +726,7 @@
 	return ..()
 
 /obj/item/bodypart/chest
-	name = BODY_ZONE_CHEST
+	name = "chest"
 	desc = ""
 	icon_state = "default_human_chest"
 	max_damage = 300

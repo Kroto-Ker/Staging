@@ -203,8 +203,7 @@
 
 		for(var/obj/item/bodypart/zombie_part as anything in zombie.bodyparts) //Cure all limbs
 			zombie_part.rotted = FALSE
-			zombie_part.update_disabled()
-			zombie_part.update_limb()
+			zombie_part.update_disabled() // update body already handles limb updates dear god
 		zombie.update_body()
 	// Bandaid to fix the zombie ghostizing not allowing you to re-enter
 	if(zombie)

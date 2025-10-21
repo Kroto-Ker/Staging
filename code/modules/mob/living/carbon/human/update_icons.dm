@@ -61,7 +61,7 @@ There are several things that need to be remembered:
 //HAIR OVERLAY
 /mob/living/carbon/human/update_hair()
 	rebuild_obscured_flags()
-	update_body_parts(TRUE)
+	update_body_parts(TRUE, TRUE)
 	return
 
 /mob/living/carbon/human/update_body()
@@ -124,19 +124,17 @@ There are several things that need to be remembered:
 		var/g = BP.offset
 		if(gender == FEMALE || dna.species.use_f)
 			g = BP.offset_f
-		if(BP.body_zone == BODY_ZONE_HEAD)
-			update_hair()
 		var/bleed_checker = FALSE
 		var/list/wound_overlays
 		if(!BP.skeletonized)
-			if(BP.brutestate)
+			if(BP.brutestate && BP.status != BODYPART_ROBOTIC)
 				var/mutable_appearance/damage_overlay = mutable_appearance(limb_icon, "[BP.body_zone]_[BP.brutestate]0", -DAMAGE_LAYER)
 				damage_overlays += damage_overlay
 				var/mutable_appearance/legdam_overlay = mutable_appearance(limb_icon, "legdam_[BP.body_zone]_[BP.brutestate]0", -LEG_DAMAGE_LAYER)
 				legdam_overlays += legdam_overlay
 				var/mutable_appearance/armdam_overlay = mutable_appearance(limb_icon, "armdam_[BP.body_zone]_[BP.brutestate]0", -ARM_DAMAGE_LAYER)
 				armdam_overlays += armdam_overlay
-			if(BP.burnstate)
+			if(BP.burnstate || BP.status == BODYPART_ROBOTIC)
 				var/mutable_appearance/damage_overlay = mutable_appearance(limb_icon, "[BP.body_zone]_0[BP.burnstate]", -DAMAGE_LAYER)
 				damage_overlays += damage_overlay
 				var/mutable_appearance/legdam_overlay = mutable_appearance(limb_icon, "legdam_[BP.body_zone]_0[BP.burnstate]", -LEG_DAMAGE_LAYER)
@@ -179,14 +177,14 @@ There are several things that need to be remembered:
 			armdam_overlays += armdam_overlay
 		if(BP.aux_zone && !((BP.body_zone == BODY_ZONE_CHEST) && hidechest))
 			if(!BP.skeletonized)
-				if(BP.brutestate)
+				if(BP.brutestate && BP.status != BODYPART_ROBOTIC)
 					var/mutable_appearance/damage_overlay = mutable_appearance(limb_icon, "[BP.aux_zone]_[BP.brutestate]0", -DAMAGE_LAYER)
 					damage_overlays += damage_overlay
 					var/mutable_appearance/legdam_overlay = mutable_appearance(limb_icon, "legdam_[BP.aux_zone]_[BP.brutestate]0", -LEG_DAMAGE_LAYER)
 					legdam_overlays += legdam_overlay
 					var/mutable_appearance/armdam_overlay = mutable_appearance(limb_icon, "armdam_[BP.aux_zone]_[BP.brutestate]0", -ARM_DAMAGE_LAYER)
 					armdam_overlays += armdam_overlay
-				if(BP.burnstate)
+				if(BP.burnstate || BP.status == BODYPART_ROBOTIC)
 					var/mutable_appearance/damage_overlay = mutable_appearance(limb_icon, "[BP.aux_zone]_0[BP.burnstate]", -DAMAGE_LAYER)
 					damage_overlays += damage_overlay
 					var/mutable_appearance/legdam_overlay = mutable_appearance(limb_icon, "legdam_[BP.aux_zone]_0[BP.burnstate]", -LEG_DAMAGE_LAYER)
@@ -250,6 +248,7 @@ There are several things that need to be remembered:
 	apply_overlay(DAMAGE_LAYER)
 	apply_overlay(LEG_DAMAGE_LAYER)
 	apply_overlay(ARM_DAMAGE_LAYER)
+	update_body_parts(TRUE)
 
 
 /* --------------------------------------- */
@@ -926,7 +925,6 @@ There are several things that need to be remembered:
 
 /mob/living/carbon/human/update_inv_wear_mask()
 	..()
-	update_body_parts(TRUE)
 	var/mutable_appearance/mask_overlay = overlays_standing[MASK_LAYER]
 	if(mask_overlay)
 		rebuild_obscured_flags()
@@ -941,6 +939,7 @@ There are several things that need to be remembered:
 				mask_overlay.pixel_y += dna.species.offset_features[OFFSET_FACEMASK_F][2]
 		overlays_standing[MASK_LAYER] = mask_overlay
 		apply_overlay(MASK_LAYER)
+	update_body_parts(TRUE)
 
 /mob/living/carbon/human/update_inv_back()
 	remove_overlay(BACK_LAYER)
@@ -1189,16 +1188,15 @@ There are several things that need to be remembered:
 
 	overlays_standing[CLOAK_LAYER] = cloaklays
 	rebuild_obscured_flags()
-	update_inv_armor() //fixboob
 	apply_overlay(TABARD_LAYER)
 	apply_overlay(CLOAK_BEHIND_LAYER)
 	apply_overlay(CLOAK_LAYER)
 	apply_overlay(UNDER_ARMOR_LAYER)
+	update_inv_armor() //fixboob
 
 /mob/living/carbon/human/update_inv_shirt()
 	remove_overlay(SHIRT_LAYER)
 	remove_overlay(SHIRTSLEEVE_LAYER)
-	update_body_parts(TRUE)
 
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv = hud_used.inv_slots[SLOT_SHIRT]
@@ -1251,9 +1249,8 @@ There are several things that need to be remembered:
 
 	rebuild_obscured_flags()
 	if(gender == FEMALE && dna?.species)
-		update_body_parts(redraw = TRUE)
 		dna.species.handle_body(src)
-	update_hair()
+	update_body_parts(TRUE)
 
 	apply_overlay(SHIRT_LAYER)
 	apply_overlay(SHIRTSLEEVE_LAYER)
@@ -1318,13 +1315,12 @@ There are several things that need to be remembered:
 
 	rebuild_obscured_flags()
 	if(gender == FEMALE && dna?.species)
-		update_body_parts(redraw = TRUE)
 		dna.species.handle_body(src)
-	update_hair()
 	update_inv_shirt() // fix boob
 
 	apply_overlay(ARMOR_LAYER)
 	apply_overlay(ARMORSLEEVE_LAYER)
+	update_body_parts(TRUE)
 
 /mob/living/carbon/human/update_inv_pants()
 	remove_overlay(PANTS_LAYER)
@@ -1392,9 +1388,9 @@ There are several things that need to be remembered:
 				overlays_standing[LEGSLEEVE_LAYER] = sleeves
 
 	rebuild_obscured_flags()
-	update_hair()
 	apply_overlay(PANTS_LAYER)
 	apply_overlay(LEGSLEEVE_LAYER)
+	update_body_parts(TRUE)
 
 /mob/living/carbon/human/update_inv_mouth()
 	remove_overlay(MOUTH_LAYER)
@@ -1848,7 +1844,7 @@ generate/load female uniform sprites matching all previously decided variables
 					observers = null
 					break
 
-/mob/living/carbon/human/update_body_parts(redraw = FALSE)
+/mob/living/carbon/human/update_body_parts(redraw = FALSE, just_head = FALSE)
 	//CHECK FOR UPDATE
 	var/oldkey = icon_render_key
 	icon_render_key = generate_icon_render_key()
@@ -1856,10 +1852,13 @@ generate/load female uniform sprites matching all previously decided variables
 		return
 
 	remove_overlay(BODYPARTS_LAYER)
-
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		BP.update_limb()
+	if(just_head)
+		var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
+		head.update_limb()
+	else
+		for(var/X in bodyparts)
+			var/obj/item/bodypart/BP = X
+			BP.update_limb()
 
 	//LOAD ICONS
 	if(!redraw)
@@ -1880,7 +1879,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
-		if(BP.name == BODY_ZONE_CHEST)
+		if(BP.body_zone == BODY_ZONE_CHEST)
 			if(wear_armor)
 				var/obj/item/I = wear_armor
 				if(I.flags_inv & HIDEBOOB)
