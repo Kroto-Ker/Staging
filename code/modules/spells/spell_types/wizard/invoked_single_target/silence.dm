@@ -25,7 +25,7 @@
 /obj/effect/proc_holder/spell/invoked/silence/cast(list/targets, mob/user = usr)
 	if(isliving(targets[1]))
 		var/mob/living/carbon/target = targets[1]
-		if(HAS_TRAIT(target, TRAIT_COUNTERCOUNTERSPELL) || HAS_TRAIT(target, TRAIT_ANTIMAGIC || HAS_TRAIT(target, TRAIT_MUTE))
+		if(HAS_TRAIT(target, TRAIT_COUNTERCOUNTERSPELL) || HAS_TRAIT(target, TRAIT_ANTIMAGIC) || HAS_TRAIT(target, TRAIT_MUTE))
 			to_chat(user, "<span class='warning'>The spell fizzles, it won't work on them!</span>")
 			revert_cast()
 			return
