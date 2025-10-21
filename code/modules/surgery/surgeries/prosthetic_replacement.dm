@@ -122,12 +122,9 @@
 			to_chat(user, span_warning("The head is refusing the body."))
 			return FALSE
 
-	display_results(user, target, span_notice("I begin to replace [target]'s [parse_zone(target_zone)] with [tool]..."),
-		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)] with [tool]."),
-		span_notice("[user] begins to replace [target]'s [parse_zone(target_zone)]."))
-//	display_results(user, target, span_notice("I begin to attach [bodypart] to [target], back to where [target.p_their()] [parse_zone(target_zone)] used to be..."),
-//		span_notice("[user] begins to attach [bodypart] to [target], back to where [target.p_their()] [parse_zone(target_zone)] used to be..."),
-//		span_notice("[user] begins to attach [bodypart] to [target], back to where [target.p_their()] [parse_zone(target_zone)] used to be..."))
+	display_results(user, target, span_notice("I begin to attach [bodypart] to [target], back to where [target.p_their()] [parse_zone(target_zone)] used to be..."),
+		span_notice("[user] begins to attach [bodypart] to [target], back to where [target.p_their()] [parse_zone(target_zone)] used to be..."),
+		span_notice("[user] begins to attach [bodypart] to [target], back to where [target.p_their()] [parse_zone(target_zone)] used to be..."))
 	return TRUE
 
 /datum/surgery_step/add_prosthetic/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/intent/intent)

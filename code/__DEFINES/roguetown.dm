@@ -335,6 +335,15 @@
 	/datum/species/lamia,\
 	/datum/species/harpy,\
 )
+
+// they usually share the same clothing sprites, so like.... BRAH...
+#define SHORT_RACE_TYPES list(\
+	/datum/species/dwarf/mountain,\
+	/datum/species/anthromorphsmall,\
+	/datum/species/kobold,\
+	/datum/species/goblinp,\
+)
+
 // Non-elf non-dwarf non-kobold non-goblin mostly
 #define HUMANLIKE_RACE_TYPES list(\
 	/datum/species/human/northern,\

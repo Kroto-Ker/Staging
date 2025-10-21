@@ -5,6 +5,7 @@
 	desc = "A left arm made out of wood."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
 	icon_state = "pr_wood_arm_r"
+	limb_material = "wood"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -22,6 +23,7 @@
 	desc = "A replacement left arm, engineered out of bronze."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi' // copying here for clarity or whatever
 	icon_state = "pr_bronze_arm_l"
+	limb_material = "bronze" // swap it to fucking bronze if there's ever gonna be a bronze onmob sprite for it
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -55,6 +57,7 @@
 	desc = "A right arm made out of wood."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
 	icon_state = "pr_wood_arm_r"
+	limb_material = "wood"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -72,6 +75,7 @@
 	desc = "A replacement right arm, engineered out of bronze."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
 	icon_state = "pr_bronze_arm_r"
+	limb_material = "bronze" // still need a different onmob sprite for bronze limbs brah
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -102,11 +106,12 @@
 
 /////     LEGS     /////
 
-/obj/item/bodypart/l_leg/prosthetic
+/obj/item/bodypart/l_leg/prosthetic/woodleft
 	name = "wooden left leg"
 	desc = "A left leg made out of wood."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi' // someone make fucking onmob sprites HOLY SHIT....
 	icon_state = "pr_wood_leg_l"
+	limb_material = "wood"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -123,6 +128,7 @@
 	desc = "A replacement left leg, engineered out of bronze."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
 	icon_state = "pr_bronze_leg_l"
+	limb_material = "bronze" // still have to make actually distinct onmbob from wood
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -152,11 +158,12 @@
 		user.visible_message(span_notice("[user] attaches [src] to [H]."))
 		return 1
 
-/obj/item/bodypart/r_leg/prosthetic
+/obj/item/bodypart/r_leg/prosthetic/woodright
 	name = "wooden right leg"
 	desc = "A right leg made out of wood."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
 	icon_state = "pr_wood_leg_r"
+	limb_material = "wood"
 	resistance_flags = FLAMMABLE
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -173,6 +180,7 @@
 	desc = "A replacement right leg, engineered out of bronze."
 	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
 	icon_state = "pr_bronze_leg_r"
+	limb_material = "bronze" // still have to make actually distinct onmbob from wood
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
@@ -202,7 +210,11 @@
 		user.visible_message("<span class='notice'>[user] attaches [src] to [H].</span>")
 		return 1
 
-/obj/item/bodypart/head/continuity_head
+/////////////
+/// HEAD ///
+///////////
+
+/obj/item/bodypart/head/prosthetic/continuity_head
 	name = "continuity head"
 	dismemberable = TRUE
 	resistance_flags = FIRE_PROOF

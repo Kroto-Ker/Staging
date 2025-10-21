@@ -274,7 +274,7 @@
 
 /datum/crafting_recipe/roguetown/survival/prosthetic/woodleftleft
 	name = "wood leg (L)"
-	result = list(/obj/item/bodypart/l_leg/prosthetic)
+	result = list(/obj/item/bodypart/l_leg/prosthetic/woodleft)
 	reqs = list(/obj/item/grown/log/tree/small = 1)
 	skillcraft = /datum/skill/craft/crafting
 	craftdiff = 3
