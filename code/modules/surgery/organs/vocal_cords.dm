@@ -29,6 +29,7 @@
 	name = "harpy's song"
 	icon_state = "harpysong"		//Pulsating heart energy thing.
 	desc = "The blessed essence of harpysong. How did you get this... you monster!"
+	should_regenerate = TRUE
 	var/obj/item/rogue/instrument/vocals/harpy_vocals/vocals
 
 /obj/item/organ/vocal_cords/harpy/Initialize()
