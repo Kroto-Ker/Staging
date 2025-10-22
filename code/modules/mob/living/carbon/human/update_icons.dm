@@ -61,7 +61,7 @@ There are several things that need to be remembered:
 //HAIR OVERLAY
 /mob/living/carbon/human/update_hair()
 	rebuild_obscured_flags()
-	update_body_parts(TRUE, TRUE)
+	update_body_parts(TRUE)
 	return
 
 /mob/living/carbon/human/update_body()
@@ -1844,7 +1844,7 @@ generate/load female uniform sprites matching all previously decided variables
 					observers = null
 					break
 
-/mob/living/carbon/human/update_body_parts(redraw = FALSE, just_head = FALSE)
+/mob/living/carbon/human/update_body_parts(redraw = FALSE)
 	//CHECK FOR UPDATE
 	var/oldkey = icon_render_key
 	icon_render_key = generate_icon_render_key()
@@ -1852,13 +1852,9 @@ generate/load female uniform sprites matching all previously decided variables
 		return
 
 	remove_overlay(BODYPARTS_LAYER)
-	if(just_head)
-		var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
-		head.update_limb()
-	else
-		for(var/X in bodyparts)
-			var/obj/item/bodypart/BP = X
-			BP.update_limb()
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/BP = X
+		BP.update_limb()
 
 	//LOAD ICONS
 	if(!redraw)

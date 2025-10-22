@@ -435,9 +435,9 @@
 		H.facial_hairstyle = facial_hairstyle
 		H.lip_style = lip_style
 		H.lip_color = lip_color
-	if(real_name)
-		C.real_name = real_name
-	real_name = ""
+	if(head_real_name)
+		C.real_name = head_real_name
+	head_real_name = ""
 	name = initial(name)
 
 	return ..()

@@ -219,7 +219,14 @@
 	dismemberable = TRUE
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
-//	status = BODYPART_ROBOTIC
+	status = BODYPART_ROBOTIC
 	max_damage = 250 // +50 more hp compared to the normal ass head
 	icon = 'icons/roguetown/items/gems.dmi'
 	icon_state = "quartz_fail"
+	dismemberable = FALSE // ehh
+
+/obj/item/bodypart/head/prosthetic/continuity_head/attach_limb(mob/living/carbon/C, special)
+	. = ..()
+	head_real_name = "Husk of [C.real_name]"
+	C.real_name = head_real_name
+//	return ..()
