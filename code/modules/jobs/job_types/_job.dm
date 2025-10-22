@@ -253,6 +253,9 @@
 			else
 				GLOB.actors_list[H.mobid] = "[H.real_name] as [H.mind.assigned_role]<BR>"
 
+	if(islist(advclass_cat_rolls))
+		hugboxify_for_class_selection(H)
+
 /client/verb/set_mugshot()
 	set category = "OOC"
 	set name = "Set Credits Mugshot"
