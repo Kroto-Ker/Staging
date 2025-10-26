@@ -310,7 +310,7 @@ Necra's Censer (by ARefrigerator)
   a do_after call, infinite uses. Should aid
   the morticians with cleaning the town.
 */
-/obj/item/necra_censer
+/obj/item/artefact/necra_censer
 	name = "Necra's censer"
 	desc = "A small bronze censer that expels an otherworldly mist."
 	icon = 'icons/roguetown/items/artefactsten.dmi'
@@ -327,7 +327,7 @@ Necra's Censer (by ARefrigerator)
 	grid_width = 32
 	grid_height = 64
 
-/obj/item/necra_censer/attack_self(mob/user)
+/obj/item/artefact/necra_censer/attack_self(mob/user)
 	if(do_after(user, 3 SECONDS))
 		playsound(user.loc,  'sound/items/censer_use.ogg', 100)
 		user.visible_message(span_info("[user.name] lifts up their arm and swings the chain on \the [name] around lightly."))
