@@ -1338,39 +1338,66 @@ Necra's Censer (by ARefrigerator)
 	force = 0
 
 /obj/item/artifact/astrata_star/attack(mob/living/target, mob/user)
-	if (!istype(target, /mob/living/carbon/human))
+	if(!istype(target, /mob/living/carbon/human))
 		return
 
-	if (!user || !user.client)
+	if(!user || !user.client)
 		return
 
-	user.visible_message(span_notice("[user] holds the Star of Astrata before [target.name]."))
+	if(!istype(user, /mob/living/carbon/human))
+		to_chat(user, span_warning("The Star rejects an unworthy bearer."))
+		return
+	var/mob/living/carbon/human/C = user
 
-	if (!do_after(user, 300, target = target))
-		user.visible_message(span_warning("[user] stops the ritual with the Star of Astrata for [target.name]."))
+	if(C.church_favor < 500)
+		to_chat(C, span_warning("Your faith lacks the strength. (500 Favor required, you have [C.church_favor].)"))
+		return
+
+	user.visible_message(
+		span_notice("[user] holds the Star of Astrata before [target.name]."),
+		span_notice("I hold the Star of Astrata before [target.name], letting its light flood their soul.")
+	)
+
+	if(!do_after(user, 300, target = target))
+		user.visible_message(
+			span_warning("[user] stops the ritual with the Star of Astrata for [target.name]."),
+			span_warning("I break the ritual early.")
+		)
 		to_chat(target, span_notice("The light fades as the ritual is broken."))
 		return
-
 	var/list/divine_options = list()
-	for (var/path in ALL_DIVINE_PATRONS)
+	for(var/path in ALL_DIVINE_PATRONS)
 		var/datum/patron/divine/instance = new path
-		if (instance?.name)
+		if(instance && instance.name)
 			divine_options[instance.name] = path
 		qdel(instance)
-
-	if (!divine_options || !divine_options.len)
+	if(!divine_options || !divine_options.len)
 		to_chat(user, span_warning("No divine patrons are available."))
 		return
-
 	var/choice = input(target, "The star opens your soul. Choose your patron, or refuse.", "The Ten") as null|anything in divine_options
-	if (!choice)
+	if(!choice)
 		to_chat(target, span_danger("You turn away from the light."))
 		to_chat(user, span_danger("[target.name] rejects the offered path."))
 		return
+	if(C.church_favor < 500)
+		to_chat(C, span_warning("In that moment of revelation, your Favor has run dry. The rite fizzles."))
+		to_chat(target, span_warning("The light flickers and dies before the vow can take hold."))
+		return
+	var/patron_path = divine_options[choice]
+	if(patron_path)
+		if(ismob(target) && istype(target, /mob/living/carbon/human))
+			var/mob/living/carbon/human/T = target
+			if(hascall(T, "set_patron"))
+				call(T, "set_patron")(patron_path)
+			else
+				if(hascall(global, "set_patron")) //the coder is aretard i dont want runtimes
+					call(global, "set_patron")(T, patron_path)
 
-	target.set_patron(divine_options[choice])
+		C.church_favor = max(0, C.church_favor - 500)
+		user.visible_message(
+			span_notice("[target.name] accepts the mark of [choice]."),
+			span_notice("[target.name] accepts the mark of [choice]. The ritual is sealed, costing you 500 Favor.")
+		)
+		to_chat(target, span_notice("You feel the mark of [choice] settle in your soul."))
 
-	user.visible_message(
-		span_notice("[target.name] accepts the mark of [choice]."),
-		span_notice("The ritual is complete. The path is chosen.")
-	)
+	return

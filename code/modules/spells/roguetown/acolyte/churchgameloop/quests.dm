@@ -378,9 +378,9 @@
 
 
 // ---------------------------------------------------------------------
-// 
+//
 //  THE QUEST TOKEN TREE SHIT STARTS HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
-// 
+//
 // ---------------------------------------------------------------------
 
 /obj/item/quest_token
@@ -393,7 +393,7 @@
 	var/owner_name  = ""
 	var/delete_at   = 0
 
-	var/reward_amount = QUEST_REWARD_FAVOR
+	var/reward_amount = 250
 
 /obj/item/quest_token/Initialize()
 	. = ..()
@@ -546,7 +546,7 @@
 	qdel(src)
 
 
-// 2) Find Expertise 
+// 2) Find Expertise
 /obj/item/quest_token/skill_bless
 	name = "mark of craft"
 	desc = "Get an opinion of an expert of specified skills."
@@ -586,7 +586,7 @@
 	qdel(src)
 
 
-// 3) Blood Research 
+// 3) Blood Research
 /obj/item/quest_token/blood_draw
 	name = "sanctified lancet"
 	desc = "Draw blood from certain bloodlines."
@@ -626,7 +626,7 @@
 	qdel(src)
 
 
-// 4) Tithe 
+// 4) Tithe
 /obj/item/quest_token/coin_chest
 	name = "tithe chest"
 	desc = "Feed it with mammon. When it is satisfied, it vanishes."
@@ -661,7 +661,7 @@
 	..()
 
 
-// 5) Reliquary 
+// 5) Reliquary
 
 /obj/item/quest_token/reliquary
 	name = "sealed reliquary"
@@ -791,7 +791,7 @@
 		return
 
 
-// 6) Deliver Ration 
+// 6) Deliver Ration
 /obj/item/quest_token/ration_delivery
 	name = "charity ration"
 	desc = "Deliver food and care to the designated professions."
@@ -825,7 +825,7 @@
 	qdel(src)
 
 
-// 7) Offering of Supplies 
+// 7) Offering of Supplies
 /obj/item/quest_token/donation_box
 	name = "offering coffer"
 	desc = "Accepts one designated offering."
@@ -852,7 +852,7 @@
 
 	to_chat(user, span_warning("This is not an acceptable offering."))
 
-// 8) Minor Sermon 
+// 8) Minor Sermon
 
 
 /obj/item/quest_token/sermon_minor
@@ -915,7 +915,7 @@
 	return TRUE
 
 
-// 9) Witness the Sermon 
+// 9) Witness the Sermon
 /obj/item/quest_token/sermon_witness
 	name = "sermon witness"
 	desc = "Confirm the target bears the 'sermon' blessing."
