@@ -18,7 +18,7 @@
 	outfit = /datum/outfit/job/roguetown/captain
 	give_bank_account = 26
 	noble_income = 16
-	min_pq = 9
+	min_pq = 15
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_knight.ogg'
@@ -68,10 +68,6 @@
 				if(MF.known_people)
 					MF.known_people -= prev_real_name
 					H.mind.person_knows_me(MF)
-
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
 
 /datum/advclass/captain/infantry
 	name = "Infantry Captain"

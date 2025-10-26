@@ -56,10 +56,10 @@
 		points += "!"
 	visible_message(span_danger("[src] falls down[points]"), \
 					span_danger("I fall down[points]"))
-	playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 	if(!isgroundlessturf(T))
+		playsound(src.loc, 'sound/foley/zfall.ogg', 100, FALSE)
 		ZImpactDamage(T, levels)
-		GLOB.scarlet_round_stats[STATS_MOAT_FALLERS]++
+		GLOB.scarlet_round_stats[STATS_MOAT_FALLERS]++// Wouldn't this only count if you DIDN'T fall in the moat?
 	return ..()
 
 /mob/living/proc/ZImpactDamage(turf/T, levels)
@@ -1864,7 +1864,7 @@
 	if(!can_look_up())
 		return
 	changeNext_move(HAS_TRAIT(src, TRAIT_SLEUTH) ? CLICK_CD_SLEUTH : CLICK_CD_TRACKING)
-	if(m_intent != MOVE_INTENT_SNEAK)
+	if(m_intent != MOVE_INTENT_SNEAK && !HAS_TRAIT(src, TRAIT_SLEUTH))
 		visible_message(span_info("[src] begins looking around."))
 	var/looktime = 50 - (STAPER * 2) - (get_skill_level(/datum/skill/misc/tracking) * 5)
 	looktime = clamp(looktime, 7, 50)

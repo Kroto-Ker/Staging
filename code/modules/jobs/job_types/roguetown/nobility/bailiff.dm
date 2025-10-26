@@ -16,7 +16,7 @@
 	outfit = /datum/outfit/job/roguetown/marshal
 	give_bank_account = 40
 	noble_income = 20
-	min_pq = 8
+	min_pq = 20
 	max_pq = null
 	round_contrib_points = 3
 	cmode_music = 'sound/music/combat_guard.ogg'
@@ -44,14 +44,6 @@
 
 	H.verbs |= /mob/proc/haltyell
 	H.verbs |= list(/mob/living/carbon/human/proc/request_outlaw, /mob/living/carbon/human/proc/request_law, /mob/living/carbon/human/proc/request_law_removal, /mob/living/carbon/human/proc/request_purge)
-
-/datum/job/roguetown/marshal/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	. = ..()
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
 
 /datum/advclass/marshal/classic
 	name = "Marshal"

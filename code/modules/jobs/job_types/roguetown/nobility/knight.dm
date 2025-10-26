@@ -18,7 +18,7 @@
 
 	give_bank_account = 22
 	noble_income = 10
-	min_pq = 8
+	min_pq = 10
 	max_pq = null
 	round_contrib_points = 2
 
@@ -39,9 +39,6 @@
 	..()
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
 		if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
 			var/obj/item/clothing/S = H.cloak
 			var/index = findtext(H.real_name, " ")

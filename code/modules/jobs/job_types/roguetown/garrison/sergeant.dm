@@ -23,7 +23,7 @@
 	advclass_cat_rolls = list(CTAG_SERGEANT = 20)
 
 	give_bank_account = 50
-	min_pq = 6
+	min_pq = 10
 	max_pq = null
 	cmode_music = 'sound/music/combat_ManAtArms.ogg'
 
@@ -40,9 +40,6 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		if(ishuman(L))
-			H.advsetup = 1
-			H.invisibility = INVISIBILITY_MAXIMUM
-			H.become_blind("advsetup")
 			if(istype(H.cloak, /obj/item/clothing/cloak/stabard/surcoat/guard))
 				var/obj/item/clothing/S = H.cloak
 				var/index = findtext(H.real_name, " ")
