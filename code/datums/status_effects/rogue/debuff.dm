@@ -792,3 +792,13 @@
 /////////////////////////////
 ///HARPY FLIGHT STUFF END///
 ///////////////////////////
+
+/datum/status_effect/debuff/quest_lock
+	id = "quest_lock"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/quest_lock
+	name = "Edict of the Ten"
+	desc = "A sliver of sacred favor clings to you. Followers of the Ten will not enlist your aid in their routine."
+	icon_state = "debuff"
