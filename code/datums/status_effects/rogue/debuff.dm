@@ -344,6 +344,24 @@
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
 
+/datum/status_effect/debuff/ritesexpended_low_very
+	id = "ritesexpended_low_very"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended_low_very
+	duration = 5 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/ritesexpended_low_very
+	name = "Rites Complete"
+	desc = "It will take time before I can next perform a rite."
+	icon_state = "ritesexpended"
+
+/datum/status_effect/debuff/ritesexpended_low_very/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_low_very/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
 /datum/status_effect/debuff/call_to_arms
 	id = "call_to_arms"
 	alert_type = /atom/movable/screen/alert/status_effect/debuff/call_to_arms

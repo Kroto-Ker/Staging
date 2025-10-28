@@ -3,10 +3,14 @@
 	desc = ""
 	icon = 'icons/roguetown/misc/rituals.dmi'
 	icon_state = "ritual_base"
+	var/icon/icon_active = "astrata_active"
 	layer = BELOW_OBJ_LAYER
 	density = FALSE
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	var/datum/circle_rite/rites_datum
+	var/datum/circle_rite/new_datum
+	var/datum/circle_rite/our_rite
 
 /obj/structure/ritualcircle/attack_right(mob/living/carbon/human/user)
 	user.visible_message(span_warning("[user] begins wiping away the rune"))
@@ -14,54 +18,164 @@
 		playsound(loc, 'sound/foley/cloth_wipe (1).ogg', 100, TRUE)
 		qdel(src)
 
+/datum/circle_rite // i smoke 2blunts
+	var/name = "rite"
+	var/desc = "yuh yuh"
+	var/datum/patron/patron
+	var/list/rites_list = list()
+	var/list/rites_list_string = list()
+	var/rituals_name = "BROO!! CHANGE THIS!!"
+	var/block_rite = TRUE
+
+	var/choose_host = FALSE
+	var/choose_host_patron = FALSE // only used for heretics for now, so that we dont give armor to non-heretics
+	var/patron_trait = ""
+
+	var/message_first = "Change this string 1"
+	var/message_second = "Change this string 2"
+	var/message_third = "Change this string 3"
+
+	var/cooldown = /datum/status_effect/debuff/ritesexpended_high // _low_very, _low, _medium, _high
+	var/obj/structure/ritualcircle/linked_circle
+	var/mob/living/rite_target
+
+/datum/circle_rite/proc/pre_rite(mob/living/carbon/human/user)
+	if((user.patron?.type) != patron)
+		to_chat(user, span_smallred("I don't know the proper rites for this..."))
+		return
+	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
+		to_chat(user, span_smallred("I don't know the proper rites for this...")) // You need ritualist to use them
+		return
+
+	var/datum/circle_rite/riteselection = input(user, "[rituals_name]", src) as null|anything in rites_list_string // When you use a open hand on a rune, It'll give you a selection of all the rites available from that rune
+	if(riteselection) // User selects Guiding Light, begins the stuff for it
+		var/datum/circle_rite/picked_datum
+		for(var/datum/circle_rite/datumie as anything in rites_list)
+			if("[riteselection]" == "[datumie.name]")
+				picked_datum = datumie
+				break
+		if(picked_datum.block_rite)
+			if(HAS_TRAIT(user, TRAIT_RITES_BLOCKED))
+				to_chat(user, span_smallred("I have performed enough rituals for the day... I must rest before communing more."))
+				return
+
+		linked_circle.our_rite = new picked_datum
+		linked_circle.our_rite.linked_circle = src.linked_circle
+
+/datum/circle_rite/proc/choose_host(mob/living/carbon/human/user)
+	var/onrune = range(0, linked_circle.loc)
+	var/list/folksonrune = list()
+	for(var/mob/living/carbon/human/persononrune in onrune)
+		if(choose_host_patron)
+			if(HAS_TRAIT(persononrune, "patron_trait"))
+				folksonrune += persononrune
+		else
+			folksonrune += persononrune
+	var/target = input(user, "Choose a host") as null|anything in folksonrune
+	if(!target)
+		return
+	rite_target = target
+
+/datum/circle_rite/proc/middle_part(mob/living/carbon/human/user)
+	if(!do_after(user, 1))
+		return
+	user.say("[message_first]")
+	if(!do_after(user, 1))
+		return
+	user.say("[message_second]")
+	if(!do_after(user, 1))
+		return
+	user.say("[message_third]")
+
+	linked_circle.icon_state = "[linked_circle.icon_active]"
+	spawn(120) // swap to addtimer
+		linked_circle.icon_state = initial(linked_circle.icon_state)
+
+/datum/circle_rite/proc/rite_proc(mob/living/carbon/human/user)
+	to_chat(user, span_bloody("BASE PROC CALLED. DEFINE A SPECIFIC PROC"))
+	return
+
 // This'll be our tutorial ritual for those who want to make more later, let's go into details in comments, mm? - Onutsio 
 /obj/structure/ritualcircle/astrata
 	name = "Rune of the Sun" // defines name of the circle itself
-	icon_state = "astrata_chalky" // the icon state, so, the sprite the runes use on the floor. As of making, we have 6, each needs an active/inactive state. 
+	icon_state = "astrata_chalky" // the icon state, so, the sprite the runes use on the floor. As of making, we have 6, each needs an active/inactive state.
+	icon_active = "astrata_active"
 	desc = "A Holy Rune of Astrata. Warmth irradiates from the rune." // description on examine
-	var/solarrites = list("Guiding Light") // This is important - This is the var which stores every ritual option available to a ritualist - Ideally, we'd have like, 3 for each God. Right now, just 1.
+	rites_datum = /datum/circle_rite/astrata
 
-/obj/structure/ritualcircle/astrata/attack_hand(mob/living/user) 
-	if((user.patron?.type) != /datum/patron/divine/astrata)
-		to_chat(user,span_smallred("I don't know the proper rites for this..."))
-		return
-	if(!HAS_TRAIT(user, TRAIT_RITUALIST))
-		to_chat(user,span_smallred("I don't know the proper rites for this...")) // You need ritualist to use them
-		return
-	var/riteselection = input(user, "Rituals of the Sun", src) as null|anything in solarrites // When you use a open hand on a rune, It'll give you a selection of all the rites available from that rune
-	switch(riteselection) // rite selection goes in this section, try to do something fluffy. Presentation is most important here, truthfully.
-		if("Guiding Light") // User selects Guiding Light, begins the stuff for it
-			if(HAS_TRAIT(user, TRAIT_RITES_BLOCKED))
-				to_chat(user,span_smallred("I have performed enough rituals for the day... I must rest before communing more.")) // If you have already done a ritual in the last 30 minutes, you cannot do another.
-				return
-			if(do_after(user, 50)) // just flavor stuff before activation
-				user.say("I beseech the she-form of the Twinned God!!")
-				if(do_after(user, 50))
-					user.say("To bring Order to a world of naught!!")
-					if(do_after(user, 50))
-						user.say("Place your gaze upon me, oh Radiant one!!")
-						to_chat(user,span_danger("You feel the eye of Astrata turned upon you. Her warmth dances upon your cheek. You feel yourself warming up...")) // A bunch of flavor stuff, slow incanting.
-						icon_state = "astrata_active"
-						if(!HAS_TRAIT(user, TRAIT_CHOSEN)) //Priests don't burst into flames.
-							loc.visible_message(span_warning("[user]'s bursts to flames! Embraced by Her Warmth wholly!"))
-							playsound(loc, 'sound/combat/hits/burn (1).ogg', 100, FALSE, -1)
-							user.adjust_fire_stacks(10)
-							user.IgniteMob()
-							user.flash_fullscreen("redflash3")
-							user.emote("firescream")
-						guidinglight(src) // Actually starts the proc for applying the buff
-						user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_high)
-						spawn(120)
-							icon_state = "astrata_chalky"
+/obj/structure/ritualcircle/astrata/attack_hand(mob/living/user) // if i wanna be super sayan swag god i could use call() but that'd require passing args, even like datum parent of proc itself all the fucking time vro
+	if(!our_rite)
+		new_datum = new rites_datum
+		new_datum.linked_circle = src
+		new_datum.pre_rite(user)
+		if(our_rite)
+			if(our_rite.choose_host)
+				our_rite.choose_host(user)
+				if(!our_rite.rite_target)
+					qdel(new_datum) // cleanup
+					qdel(our_rite)
+					new_datum = null
+					our_rite = null
+					return
+			our_rite.middle_part(user)
+			our_rite.rite_proc(user)
 
-/obj/structure/ritualcircle/astrata/proc/guidinglight(src)
-	var/ritualtargets = view(7, loc) // Range of 7 from the source, which is the rune
+			qdel(new_datum) // cleanup
+			qdel(our_rite)
+			new_datum = null
+			our_rite = null
+
+/datum/circle_rite/astrata
+	rites_list = list(
+		/datum/circle_rite/astrata/guiding_light,
+//		/datum/circle_rite/astrata/debug,
+	)
+	rites_list_string = list(
+		"Guiding Light",
+//		"Debug",
+	)
+	rituals_name = "Rituals of the Sun"
+	patron = /datum/patron/divine/astrata
+
+/datum/circle_rite/astrata/guiding_light
+	name = "Guiding Light"
+	message_first = "I beseech the she-form of the Twinned God!!"
+	message_second = "To bring Order to a world of naught!!"
+	message_third = "Place your gaze upon me, oh Radiant one!!"
+	cooldown = /datum/status_effect/debuff/ritesexpended_high
+
+/datum/circle_rite/astrata/guiding_light/rite_proc(mob/living/carbon/human/user)
+	to_chat(user, span_danger("You feel the eye of Astrata turned upon you. Her warmth dances upon your cheek. You feel yourself warming up..."))
+	if(!HAS_TRAIT(user, TRAIT_CHOSEN)) //Priests don't burst into flames.
+		linked_circle.loc.visible_message(span_warning("[user]'s bursts to flames! Embraced by Her Warmth wholly!"))
+		playsound(linked_circle.loc, 'sound/combat/hits/burn (1).ogg', 100, FALSE, -1)
+		user.adjust_fire_stacks(10)
+		user.IgniteMob()
+		user.flash_fullscreen("redflash3")
+		user.emote("firescream")
+	var/ritualtargets = view(7, linked_circle.loc)
 	for(var/mob/living/carbon/human/target in ritualtargets) // defines the target as every human in this range
 		target.apply_status_effect(/datum/status_effect/buff/guidinglight) // applies the status effect
-		to_chat(target,span_cultsmall("Astrata's light guides me forward, drawn to me by the Ritualist's pyre!"))
+		to_chat(target, span_cultsmall("Astrata's light guides me forward, drawn to me by the Ritualist's pyre!"))
 		playsound(target, 'sound/magic/holyshield.ogg', 80, FALSE, -1) // Cool sound!
-// If you want to review a more complicated one, Undermaiden's Bargain is probs the most complicated of the starting set. - Have fun! - Onutsio 🏳️‍⚧️
+	user.apply_status_effect(cooldown)
 
+/datum/circle_rite/astrata/debug
+	name = "Debug"
+	message_first = "yoshi city!!"
+	message_second = "Tbrung it down yughnaught!!"
+	message_third = "swag swag yoshi nt one!!"
+	choose_host = TRUE
+	cooldown = /datum/status_effect/debuff/ritesexpended_low_very
+
+/datum/circle_rite/astrata/debug/rite_proc(mob/living/carbon/human/user)
+	to_chat(world, "user is [user]")
+	to_chat(world, "rite_target is [rite_target]")
+	rite_target.adjust_fire_stacks(10)
+	rite_target.IgniteMob()
+	to_chat(world, "name of the rite datum is [name]")
+	to_chat(world, "cooldown is [cooldown]")
+	user.apply_status_effect(cooldown)
 
 /obj/structure/ritualcircle/noc
 	name = "Rune of the Moon"
@@ -141,7 +255,7 @@
 							loc.visible_message(span_warning("[user] opens their mouth, disgorging a great swarm of flies!"))
 							playsound(loc, 'sound/misc/fliesloop.ogg', 100, FALSE, -1)
 							flylordstriage(src)
-							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_high)
+							user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_low)
 							spawn(120)
 								icon_state = "pestra_chalky"
 		if("Continuity")
@@ -356,7 +470,7 @@ var/forgerites = list("Ritual of Blessed Reforgance")
 					to_chat(user,span_cultsmall("Abyssor's power flows through the rune, summoning a sacred angler fish from the abyss!"))
 					playsound(loc, 'sound/foley/waterenter.ogg', 100, FALSE, -1)
 					abyssor_angler_summoning_ritual(src)
-					user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_high)
+					user.apply_status_effect(/datum/status_effect/debuff/ritesexpended_low_very)
 					spawn(120)
 						icon_state = "abyssor_chalky"
 
