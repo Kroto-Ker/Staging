@@ -285,9 +285,13 @@
 			for(target in valid_bodies)
 				var/target_head = target.get_bodypart(BODY_ZONE_HEAD)
 				if(istype(target_head, /obj/item/bodypart/head/prosthetic/continuity_head))
-					transfer_target = target
-					to_chat(user, span_hierophant("This shall suffice..."))
-					break
+					if(target.getorganslot(ORGAN_SLOT_BRAIN))
+						transfer_target = target
+						to_chat(user, span_hierophant("This shall suffice... Does it have eyes and ears, even?"))
+						break
+					else
+						to_chat(user, span_bloody("The body is fine, except the brain is missing! I should check for the other organs, too..."))
+						return
 				else
 					to_chat(user, span_bloody("There's no suitable body for the ritual!"))
 					return

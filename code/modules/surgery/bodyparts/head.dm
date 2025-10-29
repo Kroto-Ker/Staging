@@ -182,8 +182,8 @@
 			lip_color = "white"
 	..()
 
-/obj/item/bodypart/head/update_icon_dropped() // this uses a different proc
-	var/list/standing = get_limb_icon(1)
+/obj/item/bodypart/head/update_icon_dropped()
+	var/list/standing = get_limb_icon(TRUE)
 	if(!standing.len)
 		icon_state = initial(icon_state)//no overlays found, we default back to initial icon.
 		return

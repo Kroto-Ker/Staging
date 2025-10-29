@@ -216,15 +216,22 @@
 
 /obj/item/bodypart/head/prosthetic/continuity_head
 	name = "continuity head"
+	icon = 'icons/roguetown/mob/bodies/prosthetics.dmi'
+	icon_state = "pr_gold_head"
 	limb_material = "gold"
 	dismemberable = TRUE
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT
 	status = BODYPART_ROBOTIC
 	max_damage = 250 // +50 more hp compared to the normal ass head
-	icon = 'icons/roguetown/items/gems.dmi'
-	icon_state = "quartz_fail"
 	dismemberable = FALSE // ehh
+
+/obj/item/bodypart/head/prosthetic/continuity_head/New()
+	. = ..()
+	src.visible_message(span_bloody("<b>I've done it... now only to graft the brain, eyes and ears...</b>"))
+
+/obj/item/bodypart/head/prosthetic/continuity_head/update_icon_dropped() // this uses a different proc
+	return
 
 /obj/item/bodypart/head/prosthetic/continuity_head/attach_limb(mob/living/carbon/C, special)
 	. = ..()

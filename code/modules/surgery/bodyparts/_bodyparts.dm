@@ -265,7 +265,7 @@
 				if(istype(organ, /obj/item/organ/tongue))
 					src.tongue = organ
 				visible_message(span_notice("[user] successfully inserts [organ] into [src]!"), \
-				span_notice("I successfully inserted [organ] into [src]!"))
+				span_notice("I have successfully inserted [organ] into [src]!"))
 				playsound(src.loc, 'sound/surgery/organ1.ogg', 75, TRUE, -2)
 				src.contents += organ
 				src.update_icon_dropped()
