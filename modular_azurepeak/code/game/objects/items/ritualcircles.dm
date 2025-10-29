@@ -45,9 +45,12 @@
 	var/choose_host_patron = FALSE // only used for heretics for now, so that we dont give armor to non-heretics
 	var/patron_trait = ""
 
-	var/message_first = "Change this string 1"
-	var/message_second = "Change this string 2"
-	var/message_third = "Change this string 3"
+// can like have 0, can have 1 or 10 strings
+	var/list/chant_strings = list(
+		"Change this string 1",
+		"Change this string 2",
+		"Change this string 3"
+	)
 	var/talking_done = FALSE
 
 	var/cooldown = /datum/status_effect/debuff/ritesexpended_high // _low_very, _low, _medium, _high
@@ -82,7 +85,7 @@
 	var/list/folksonrune = list()
 	for(var/mob/living/carbon/human/persononrune in onrune)
 		if(choose_host_patron)
-			if(HAS_TRAIT(persononrune, "patron_trait"))
+			if(HAS_TRAIT(persononrune, patron_trait))
 				folksonrune += persononrune
 		else
 			folksonrune += persononrune
@@ -92,15 +95,12 @@
 	rite_target = target
 
 /datum/circle_rite/proc/middle_part(mob/living/carbon/human/user)
-	if(!do_after(user, 40))
-		return
-	user.say("[message_first]")
-	if(!do_after(user, 40))
-		return
-	user.say("[message_second]")
-	if(!do_after(user, 40))
-		return
-	user.say("[message_third]")
+	if(chant_strings)
+		for(var/string in chant_strings)
+			if(!do_after(user, 40))
+				return
+			user.say("[string]")
+			chant_strings -= string
 
 	linked_circle.icon_state = "[linked_circle.icon_active]"
 	spawn(120) // swap to addtimer
@@ -156,9 +156,11 @@
 
 /datum/circle_rite/astrata/guiding_light
 	name = "Guiding Light"
-	message_first = "I beseech the she-form of the Twinned God!!"
-	message_second = "To bring Order to a world of naught!!"
-	message_third = "Place your gaze upon me, oh Radiant one!!"
+	chant_strings = list(
+		"I beseech the she-form of the Twinned God!!",
+		"To bring Order to a world of naught!!",
+		"Place your gaze upon me, oh Radiant one!!"
+	)
 	cooldown = /datum/status_effect/debuff/ritesexpended_high
 
 /datum/circle_rite/astrata/guiding_light/rite_proc(mob/living/carbon/human/user)
@@ -179,9 +181,11 @@
 
 /datum/circle_rite/astrata/debug
 	name = "Debug"
-	message_first = "yoshi city!!"
-	message_second = "Tbrung it down yughnaught!!"
-	message_third = "swag swag yoshi nt one!!"
+	chant_strings = list(
+		"yoshi city!!",
+		"Tbrung it down yughnaught!!",
+		"swag swag yoshi nt one!!"
+	)
 	choose_host = TRUE
 	cooldown = /datum/status_effect/debuff/ritesexpended_low_very
 
