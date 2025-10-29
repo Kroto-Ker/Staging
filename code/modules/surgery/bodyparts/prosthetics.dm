@@ -216,6 +216,7 @@
 
 /obj/item/bodypart/head/prosthetic/continuity_head
 	name = "continuity head"
+	limb_material = "gold"
 	dismemberable = TRUE
 	resistance_flags = FIRE_PROOF
 	obj_flags = CAN_BE_HIT

@@ -18,6 +18,20 @@
 		playsound(loc, 'sound/foley/cloth_wipe (1).ogg', 100, TRUE)
 		qdel(src)
 
+/* DATUMIZED RITES
+* attack_hand is called when we touch a rune
+* we make a new_datum which is based on rune's set rites_datum
+* if we actually do select a rite and shit, it makes our_rite
+* if choose_host TRUE in rite datum, we then do the host selection
+* then we do the yapping via middle_part()
+* after yapping is concluded, rite_proc is called on our rite
+* rite_proc() is the actual rite itself
+* idk what else to say actually
+* if we want something special sauce, we can overwrite our procs
+* usual & average rites don't have to overwrite anything except for rite_proc()
+* if you want special sauce thing, then overwrite either one of the following procs: middle_part(), choose_host() and rite_proc()
+* also added debug rite to astrata, just remove // to make un-comment it out
+*/
 /datum/circle_rite // i smoke 2blunts
 	var/name = "rite"
 	var/desc = "yuh yuh"
@@ -34,6 +48,7 @@
 	var/message_first = "Change this string 1"
 	var/message_second = "Change this string 2"
 	var/message_third = "Change this string 3"
+	var/talking_done = FALSE
 
 	var/cooldown = /datum/status_effect/debuff/ritesexpended_high // _low_very, _low, _medium, _high
 	var/obj/structure/ritualcircle/linked_circle
@@ -77,19 +92,20 @@
 	rite_target = target
 
 /datum/circle_rite/proc/middle_part(mob/living/carbon/human/user)
-	if(!do_after(user, 1))
+	if(!do_after(user, 40))
 		return
 	user.say("[message_first]")
-	if(!do_after(user, 1))
+	if(!do_after(user, 40))
 		return
 	user.say("[message_second]")
-	if(!do_after(user, 1))
+	if(!do_after(user, 40))
 		return
 	user.say("[message_third]")
 
 	linked_circle.icon_state = "[linked_circle.icon_active]"
 	spawn(120) // swap to addtimer
 		linked_circle.icon_state = initial(linked_circle.icon_state)
+	talking_done = TRUE
 
 /datum/circle_rite/proc/rite_proc(mob/living/carbon/human/user)
 	to_chat(user, span_bloody("BASE PROC CALLED. DEFINE A SPECIFIC PROC"))
@@ -118,7 +134,8 @@
 					our_rite = null
 					return
 			our_rite.middle_part(user)
-			our_rite.rite_proc(user)
+			if(our_rite.talking_done)
+				our_rite.rite_proc(user)
 
 			qdel(new_datum) // cleanup
 			qdel(our_rite)

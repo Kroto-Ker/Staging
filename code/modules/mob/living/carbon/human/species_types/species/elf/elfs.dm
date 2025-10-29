@@ -21,10 +21,6 @@
 
 	skin_tone_wording = "Tribal Identity"
 
-	bodypart_overrides = list(
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/prosthetic/continuity_head,
-	)
-
 	default_color = "FFFFFF"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST
