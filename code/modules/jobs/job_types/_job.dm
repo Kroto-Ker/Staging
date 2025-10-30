@@ -253,6 +253,9 @@
 			else
 				GLOB.actors_list[H.mobid] = "[H.real_name] as [H.mind.assigned_role]<BR>"
 
+	if(islist(advclass_cat_rolls))
+		hugboxify_for_class_selection(H)
+
 /client/verb/set_mugshot()
 	set category = "OOC"
 	set name = "Set Credits Mugshot"
@@ -435,6 +438,12 @@
 /proc/should_wear_femme_clothes(mob/living/carbon/human/H)
 	return (H.pronouns == SHE_HER || H.pronouns == THEY_THEM_F || H.pronouns == HE_HIM_F)
 // LETHALSTONE EDIT END
+
+/datum/job/proc/get_informed_title(mob/mob)
+	if(mob.gender == FEMALE && f_title)
+		return f_title
+
+	return title
 
 /datum/job/Topic(href, list/href_list)
 	if(href_list["explainjob"])
