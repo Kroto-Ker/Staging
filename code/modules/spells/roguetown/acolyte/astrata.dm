@@ -219,13 +219,19 @@
 		revert_cast()
 		return FALSE
 	var/mob/living/carbon/human/H = user
-	H.apply_status_effect(/datum/status_effect/buff/astrata_gaze, user.get_skill_level(associated_skill))
+	var/skill_level = H.get_skill_level(associated_skill)
+	H.apply_status_effect(/datum/status_effect/buff/astrata_gaze, skill_level)
 	return TRUE
 
 /atom/movable/screen/alert/status_effect/buff/astrata_gaze
 	name = "Astratan's Gaze"
 	desc = "She shines through me, illuminating all injustice."
 	icon_state = "astrata_gaze"
+
+/datum/status_effect/buff/astrata_gaze
+	id = "astratagaze"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/astrata_gaze
+	duration = 20 SECONDS
 	var/skill_level = 0
 
 /datum/status_effect/buff/astrata_gaze/on_creation(mob/living/new_owner, slevel)
