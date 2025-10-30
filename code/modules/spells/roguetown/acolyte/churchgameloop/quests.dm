@@ -822,6 +822,17 @@
 	_apply_parish_boon(H)
 	_apply_quest_lock(H)
 	_payout(reward_amount)
+
+	var/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice/B = new /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice(get_turf(H))
+	if(istype(H, /mob/living/carbon/human))
+		if(hascall(H, "put_in_hands")) //tg moment the coder is a retard but if it works if works 
+			var/success = call(H, "put_in_hands")(B)
+			if(!success)
+				B.forceMove(get_turf(H))
+		else
+			B.forceMove(get_turf(H))
+	else
+		B.forceMove(get_turf(H))	
 	qdel(src)
 
 
