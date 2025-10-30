@@ -39,6 +39,8 @@
 		var/dur = max((9 * (user.get_skill_level(associated_skill, 5))))
 		addtimer(CALLBACK(src, PROC_REF(remove_buff), target), wait = dur SECONDS)
 		return TRUE
+	revert_cast()
+	return
 
 
 /obj/effect/proc_holder/spell/invoked/silence/proc/remove_buff(mob/living/carbon/target)

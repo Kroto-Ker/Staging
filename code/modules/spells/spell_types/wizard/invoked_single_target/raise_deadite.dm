@@ -28,21 +28,25 @@
 				to_chat(user, span_notice("They aren't dead enough yet!"))
 				revert_cast()
 			else
-				playsound(get_turf(M), 'sound/magic/magnet.ogg', 80, TRUE, soundping = TRUE)
-				user.visible_message("[user] mutters an incantation and [M] twitches with unnatural life!")
-				M.blood_volume = BLOOD_VOLUME_NORMAL
-				M.setOxyLoss(0, updating_health = FALSE, forced = TRUE)
-				M.setToxLoss(0, updating_health = FALSE, forced = TRUE)
-				M.adjustBruteLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
-				M.adjustFireLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
-				M.heal_wounds(INFINITY)
-				M.zombie_check_can_convert()
-				var/datum/antagonist/zombie/Z = M.mind.has_antag_datum(/datum/antagonist/zombie)
-				if(Z)
-					Z.wake_zombie(TRUE)
-				M.emote("scream")
+				if(alert(M, "Allow yourself to be raised as deadite?", "", "Yes", "No") == "Yes")
+					playsound(get_turf(M), 'sound/magic/magnet.ogg', 80, TRUE, soundping = TRUE)
+					user.visible_message("[user] mutters an incantation and [M] twitches with unnatural life!")
+					M.blood_volume = BLOOD_VOLUME_NORMAL
+					M.setOxyLoss(0, updating_health = FALSE, forced = TRUE)
+					M.setToxLoss(0, updating_health = FALSE, forced = TRUE)
+					M.adjustBruteLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
+					M.adjustFireLoss(-INFINITY, updating_health = FALSE, forced = TRUE)
+					M.heal_wounds(INFINITY)
+					M.zombie_check_can_convert()
+					var/datum/antagonist/zombie/Z = M.mind.has_antag_datum(/datum/antagonist/zombie)
+					if(Z)
+						Z.wake_zombie(TRUE)
+					M.emote("scream")
+				else
+					to_chat(user, span_notice("They refuse to be risen!"))
+					revert_cast()
 		else
 			to_chat(user, span_notice("They can not be risen!"))
 			revert_cast()
-
+	revert_cast()
 	return
