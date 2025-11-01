@@ -255,7 +255,7 @@
     duration *= skill_level
 
     if(per_bonus)
-        effectedstats = list("perception" = per_bonus)
+        effectedstats = list(STATKEY_PER = per_bonus)
 
     if(ishuman(owner))
         var/mob/living/carbon/human/H = owner
