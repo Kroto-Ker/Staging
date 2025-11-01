@@ -25,7 +25,7 @@
 	)
 
 /datum/advclass/seneschal
-	traits_applied = list(TRAIT_CICERONE)
+	traits_applied = list(TRAIT_CICERONE, TRAIT_ROYALSERVANT) // They have Expert Sewing
 	category_tags = list(CTAG_SENESCHAL)
 
 /datum/advclass/seneschal/seneschal
@@ -80,7 +80,7 @@
 	beltr = /obj/item/storage/keyring/servant
 	beltl = /obj/item/storage/belt/rogue/pouch/coins/mid
 	id = /obj/item/scomstone/bad
-	if(should_wear_femme_clothes(H)) 
+	if(should_wear_femme_clothes(H))
 		armor = /obj/item/clothing/suit/roguetown/armor/silkcoat
 
 /datum/advclass/seneschal/headmaid

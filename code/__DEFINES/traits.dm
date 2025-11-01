@@ -73,7 +73,6 @@
 #define TRAIT_HERESIARCH "Forbidden Knowledge" //allows entry to ascendant church
 #define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles of Ten or anastasia or cure rot
 
-
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
 #define TRAIT_ZIZOSIGHT "Blessing of Zizo" // I can see just a bit more clearly in darkness.
@@ -210,6 +209,8 @@
 //role related traits
 #define TRAIT_MASTER_CARPENTER "Master Carpenter"
 #define TRAIT_MASTER_MASON "Master Masonry"
+#define TRAIT_ROYALSERVANT "Household Insight" // Let's you see the royals liked/hated food/drink
+
 
 GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_HERETIC_DEVOUT = span_necrosis("The scorn of Astrata shan't make me waiver, for my faith holds true."),
@@ -379,7 +380,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PUZZLEMASTER = span_notice("I've solved an impossible puzzle!"),
 	TRAIT_ENGINEERING_GOGGLES = span_warning("I can see structural details others can't"),
 	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"), 
-	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"), 
+	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
+	TRAIT_ROYALSERVANT = span_greentext("I've been serving the royal family for long enough to know their exotic tastes."), 
 ))
 
 // trait accessor defines
