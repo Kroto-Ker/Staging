@@ -233,6 +233,7 @@
 	alert_type = /atom/movable/screen/alert/status_effect/buff/astrata_gaze
 	duration = 20 SECONDS
 	var/skill_level = 0
+	status_type = STATUS_EFFECT_REPLACE
 
 /datum/status_effect/buff/astrata_gaze/on_creation(mob/living/new_owner, slevel)
     // Only store skill level here
@@ -242,6 +243,7 @@
 /datum/status_effect/buff/astrata_gaze/on_apply()
 	// Reset base values because the miracle can 
 	// now actually be recast at high enough skill and during day time
+	// This is a safeguard because buff code makes my head hurt
     var/per_bonus = 0
     duration = 20 SECONDS
 
