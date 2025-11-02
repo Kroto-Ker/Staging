@@ -202,6 +202,7 @@
 	eyes.Insert(src)
 	set_eye_color(src, VD.cache_eye_color, VD.cache_eye_color)
 	update_body()
+	update_hair()
 	update_body_parts(redraw = TRUE)
 	eyes.update_accessory_colors()
 	mob_biotypes &= ~MOB_UNDEAD

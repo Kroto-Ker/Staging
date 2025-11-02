@@ -71,7 +71,8 @@
 /proc/clean_body_parts(mob/living/carbon/target)
 	for (var/obj/item/bodypart/bodypart in target.bodyparts)
 		bodypart.rotted = FALSE
-		bodypart.skeletonized = FALSE // removed update limb cos... we already are doing it in update_body()
+		bodypart.skeletonized = FALSE
+		bodypart.update_limb()
 		bodypart.update_disabled()
 
 	target.update_body()
