@@ -133,11 +133,11 @@
 				rank_name = "a disgraced noble"
 				social_rank = 3
 			if(social_rank > examiner_rank)
-				. += span_notice("This person is [rank_name], they are my better")
+				. += span_notice("This person is <EM>[rank_name]</EM>, they are my better.")
 			if(social_rank == examiner_rank)
-				. += span_notice("This person is [rank_name], they are my equal")
+				. += span_notice("This person is <EM>[rank_name]</EM>, they are my equal.")
 			if(social_rank < examiner_rank)
-				. += span_notice("This person is [rank_name], they are my lesser")
+				. += span_notice("This person is <EM>[rank_name]</EM>, they are my lesser.")
 
 		if(HAS_TRAIT(src, TRAIT_CHOSEN))
 			. += span_notice("The ordained voice of the Ten!")
