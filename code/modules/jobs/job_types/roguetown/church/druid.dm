@@ -22,7 +22,7 @@
 	max_pq = null
 	round_contrib_points = 2
 	cmode_music = 'sound/music/combat_druid.ogg'
-	social_rank = SOCIAL_RANK_MINOR_NOBLE
+	social_rank = SOCIAL_RANK_PEASANT
 
 	//You're.. not REALLY a full-on church member, but being a druid implies you became a clergy-man of some sort; even if it's non-organized. So, still shouldn't be noble.
 	virtue_restrictions = list(

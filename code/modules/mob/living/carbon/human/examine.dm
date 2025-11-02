@@ -72,6 +72,7 @@
 		var/display_as_wanderer = FALSE
 		var/is_returning = FALSE
 		var/is_clergy = FALSE
+		var/is_jester = FALSE
 		if(observer_privilege)
 			used_name = real_name
 		if(migrant_type)
@@ -86,6 +87,8 @@
 				is_returning = TRUE
 			if(J.department_flag == CHURCHMEN) //There may be a better way to check who is clergy, but this will do for now
 				is_clergy = TRUE
+			if(J.title == "Jester")
+				is_jester = TRUE
 		if(display_as_wanderer)
 			. = list(span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name]."))
 		else if(used_title)
@@ -132,6 +135,8 @@
 			if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
 				rank_name = "a disgraced noble"
 				social_rank = 3
+			if(is_jester)
+				rank_name = "the jester"
 			if(social_rank > examiner_rank)
 				. += span_notice("This person is <EM>[rank_name]</EM>, they are my better.")
 			if(social_rank == examiner_rank)
