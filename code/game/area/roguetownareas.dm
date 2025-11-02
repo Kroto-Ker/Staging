@@ -432,6 +432,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/under/cave
 	name = "cave"
 	warden_area = TRUE
+	underdark_area = TRUE
 	icon_state = "cave"
 	ambientsounds = AMB_GENCAVE
 	ambientnight = AMB_GENCAVE
@@ -456,12 +457,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/caves.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
-	underdark_area = TRUE
 
 /area/rogue/under/cavewet
 	name = "cavewet"
 	icon_state = "cavewet"
 	warden_area = TRUE
+	underdark_area = TRUE
 	first_time_text = "The Undersea"
 	ambientsounds = AMB_CAVEWATER
 	ambientnight = AMB_CAVEWATER
@@ -480,12 +481,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 15)
 	converted_type = /area/rogue/outdoors/caves
-	underdark_area = TRUE
 
 /area/rogue/under/underdark
 	name = "The Underdark"
 	icon_state = "cavewet"
 	warden_area = FALSE
+	underdark_area = TRUE
 	first_time_text = "The Underdark"
 	ambientsounds = AMB_CAVEWATER
 	ambientnight = AMB_CAVEWATER
@@ -504,7 +505,6 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/goblin/npc/ambush/moon = 30,
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 15)
 	converted_type = /area/rogue/outdoors/caves
-	underdark_area = TRUE
 
 /area/rogue/under/cavewet/bogcaves
 	first_time_text = "The Undergrove"
