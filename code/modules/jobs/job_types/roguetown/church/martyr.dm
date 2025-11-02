@@ -441,6 +441,7 @@
 	display_order = JDO_MARTYR
 	give_bank_account = TRUE
 	cmode_music = 'sound/music/combat_martyrsafe.ogg'
+	social_rank = SOCIAL_RANK_NOBLE
 
 	job_traits = list(
 		TRAIT_HEAVYARMOR,

@@ -16,6 +16,7 @@
 	spawn_positions = 4
 	advclass_cat_rolls = list(CTAG_TEMPLAR = 20)
 	display_order = JDO_TEMPLAR
+	social_rank = SOCIAL_RANK_MINOR_NOBLE
 
 	give_bank_account = TRUE
 

@@ -6,6 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/sfighter
 	category_tags = list(CTAG_ADVENTURER, CTAG_COURTAGENT)
 	class_select_category = CLASS_CAT_WARRIOR
+	subclass_social_rank = SOCIAL_RANK_PEASANT
 
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
@@ -209,6 +210,7 @@
 	tutorial = "You specialize in hunting down monsters and the undead, carrying two blades - one of silver, one of steel."
 	outfit = /datum/outfit/job/roguetown/adventurer/monster_hunter
 	traits_applied = list(TRAIT_MEDIUMARMOR)
+	subclass_social_rank = SOCIAL_RANK_YEOMAN
 	subclass_stats = list(
 		STATKEY_STR = 2,
 		STATKEY_END = 1,
@@ -257,6 +259,7 @@
 	name = "Flagellant"
 	tutorial = "You are a pacifistic warrior who embraces suffering, believing pain is the path to enlightenment. You take the suffering of others upon yourself."
 	outfit = /datum/outfit/job/roguetown/adventurer/flagellant
+	subclass_social_rank = SOCIAL_RANK_DIRT
 
 	traits_applied = list(TRAIT_STEELHEARTED, TRAIT_CRITICAL_RESISTANCE, TRAIT_NOPAINSTUN, TRAIT_DODGEEXPERT)
 	subclass_stats = list(
@@ -301,6 +304,7 @@
 	outfit = /datum/outfit/job/roguetown/adventurer/amazon
 	traits_applied = list(TRAIT_STEELHEARTED)
 	subclass_stats = list()
+	subclass_social_rank = SOCIAL_RANK_DIRT
 
 /datum/outfit/job/roguetown/adventurer/amazon/pre_equip(mob/living/carbon/human/H, visualsOnly)
 

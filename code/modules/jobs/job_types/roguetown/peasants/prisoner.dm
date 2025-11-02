@@ -18,6 +18,7 @@
 	min_pq = -14
 	max_pq = null
 	can_random = FALSE
+	social_rank = SOCIAL_RANK_PEASANT
 
 	cmode_music = 'sound/music/combat_bum.ogg'
 
