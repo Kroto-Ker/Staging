@@ -68,10 +68,13 @@
 #define TRAIT_PURITAN "Puritan"
 #define TRAIT_MIRROR_MAGIC "Mirror Magic"
 #define TRAIT_WITCH "They fear me, but I am useful to them."
+#define TRAIT_WINGS "Bewinged"
 #define TRAIT_INFINITE_ENERGY "Boundless Energy" //infinite fatigue (blue bar) but not infinite stamina
 #define TRAIT_PERMAMUTE "Permanent Mute"
 #define TRAIT_HERESIARCH "Forbidden Knowledge" //allows entry to ascendant church
 #define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles of Ten or anastasia or cure rot
+#define TRAIT_UNDERDARK "Underdark Ancestry" // Night vision in caves
+#define TRAIT_UNDERSIGHT "Undersight" // For the underdark trait
 
 
 //Hearthstone port (Tracking)
@@ -378,8 +381,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_DEADITE = span_danger("The Rot has overtaken me."),
 	TRAIT_PUZZLEMASTER = span_notice("I've solved an impossible puzzle!"),
 	TRAIT_ENGINEERING_GOGGLES = span_warning("I can see structural details others can't"),
-	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"), 
-	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"), 
+	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"),
+	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
+	TRAIT_WINGS = span_info("My wings allow me to jump farther."),
 ))
 
 // trait accessor defines

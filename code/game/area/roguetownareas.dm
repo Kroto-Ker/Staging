@@ -20,6 +20,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	var/tavern_area = FALSE
 	var/warden_area = FALSE
 	var/cell_area = FALSE
+	var/underdark_area = FALSE
 	var/ceiling_protected = FALSE //Prevents tunneling into these from above
 
 /area/rogue/Entered(mob/living/carbon/human/guy)
@@ -45,6 +46,17 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	. = ..()
 	if((src.cell_area == TRUE) && HAS_TRAIT(guy, TRAIT_DUNGEONMASTER) && !guy.has_status_effect(/datum/status_effect/buff/dungeoneerbuff)) // Dungeoneer
 		guy.apply_status_effect(/datum/status_effect/buff/dungeoneerbuff)
+
+/area/rogue/Entered(mob/living/carbon/human/guy)
+
+	. = ..()
+	if(HAS_TRAIT(guy, TRAIT_UNDERDARK))
+		if((src.underdark_area == TRUE) && !guy.has_status_effect(/datum/status_effect/buff/underdark)) // Underdark races
+			guy.apply_status_effect(/datum/status_effect/buff/underdark)
+		if(GLOB.tod == "day")
+			if((src.outdoors == TRUE) && !guy.has_status_effect(/datum/status_effect/debuff/sensitivity))
+				guy.apply_status_effect(/datum/status_effect/debuff/sensitivity)
+				guy.add_stress(/datum/stressevent/sensitivity)
 
 /area/rogue/indoors
 	name = "indoors rt"
@@ -443,6 +455,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	droning_sound = 'sound/music/area/caves.ogg'
 	droning_sound_dusk = null
 	droning_sound_night = null
+	underdark_area = TRUE
 
 /area/rogue/under/cavewet
 	name = "cavewet"
@@ -466,6 +479,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/human/northern/highwayman/ambush = 20,
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 15)
 	converted_type = /area/rogue/outdoors/caves
+	underdark_area = TRUE
 
 /area/rogue/under/underdark
 	name = "The Underdark"
@@ -489,6 +503,7 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 				/mob/living/carbon/human/species/goblin/npc/ambush/moon = 30,
 				/mob/living/simple_animal/hostile/retaliate/rogue/troll = 15)
 	converted_type = /area/rogue/outdoors/caves
+	underdark_area = TRUE
 
 /area/rogue/under/cavewet/bogcaves
 	first_time_text = "The Undergrove"

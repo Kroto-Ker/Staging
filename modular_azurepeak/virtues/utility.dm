@@ -390,3 +390,31 @@
 	name = "Heresiarch"
 	desc = "The 'Holy' See has their blood-stained grounds, and so do we. Underneath their noses, we pray to the true gods - I know the location of the local heretic conclave. Secrecy is paramount. If found out, I will surely be killed."
 	added_traits = list(TRAIT_HERESIARCH)
+
+/datum/virtue/species/moth/mercuriam
+	name = "(Fluvian) Mercuriam Initiate"
+	desc = "Through great intellectual rigor, I passed the trials of the Intolerabi and was granted leave to study in the city of Mercuriam. In their bronze halls, I learned intimately of Pestra's art; poison will no longer harm me."
+	custom_text = "Only available to fluvians."
+	added_traits = list(TRAIT_TOXIMMUNE)
+	added_skills = list(list(/datum/skill/craft/alchemy, 1, 5),
+						list(/datum/skill/misc/reading, 1, 5)
+)
+	added_stashed_items = list(
+		"Bronze Lamptern" = /obj/item/flashlight/flare/torch/lantern/bronzelamptern
+)
+
+/datum/virtue/species/elfd/spider
+	name = "(Dark Elf) Spider Speaker"
+	desc = "In the darkest depths of the underdark, I was taught the secrets of the Driderii. The methods of potion and poison were shown to me, as well as the art of traversing through webs. Spiders see me as one of their own."
+	custom_text = "Only available to dark elves."
+	added_traits = list(TRAIT_WEBWALK)
+	added_skills = list(list(/datum/skill/craft/alchemy, 2, 4),
+						list(/datum/skill/labor/butchering, 2, 2)
+	)
+	added_stashed_items = list(
+		"Spider Honey" = /obj/item/reagent_containers/food/snacks/rogue/honey/spider,
+		"Spider Gland" = /obj/item/reagent_containers/spidervenom_inert
+)
+
+/datum/virtue/species/elfd/spider/apply_to_human(mob/living/carbon/human/recipient)
+	recipient.faction += "spiders"

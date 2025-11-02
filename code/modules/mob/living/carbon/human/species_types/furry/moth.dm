@@ -5,19 +5,23 @@
 	name = "Fluvian"
 	id = "moth"
 	desc = "<b>Fluvian</b><br>\
-	Many comparisons have been made to the common moths in an attempt to describe this unique species. From the appetite for clothing to the disconcertingly insectoid appearance, \
-	the name 'Moth' is forever stamped onto the common vocabulary. The comparison, however, falls short on the matter of flight. This species generally congregates within lichen-laden \
-	cave regions or lush forests, given their capacity to digest fiber, and many Fluvian artisans take up the art of clothwork to create expensive export goods from cloth or silk (the latter \
-	of which is found in abundance from the spiders often near their settlements). <br>\
-	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 SPD</b></span> </br>"
+	An insectoid species native to the Underdark. Indigenous to Effluvia, a loathsome underground region known for its poisonous waters.<br>\
+	Fluvians are known as the archetypal species for drow slaves, few surface-dwellers realize they have a city of their own: \
+	The sole settlement in Effluvia, Mercuriam. It is here that Pestra's arts are honored; \
+	only the educated are allowed to pass its bronze gates. Denied fluvians must eke out a primitive life in the rotting wilds of Effluvia.<br>\
+	According to the fluvians of Mercuriam, their god, Pestra, has not yet been born. She lies in a nascent cocoon, bestowing wisdom from a time to come.<br>\
+	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 SPD | -1 STR</b></span> </br>\
+	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Long Jump | Can Eat Clothes | Cave Adaptation</b></span> </br>\
+	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Can't wear cloaks</span> | <span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>Slight Fall Damage Reduction </span></b>"
 
-	species_traits = list(EYECOLOR,LIPS,STUBBLE,MUTCOLORS,HAIR)
+	species_traits = list(EYECOLOR,LIPS,MUTCOLORS,HAIR)
 	possible_ages = ALL_AGES_LIST
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP | SLIME_EXTRACT
 	limbs_icon_m = 'icons/mob/species/moth_male.dmi'
 	limbs_icon_f = 'icons/mob/species/moth_female.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'
 	dam_icon_f = 'icons/roguetown/mob/bodies/dam/dam_female.dmi'
+	use_f = TRUE
 	soundpack_m = /datum/voicepack/male/moth
 	soundpack_f = /datum/voicepack/female/moth
 	offset_features = list(
@@ -32,7 +36,8 @@
 		OFFSET_NECK_F = list(0,-1), OFFSET_MOUTH_F = list(0,-1), OFFSET_PANTS_F = list(0,0), \
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
-	race_bonus = list(STAT_SPEED = 1)
+	race_bonus = list(STAT_SPEED = 1, STAT_STRENGTH = -1)
+	inherent_traits = list(TRAIT_UNDERDARK, TRAIT_WINGS)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'
@@ -57,12 +62,10 @@
 		)
 	bodypart_features = list(
 		/datum/bodypart_feature/hair/head,
-		/datum/bodypart_feature/hair/facial,
 	)
 	customizers = list(
 		/datum/customizer/organ/eyes/moth,
 		/datum/customizer/bodypart_feature/hair/head/humanoid,
-		/datum/customizer/bodypart_feature/hair/facial/humanoid,
 		/datum/customizer/bodypart_feature/accessory,
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
@@ -128,16 +131,13 @@
 /datum/species/moth/qualifies_for_rank(rank, list/features)
 	return TRUE
 
-/datum/species/moth/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/moth/on_species_gain(mob/living/carbon/C)
 	. = ..()
 	RegisterSignal(C, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 
 /datum/species/moth/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_MOB_SAY)
-
-/datum/species/moth/get_random_body_markings(list/passed_features)
-	return assemble_body_markings_from_set(GLOB.body_marking_sets_by_type[pick(body_marking_sets)], passed_features, src)
 
 /datum/species/moth/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -146,7 +146,7 @@
 	var/random = rand(1,1)
 	switch(random)
 		if(1)
-			main_color = "edcf7e"
+			main_color = "4C3F2F"
 			second_color = "2b2a24"
 	returned["mcolor"] = main_color
 	returned["mcolor2"] = second_color
