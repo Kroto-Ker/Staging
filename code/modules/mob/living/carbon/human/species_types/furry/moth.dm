@@ -12,7 +12,7 @@
 	According to the fluvians of Mercuriam, their god, Pestra, has not yet been born. She lies in a nascent cocoon, bestowing wisdom from a time to come.<br>\
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 SPD | -1 STR</b></span> </br>\
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Long Jump | Can Eat Clothes | Cave Adaptation</b></span> </br>\
-	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Can't wear cloaks</span> | <span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'>Slight Fall Damage Reduction </span></b>"
+	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Can't wear cloaks</span></b>"
 
 	species_traits = list(EYECOLOR,LIPS,MUTCOLORS,HAIR)
 	possible_ages = ALL_AGES_LIST
