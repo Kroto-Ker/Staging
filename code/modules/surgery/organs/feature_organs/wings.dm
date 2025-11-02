@@ -24,6 +24,7 @@
 	name = "fluvian wings"
 	desc = "A pair of fuzzy moth wings."
 	flight_for_species = list("moth")
+	sellprice = 40
 
 /obj/item/organ/wings/moth/Insert(mob/living/carbon/M)
 	..()
