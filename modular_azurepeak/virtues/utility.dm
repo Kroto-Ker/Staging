@@ -418,3 +418,17 @@
 
 /datum/virtue/species/elfd/spider/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.faction += "spiders"
+
+/datum/virtue/species/dwarf/dvergr
+	name = "(Dwarf) Dvergr"
+	desc = "My lineage descends from the Dvergr, a clan of dwarves under Graggar’s tyrannical patronage, exiled to the Underdark. They are renowned slavers; many lords covet a servant broken by Dvergr technique. I know a little of the clan's magics, rendering me invisible to the scrying arts."
+	custom_text = "Grants enlarge spell.<br>Colors your body grey.<br>Only available to dwarves."
+	added_traits = list(TRAIT_ANTISCRYING, TRAIT_DVERGR, TRAIT_UNDERDARK)
+	added_skills = list(list(/datum/skill/magic/arcane, 1, 3))
+
+/datum/virtue/species/dwarf/dvergr/apply_to_human(mob/living/carbon/human/recipient)
+	recipient.update_body()
+	recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/enlarge)
+	recipient.dna.species.stress_examine = TRUE
+	recipient.dna.species.stress_desc = span_red("A Dvergr! I should watch my back.")
+	recipient.dna.species.name = "Dvergr"

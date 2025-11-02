@@ -75,7 +75,7 @@
 #define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles of Ten or anastasia or cure rot
 #define TRAIT_UNDERDARK "Underdark Ancestry" // Night vision in caves
 #define TRAIT_UNDERSIGHT "Undersight" // For the underdark trait
-
+#define TRAIT_DVERGR "Dvergr"
 
 //Hearthstone port (Tracking)
 #define TRAIT_PERFECT_TRACKER "Perfect Tracker" //Will always find any tracks and analyzes them perfectly.
@@ -384,6 +384,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"),
 	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
 	TRAIT_WINGS = span_info("My wings allow me to jump farther."),
+	TRAIT_UNDERDARK = span_info("My eyes are sensitive to Astrata's sunlight, but well-acclimated to the darkness of deep caverns."),
+	TRAIT_DVERGR = span_info("My lineage descends from the Dvergr of the Underdark.")
 ))
 
 // trait accessor defines

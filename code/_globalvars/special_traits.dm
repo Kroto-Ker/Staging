@@ -84,6 +84,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 				return FALSE
 			if(istype(V,/datum/virtue/species/elfd) && (species != /datum/species/elf/dark))
 				return FALSE
+			if(istype(V,/datum/virtue/species/dwarf) && (species != /datum/species/dwarf/mountain))
+				return FALSE
 		return TRUE
 	return FALSE
 
