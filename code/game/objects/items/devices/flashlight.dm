@@ -127,10 +127,7 @@
 	desc = "A stick with enough fiber wrapped around the end to burn for a decent amount of time. Mind it \
 	should you choose to ford across water."
 	w_class = WEIGHT_CLASS_NORMAL
-
-	light_power =  0.5
-	light_inner_range = 4
-	light_outer_range = 8
+	light_outer_range = 7
 	force = 1
 	icon = 'icons/roguetown/items/lighting.dmi'
 	icon_state = "torch"
@@ -163,7 +160,6 @@
 				return list("shrink" = 0.3,"sx" = -2,"sy" = -5,"nx" = 4,"ny" = -5,"wx" = 0,"wy" = -5,"ex" = 2,"ey" = -5,"nturn" = 0,"sturn" = 0,"wturn" = 0,"eturn" = 0,"nflip" = 0,"sflip" = 0,"wflip" = 0,"eflip" = 0,"northabove" = 0,"southabove" = 1,"eastabove" = 1,"westabove" = 0)
 
 /obj/item/flashlight/flare/torch/Initialize()
-	fuel = rand(fuel /2, fuel ) //up to 50% less fuel per torch on init for some funnies.
 	GLOB.weather_act_upon_list += src
 	. = ..()
 	if(soundloop)
@@ -194,7 +190,7 @@
 					turn_off()
 					STOP_PROCESSING(SSobj, src)
 					return
-	fuel = max(fuel - 10, 0)
+		fuel = max(fuel - 10, 0)
 
 /obj/item/flashlight/flare/torch/attack_self(mob/user)
 
@@ -281,7 +277,6 @@
 	fuel = 120 MINUTES
 	should_self_destruct = TRUE
 	extinguishable = TRUE
-	weather_resistant = TRUE
 
 /obj/item/flashlight/flare/torch/metal/afterattack(atom/movable/A, mob/user, proximity)
 	. = ..()
