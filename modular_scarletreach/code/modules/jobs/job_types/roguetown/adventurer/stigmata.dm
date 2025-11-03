@@ -11,7 +11,6 @@
 		STATKEY_END = 3,
 		STATKEY_SPD = 1,
 		STATKEY_STR = -2,
-		STATKEY_INT = -2,
 	)
 
 	// where is nopainstun, you might be asking. did you know that psydon gives a ton of passive stuff for paincrit that absolver normally never gets to see or make use of? ABSOLVER-LITE CAN!!!
