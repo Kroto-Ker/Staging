@@ -20,6 +20,7 @@ LICH SKELETONS
 /datum/outfit/job/roguetown/greater_skeleton/lich/pre_equip(mob/living/carbon/human/H)
 	..()
 	REMOVE_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
+	REMOVE_TRAIT(H, TRAIT_EASYDISMEMBER, TRAIT_GENERIC)
 
 // Melee goon w/ javelins. All-rounder.
 /datum/advclass/greater_skeleton/lich/legionnaire
@@ -36,7 +37,7 @@ LICH SKELETONS
 	H.STASPD = 8
 	H.STACON = 9
 	H.STAEND = 12
-	H.STAINT = 3
+	H.STAINT = 5
 	H.STAPER = 11
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
@@ -101,7 +102,7 @@ LICH SKELETONS
 	H.STASPD = 10
 	H.STACON = 7
 	H.STAEND = 14
-	H.STAINT = 6
+	H.STAINT = 7
 	H.STAPER = 15
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
@@ -162,7 +163,7 @@ LICH SKELETONS
 	H.STASPD = 5
 	H.STACON = 11
 	H.STAEND = 10
-	H.STAINT = 1
+	H.STAINT = 4
 	H.STAPER = 10
 
 	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
@@ -184,9 +185,10 @@ LICH SKELETONS
 
 	head = /obj/item/clothing/head/roguetown/helmet/heavy/guard/paalloy
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/paalloy
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/paalloy
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/paalloy
 	neck = /obj/item/clothing/neck/roguetown/gorget/paalloy
 	shoes = /obj/item/clothing/shoes/roguetown/boots/aalloy
+	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy
 
 	H.adjust_blindness(-3)
 	var/weapons = list("Greatsword", "Bardiche", "Mace + Shield","Spear", "Warhammer + Shield")
@@ -227,19 +229,19 @@ LICH SKELETONS
 	H.STASPD = 6
 	H.STACON = 9
 	H.STAEND = 10
-	H.STAINT = 6
+	H.STAINT = 7
 	H.STAPER = 10
 
 	ADD_TRAIT(H, TRAIT_MEDIUMARMOR, TRAIT_GENERIC)
 
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/axes, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/swords, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/axes, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/bows , 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/slings, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/athletics, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+	H.adjust_skillrank(/datum/skill/combat/knives, 4, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
 
 	H.adjust_skillrank(/datum/skill/craft/carpentry, 4, TRUE)
@@ -254,8 +256,9 @@ LICH SKELETONS
 	head = /obj/item/clothing/head/roguetown/helmet/kettle/minershelm
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/paalloy
 	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
-	neck = /obj/item/clothing/neck/roguetown/coif
+	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
 	shoes = /obj/item/clothing/shoes/roguetown/sandals/aalloy
+	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy
 	backl = /obj/item/storage/backpack/rogue/satchel
 
 	beltr = /obj/item/rogueweapon/stoneaxe/woodcut
