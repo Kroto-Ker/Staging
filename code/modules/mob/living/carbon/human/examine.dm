@@ -73,6 +73,7 @@
 		var/is_returning = FALSE
 		var/is_clergy = FALSE
 		var/is_jester = FALSE
+		var/is_druid = FALSE 
 		if(observer_privilege)
 			used_name = real_name
 		if(migrant_type)
@@ -89,6 +90,8 @@
 				is_clergy = TRUE
 			if(J.title == "Jester")
 				is_jester = TRUE
+			if(J.title == "Druid")
+				is_druid = TRUE
 		if(display_as_wanderer)
 			. = list(span_info("ø ------------ ø\nThis is <EM>[used_name]</EM>, the wandering [race_name]."))
 		else if(used_title)
@@ -137,6 +140,8 @@
 				social_rank = 3
 			if(is_jester)
 				rank_name = "the jester"
+			if(is_druid)
+				rank_name = "a druid"
 			if(social_rank > examiner_rank)
 				. += span_notice("This person is <EM>[rank_name]</EM>, they are my better.")
 			if(social_rank == examiner_rank)
