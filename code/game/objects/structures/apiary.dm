@@ -29,6 +29,7 @@
 	// Seasonal variables
 	var/last_season_check = 0
 	var/seasonal_activity = 1.0 // Modifier for bee activity
+	var/visual_delay =1 //copypasted.
 
 /obj/effect/bees/update_overlays()
 	. = ..()
@@ -51,6 +52,7 @@
 
 /obj/effect/bees/process()
 	// Handle movement and merging
+	set_glide_size(MOVEMENT_ADJUSTED_GLIDE_SIZE(SSobj.wait,  MC_AVERAGE_FAST(visual_delay, max((world.time-SSobj.last_fire) / SSobj.wait, 1))))// Try to hide how fucking fake this shit is
 	if(merge_target)
 		var/turf/turf = get_step_towards2(src, merge_target)
 		Move(turf, get_dir(src, turf))
@@ -289,7 +291,7 @@
 	if(comb_progress)
 		to_chat(user,span_notice("The bees are working on filling combs."))
 	if(stored_combs)
-		to_chat(user, span_notice("The bees have stored [stored_combs] five harvestable honeycombs."))
+		to_chat(user, span_notice("The bees have stored [stored_combs] harvestable honeycombs."))
 	if(swarm_progress)
 		to_chat(user, span_notice("The bees are swarming!"))
 	//TODO: Report swarm progress.
@@ -671,8 +673,9 @@
 
 /obj/structure/apiary/proc/create_new_queen()
 	queen_maturity = 0
-	pollen -= 50
-	stored_combs -= 2
+	
+	pollen = min(0, pollen-50)
+	stored_combs = min(0, stored_combs-50)
 	update_icon_state()
 
 	var/obj/item/queen_bee/new_queen = new(get_turf(src))
