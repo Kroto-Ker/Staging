@@ -499,6 +499,27 @@
 	desc = "A wood mask carved in the visage of the fox spirits said to ply their tricks in the forests of Kazengun."
 	icon_state = "kitsune"
 
+/obj/item/clothing/mask/rogue/facemask/cheap_oni
+	name = "handcarved oni mask"
+	desc = "A wood mask carved in the visage of demons said to stalk the mountains of Kazengun. This one seems to be carved out of wood and painted."
+	icon_state = "oni"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	adjustable = CAN_CADJUST
+	toggle_icon_state = TRUE
+	experimental_onhip = TRUE
+	sewrepair = TRUE
+
+/obj/item/clothing/mask/rogue/facemask/cheap_kitsune
+	name = "handcarved kitsune mask"
+	desc = "A wood mask carved in the visage of the fox spirits said to ply their tricks in the forests of Kazengun."
+	icon_state = "kitsune"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
+	armor = ARMOR_PADDED_BAD
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	anvilrepair = /datum/skill/craft/carpentry
+
 /obj/item/clothing/mask/rogue/shepherd
 	name = "halfmask"
 	icon_state = "shepherd"
@@ -525,7 +546,6 @@
 	body_parts_covered = FACE|EYES|MOUTH
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	sewrepair = TRUE
-
 
 /obj/item/clothing/mask/rogue/skullmask
 	name = "skull mask"
