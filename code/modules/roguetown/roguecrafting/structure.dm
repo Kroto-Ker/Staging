@@ -865,7 +865,7 @@
 	craftdiff = 2
 
 
-/datum/crafting_recipe/roguetown/structure/apiary
+/datum/crafting_recipe/roguetown/structure/bee_smoker
 	name = "bee smoker"
 	result = /obj/item/bee_smoker
 	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/cloth = 2)
