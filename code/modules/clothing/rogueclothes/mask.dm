@@ -444,7 +444,6 @@
 	desc = "A mask forged of ancient alloys. Aeon's grasp has been lifted from its form."
 	icon_state = "ancientmask"
 
-
 /obj/item/clothing/mask/rogue/facemask/steel/hound
 	name = "steel hound mask"
 	desc = "A mask of steel with a shape of a hound's muzzle which protects the eyes, nose and mouth while also obscuring the face it."
@@ -505,10 +504,10 @@
 	icon_state = "oni"
 	flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
-	adjustable = CAN_CADJUST
-	toggle_icon_state = TRUE
-	experimental_onhip = TRUE
-	sewrepair = TRUE
+	armor = ARMOR_PADDED_BAD
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	armor = list("blunt" = 10, "slash" = 10, "stab" = 10, "piercing" = 10, "fire" = 0, "acid" = 0)
+	anvilrepair = /datum/skill/craft/carpentry
 
 /obj/item/clothing/mask/rogue/facemask/cheap_kitsune
 	name = "handcarved kitsune mask"
@@ -518,6 +517,7 @@
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_HIP
 	armor = ARMOR_PADDED_BAD
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT)
+	armor = list("blunt" = 10, "slash" = 10, "stab" = 10, "piercing" = 10, "fire" = 0, "acid" = 0)
 	anvilrepair = /datum/skill/craft/carpentry
 
 /obj/item/clothing/mask/rogue/shepherd
