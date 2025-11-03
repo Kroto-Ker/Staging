@@ -214,6 +214,7 @@
 	desc = "Plate gauntlets which carry the motive force of this world, violence."
 	max_integrity = 500
 	icon_state = "graggarplategloves"
+	unarmed_bonus = 1.25
 
 /obj/item/clothing/gloves/roguetown/plate/graggar/pickup(mob/living/user)
 	if(!HAS_TRAIT(user, TRAIT_HORDE))
@@ -228,6 +229,7 @@
 	desc = "Many a man his life hath sold,"
 	icon_state = "matthiosgloves"
 	max_integrity = 500
+	unarmed_bonus = 1.25
 
 /obj/item/clothing/gloves/roguetown/plate/matthios/Initialize()
 	. = ..()
