@@ -169,7 +169,7 @@
 		linked_circle.loc.visible_message(span_warning("[user]'s bursts to flames! Embraced by Her Warmth wholly!"))
 		playsound(linked_circle.loc, 'sound/combat/hits/burn (1).ogg', 100, FALSE, -1)
 		user.adjust_fire_stacks(10)
-		user.IgniteMob()
+		user.ignite_mob()
 		user.flash_fullscreen("redflash3")
 		user.emote("firescream")
 	var/ritualtargets = view(7, linked_circle.loc)
