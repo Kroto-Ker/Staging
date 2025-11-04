@@ -10,7 +10,7 @@
 	The sole settlement in Effluvia, Mercuriam. It is here that Pestra's arts are honored; \
 	only the educated are allowed to pass its bronze gates. Denied fluvians must eke out a primitive life in the rotting wilds of Effluvia.<br>\
 	According to the fluvians of Mercuriam, their god, Pestra, has not yet been born. She lies in a nascent cocoon, bestowing wisdom from a time to come.<br>\
-	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 SPD | -1 STR</b></span> </br>\
+	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 SPD | -1 CON</b></span> </br>\
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Long Jump | Can Eat Clothes | Cave Adaptation</b></span> </br>\
 	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Can't wear cloaks</span></b>"
 
