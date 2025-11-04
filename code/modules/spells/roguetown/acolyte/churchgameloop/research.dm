@@ -56,13 +56,13 @@
 #endif
 
 #ifndef ORG_PRICE_T1
-#define ORG_PRICE_T1 1000
+#define ORG_PRICE_T1 500
 #endif
 #ifndef ORG_PRICE_T2
-#define ORG_PRICE_T2 2000
+#define ORG_PRICE_T2 1000
 #endif
 #ifndef ORG_PRICE_T3
-#define ORG_PRICE_T3 3000
+#define ORG_PRICE_T3 1500
 #endif
 
 // --------------------------------------------

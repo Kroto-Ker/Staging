@@ -133,17 +133,32 @@
 /proc/_patron_matches(mob/living/carbon/human/H, required_patron_name as text)
 	if(!istype(H, /mob/living/carbon/human)) return FALSE
 	if(!istext(required_patron_name) || !length(required_patron_name)) return FALSE
+	if(!("patron" in H.vars)) return FALSE
 
-	var/datum/devotion/D = H.devotion
-	if(!D || !D.patron) return FALSE
-	if(!("name" in D.patron.vars)) return FALSE
+	var/need_name = lowertext(trim("[required_patron_name]"))
+	var/p = H.vars["patron"]
 
-	var/target_name = lowertext("[D.patron.name]")
-	var/need_name   = lowertext("[required_patron_name]")
+	if(istext(p))
+		return lowertext(trim("[p]")) == need_name
 
-	return (target_name == need_name)
+	if(ispath(p, /datum/patron))
+		var/datum/patron/Pt = new p
+		var/match = FALSE
+		if(("name" in Pt.vars) && istext(Pt.vars["name"]))
+			match = (lowertext(trim("[Pt.vars["name"]]")) == need_name)
+		qdel(Pt)
+		return match
+
+	if(istype(p, /datum/patron))
+		var/datum/patron/P = p
+		if(("name" in P.vars) && istext(P.vars["name"]))
+			return lowertext(trim("[P.vars["name"]]")) == need_name
+		return FALSE
+
+	return FALSE
 
 /proc/_patron_matches_any(mob/living/carbon/human/H, list/names)
+	if(!istype(H, /mob/living/carbon/human)) return FALSE
 	if(!islist(names) || !names.len) return FALSE
 	for(var/n in names)
 		if(_patron_matches(H, "[n]"))
@@ -825,14 +840,14 @@
 
 	var/obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice/B = new /obj/item/reagent_containers/food/snacks/rogue/raisinbreadslice(get_turf(H))
 	if(istype(H, /mob/living/carbon/human))
-		if(hascall(H, "put_in_hands")) //tg moment the coder is a retard but if it works if works 
+		if(hascall(H, "put_in_hands")) //tg moment the coder is a retard but if it works if works
 			var/success = call(H, "put_in_hands")(B)
 			if(!success)
 				B.forceMove(get_turf(H))
 		else
 			B.forceMove(get_turf(H))
 	else
-		B.forceMove(get_turf(H))	
+		B.forceMove(get_turf(H))
 	qdel(src)
 
 

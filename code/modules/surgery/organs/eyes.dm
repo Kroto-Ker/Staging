@@ -474,8 +474,10 @@
 /obj/item/organ/eyes/t1
 	parent_type = /obj/item/organ/eyes/robotic/glow
 
-	name = "Low Luminosity Eyes"
-	desc = "Bio-augmented luminous eyes."
+	name = "Eyes of the Scholar of Noс."
+	desc = "In the past, it was an honor for many students to be blessed with such eyes - proof that you had found knowledge…"
+	icon_state = "burning_eyes"
+	eye_color = "#24128a"
 
 	max_light_beam_distance = 3
 	light_beam_distance = 3
@@ -490,7 +492,8 @@
 	color = "#c2ae40"
 	eye_color = "#864896"
 	see_in_dark = 5
-	sight_flags = SEE_MOBS
+	sight_flags = SEE_OBJS | SEE_TURFS
+	flash_protect = FLASH_PROTECTION_WELDER
 
 /obj/item/organ/eyes/t3
 	name = "Cursed necran eyes"
@@ -500,4 +503,5 @@
 	eye_color = "#3c6696"
 	sight_flags = SEE_MOBS | SEE_OBJS | SEE_TURFS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+	flash_protect = FLASH_PROTECTION_WELDER
 	see_in_dark = 10
