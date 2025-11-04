@@ -603,7 +603,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/is_nudist = HAS_TRAIT(H, TRAIT_NUDIST)
 	var/is_inhumen = HAS_TRAIT(H, TRAIT_INHUMEN_ANATOMY)
-	var/is_winged = HAS_TRAIT(H, TRAIT_WINGS)
 	var/num_arms = H.get_num_arms(FALSE)
 	var/num_legs = H.get_num_legs(FALSE)
 	var/is_harpy = isharpy(H)
@@ -766,8 +765,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
 		if(SLOT_CLOAK)
 			if(H.cloak)
-				return FALSE
-			if(is_winged)
 				return FALSE
 			if( (I.slot_flags & ITEM_SLOT_BACK_R) )
 				if(H.backr)
