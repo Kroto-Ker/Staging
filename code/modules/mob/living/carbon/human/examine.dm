@@ -130,11 +130,11 @@
 				if(SOCIAL_RANK_YEOMAN)
 					rank_name = "a yeoman"
 				if(SOCIAL_RANK_MINOR_NOBLE)
-					rank_name = is_clergy ? "low clergy" : "a minor noble"
+					rank_name = is_clergy ? "low clergy" : "lower nobility"
 				if(SOCIAL_RANK_NOBLE)
-					rank_name = is_clergy ? "clergy" : "a noble"
+					rank_name = is_clergy ? "clergy" : "nobility"
 				if(SOCIAL_RANK_ROYAL)
-					rank_name = is_clergy ? "head of the clergy" : "royalty"
+					rank_name = is_clergy ? "head of the clergy" : "upper nobility"
 			if(HAS_TRAIT(src, TRAIT_DISGRACED_NOBLE))
 				rank_name = "a disgraced noble"
 				social_rank = 3
