@@ -193,7 +193,7 @@
 	to_chat(world, "user is [user]")
 	to_chat(world, "rite_target is [rite_target]")
 	rite_target.adjust_fire_stacks(10)
-	rite_target.IgniteMob()
+	rite_target.ignite_mob()
 	to_chat(world, "name of the rite datum is [name]")
 	to_chat(world, "cooldown is [cooldown]")
 	user.apply_status_effect(cooldown)
