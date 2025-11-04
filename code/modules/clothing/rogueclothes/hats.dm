@@ -2158,6 +2158,13 @@
 	sewrepair = TRUE
 	salvage_result = /obj/item/natural/hide/cured
 
+/obj/item/clothing/head/roguetown/bucklehat/monsterhunter //monster hunter variant w/ armor
+	name = "hunter's cap"
+	desc = "A plain leather hat with decorative buckle. An Otavan variant, reinforced with heavy leather."
+	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
+	armor = ARMOR_HEAD_PSYDON
+	max_integrity = 200 
+
 /obj/item/clothing/head/roguetown/duelhat //lifeweb sprite
 	name = "duelist's hat"
 	desc = "A feathered leather hat, to show them all your superiority."
