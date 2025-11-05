@@ -57,35 +57,57 @@ LICH SKELETONS
 	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
 	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
 
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/paalloy
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/paalloy
-	pants = /obj/item/clothing/under/roguetown/chainlegs/kilt/paalloy
-	armor = /obj/item/clothing/suit/roguetown/armor/leather/studded
-	neck = /obj/item/clothing/neck/roguetown/chaincoif/paalloy
-	shoes = /obj/item/clothing/shoes/roguetown/sandals/aalloy
+	head = /obj/item/clothing/head/roguetown/helmet/heavy/guard/paalloy
+	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/paalloy
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/paalloy
+	neck = /obj/item/clothing/neck/roguetown/gorget/paalloy
+	shoes = /obj/item/clothing/shoes/roguetown/boots/aalloy
+	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy
 
-	backr = /obj/item/rogueweapon/shield/wood
 	beltl = /obj/item/quiver/javelin/paalloy
 	H.adjust_blindness(-3)
-	var/weapons = list("Gladius","Kopesh","Shortsword","Axe", "Flail")
+	var/weapons = list("Gladius","Kopesh","Shortsword","Axe", "Flail", "Greatsword", "Bardiche", "Mace + Shield", "Spear", "Warhammer + Shield")
 	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 	H.set_blindness(0)
 	switch(weapon_choice)
 		if("Gladius")
 			beltr = /obj/item/rogueweapon/sword/iron/short/gladius/pagladius
+			backr = /obj/item/rogueweapon/shield/wood
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("Kopesh")
 			beltr = /obj/item/rogueweapon/sword/sabre/palloy
+			backr = /obj/item/rogueweapon/shield/wood
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("Shortsword")
 			beltr = /obj/item/rogueweapon/sword/short/pashortsword
+			backr = /obj/item/rogueweapon/shield/wood
 			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
 		if("Axe")
 			beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel/paaxe
+			backr = /obj/item/rogueweapon/shield/wood
 			H.adjust_skillrank(/datum/skill/combat/axes, 1, TRUE)
 		if("Flail")
 			beltr = /obj/item/rogueweapon/flail/sflail/paflail
+			backr = /obj/item/rogueweapon/shield/wood
 			H.adjust_skillrank(/datum/skill/combat/whipsflails, 1, TRUE)
+		if("Greatsword")
+			r_hand = /obj/item/rogueweapon/greatsword/paalloy
+			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
+		if("Bardiche")
+			r_hand = /obj/item/rogueweapon/halberd/bardiche/paalloy
+			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+		if("Mace + Shield")
+			r_hand = /obj/item/rogueweapon/mace/steel/palloy
+			l_hand = /obj/item/rogueweapon/shield/wood
+			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+		if("Spear")
+			r_hand = /obj/item/rogueweapon/spear/paalloy
+			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
+		if("Warhammer + Shield")
+			r_hand = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
+			l_hand = /obj/item/rogueweapon/shield/wood
+			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
 
 // Ranged goon w/ a dumb bow. Ranger, what else is there to say.
 /datum/advclass/greater_skeleton/lich/ballistiares
@@ -99,7 +121,7 @@ LICH SKELETONS
 	..()
 
 	H.STASTR = 10
-	H.STASPD = 10
+	H.STASPD = 12
 	H.STACON = 10
 	H.STAEND = 14
 	H.STAINT = 7
@@ -147,72 +169,6 @@ LICH SKELETONS
 			l_hand = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 			beltl = /obj/item/quiver/sling/paalloy
 			H.adjust_skillrank(/datum/skill/combat/slings, 1, TRUE)
-
-// Heavy/Tanky goon. Not heavy armor but due to the steel + weapons they'll fare just fine.
-/datum/advclass/greater_skeleton/lich/bulwark
-	name = "Ancient Death Bulwark"
-	tutorial = "All throughout, you've borne the brunt. And even in death, will you continue."
-	outfit = /datum/outfit/job/roguetown/greater_skeleton/lich/bulwark
-
-	category_tags = list(CTAG_LSKELETON)
-
-/datum/outfit/job/roguetown/greater_skeleton/lich/bulwark/pre_equip(mob/living/carbon/human/H)
-	..()
-
-	H.STASTR = 13
-	H.STASPD = 5
-	H.STACON = 11
-	H.STAEND = 10
-	H.STAINT = 4
-	H.STAPER = 10
-
-	ADD_TRAIT(H, TRAIT_HEAVYARMOR, TRAIT_GENERIC)
-
-	H.adjust_skillrank(/datum/skill/combat/swords, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/maces, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/polearms, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/shields, 4, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/unarmed, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
-	H.adjust_skillrank(/datum/skill/combat/knives, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/climbing, 2, TRUE)
-
-	H.adjust_skillrank(/datum/skill/craft/carpentry, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/masonry, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/craft/crafting, 2, TRUE)
-	H.adjust_skillrank(/datum/skill/misc/sewing, 2, TRUE)
-
-	head = /obj/item/clothing/head/roguetown/helmet/heavy/guard/paalloy
-	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/paalloy
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/full/paalloy
-	neck = /obj/item/clothing/neck/roguetown/gorget/paalloy
-	shoes = /obj/item/clothing/shoes/roguetown/boots/aalloy
-	mask = /obj/item/clothing/mask/rogue/facemask/steel/paalloy
-
-	H.adjust_blindness(-3)
-	var/weapons = list("Greatsword", "Bardiche", "Mace + Shield","Spear", "Warhammer + Shield")
-	var/weapon_choice = input("Choose your weapon.", "TAKE UP ARMS") as anything in weapons
-	H.set_blindness(0)
-	switch(weapon_choice)
-		if("Greatsword")
-			r_hand = /obj/item/rogueweapon/greatsword/paalloy
-			H.adjust_skillrank(/datum/skill/combat/swords, 1, TRUE)
-		if("Bardiche")
-			r_hand = /obj/item/rogueweapon/halberd/bardiche/paalloy
-			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		if("Mace + Shield")
-			r_hand = /obj/item/rogueweapon/mace/steel/palloy
-			l_hand = /obj/item/rogueweapon/shield/wood
-			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-		if("Spear")
-			r_hand = /obj/item/rogueweapon/spear/paalloy
-			H.adjust_skillrank(/datum/skill/combat/polearms, 1, TRUE)
-		if("Warhammer + Shield")
-			r_hand = /obj/item/rogueweapon/mace/warhammer/steel/paalloy
-			l_hand = /obj/item/rogueweapon/shield/wood
-			H.adjust_skillrank(/datum/skill/combat/maces, 1, TRUE)
-			H.adjust_skillrank(/datum/skill/combat/shields, 1, TRUE)
 
 // non-Combat crafter goon. Worse weapons + armor but does base-building. Fortnite.
 /datum/advclass/greater_skeleton/lich/sapper
