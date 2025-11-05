@@ -45334,7 +45334,7 @@
 /obj/machinery/light/rogue/torchholder/r{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/exposed/church)
 "lQx" = (
 /obj/machinery/light/rogue/wallfire{
@@ -72298,7 +72298,7 @@
 /area/rogue/under/cave/orcdungeon)
 "sRS" = (
 /obj/structure/ladder,
-/turf/open/transparent/openspace,
+/turf/open/floor/rogue/concrete,
 /area/rogue/outdoors/exposed/church)
 "sSh" = (
 /turf/closed/wall/mineral/rogue/roofwall/outercorner,
@@ -87848,12 +87848,10 @@
 /turf/open/floor/carpet/royalblack,
 /area/rogue/indoors/town)
 "wPK" = (
-/obj/effect/decal/cobbleedge{
-	dir = 1;
-	icon_state = "borderfall";
-	pixel_y = 6
-	},
 /obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/stairs/stone{
+	dir = 1
+	},
 /turf/open/water/bloody,
 /area/rogue/indoors/town/church/chapel)
 "wPM" = (
@@ -90367,10 +90365,6 @@
 /area/rogue/indoors/inq)
 "xyw" = (
 /obj/effect/decal/cleanable/blood/footprints,
-/obj/structure/vampire/bloodpool{
-	pixel_x = -18;
-	pixel_y = -12
-	},
 /turf/open/floor/rogue/concrete,
 /area/rogue/indoors/town/church/chapel)
 "xyC" = (

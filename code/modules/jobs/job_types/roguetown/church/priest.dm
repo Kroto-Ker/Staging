@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(cursed_players)
 GLOBAL_LIST_EMPTY(excommunicated_players)
 GLOBAL_LIST_EMPTY(heretical_players)
 #define PRIEST_CURSE_COOLDOWN (15 MINUTES)
-#define PRIEST_APOSTASY_COOLDOWN (5 MINUTES)
+#define PRIEST_APOSTASY_COOLDOWN (30 SECONDS) //clergy supposed to obey you, you know?
 
 /datum/job/roguetown/priest
 	title = "Priest"
@@ -110,6 +110,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		H.adjust_skillrank_up_to(/datum/skill/magic/holy, 6, TRUE)
 	var/datum/devotion/C = new /datum/devotion(H, H.patron) // This creates the cleric holder used for devotion spells
 	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)	//Starts off maxed out.
+	H.miracle_points = max(H.miracle_points, 10)
 
 	H.verbs |= /mob/living/carbon/human/proc/coronate_lord
 	H.verbs |= /mob/living/carbon/human/proc/churchexcommunicate //your button against clergy
