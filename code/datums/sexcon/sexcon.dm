@@ -338,7 +338,7 @@
 	user.emote("sexmoanhvy", forced = TRUE)
 	user.playsound_local(user, 'sound/misc/mat/end.ogg', 100)
 	last_ejaculation_time = world.time
-	GLOB.scarlet_round_stats[STATS_PLEASURES]++
+	record_round_statistic(STATS_PLEASURES)
 
 /datum/sex_controller/proc/after_intimate_climax()
 	if(user == target)
@@ -353,6 +353,9 @@
 			target.mob_timers["cumtri"] = world.time
 			target.adjust_triumphs(1)
 			to_chat(target, span_love("Our loving is a true TRIUMPH!"))
+
+	if(ishuman(user) && ishuman(target) && user.client && target.client)
+		eora_register_consensual_pair(user, target)		
 
 /datum/sex_controller/proc/just_ejaculated()
 	return (last_ejaculation_time + 2 SECONDS >= world.time)

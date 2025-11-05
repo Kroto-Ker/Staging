@@ -7,7 +7,7 @@
 	spawn_positions = 6
 
 	allowed_races = RACES_ALL_KINDS
-	allowed_patrons = ALL_DIVINE_PATRONS 
+	allowed_patrons = ALL_DIVINE_PATRONS
 	allowed_sexes = list(MALE, FEMALE)
 	outfit = /datum/outfit/job/roguetown/monk
 	tutorial = "Chores, some more chores- Even more chores. Oh, how the life of a humble acolyte is exhausting… You have faith, but even you know you gave up a life of adventure for that of the security in the Church. Assist the Priest in their daily tasks, maybe today will be the day something interesting happens."
@@ -17,6 +17,8 @@
 	min_pq = 1 //A step above Churchling, should funnel new players to the churchling role to learn miracles at a more sedate pace
 	max_pq = null
 	round_contrib_points = 2
+
+	var/church_favor = 0
 
 	//No nobility for you, being a member of the clergy means you gave UP your nobility. It says this in many of the church tutorial texts.
 	virtue_restrictions = list(
@@ -29,14 +31,6 @@
 	job_subclasses = list(
 		/datum/advclass/acolyte
 	)
-
-/datum/job/roguetown/monk/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
 
 /datum/advclass/acolyte
 	name = "Acolyte"
@@ -112,7 +106,7 @@
 			pants = /obj/item/clothing/under/roguetown/tights
 			neck = /obj/item/clothing/neck/roguetown/psicross/abyssor
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/abyssor
-			head = /obj/item/clothing/head/roguetown/roguehood/abyssor		
+			head = /obj/item/clothing/head/roguetown/roguehood/abyssor
 		if(/datum/patron/divine/dendor) //Dendorites all busted. Play Druid.
 			head = /obj/item/clothing/head/roguetown/dendormask
 			neck = /obj/item/clothing/neck/roguetown/psicross/dendor
@@ -125,6 +119,8 @@
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/necra
 			shirt = /obj/item/clothing/suit/roguetown/armor/leather/vest/black
 			cloak = /obj/item/clothing/cloak/raincloak/mortus
+			backr = /obj/item/rogueweapon/shovel
+			backpack_contents = list(/obj/item/ritechalk, /obj/item/flashlight/flare/torch/lantern = 1, /obj/item/natural/bundle/stick = 1, /obj/item/necra_censer = 1)
 		if(/datum/patron/divine/pestra)
 			neck = /obj/item/clothing/neck/roguetown/psicross/pestra
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/phys
@@ -170,7 +166,8 @@
 			armor = /obj/item/clothing/suit/roguetown/shirt/robe/astrata
 	// -- End of section for god specific bonuses --
 	var/datum/devotion/C = new /datum/devotion(H, H.patron)
-	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)	//Starts off maxed out.
+	C.grant_miracles(H, cleric_tier = CLERIC_T4, passive_gain = CLERIC_REGEN_MAJOR, start_maxed = TRUE)
+	H.miracle_points = max(H.miracle_points, 8)
 
 /datum/outfit/job/roguetown/monk/basic/choose_loadout(mob/living/carbon/human/H)
 	. = ..()

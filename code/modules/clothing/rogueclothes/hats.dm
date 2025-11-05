@@ -120,7 +120,6 @@
 	max_integrity = 100
 	sewrepair = TRUE
 
-
 /obj/item/clothing/head/roguetown/roguehood/shalal
 	name = "keffiyeh"
 	desc = "A protective covering worn by those native to the desert."
@@ -207,6 +206,39 @@
 
 /obj/item/clothing/neck/roguetown/roguehood/shalal/heavyhood/ComponentInitialize()
 	AddComponent(/datum/component/adjustable_clothing, NECK, null, null, null, null, (UPD_HEAD|UPD_MASK|UPD_NECK))
+
+/obj/item/clothing/head/roguetown/scarf
+	name = "scarf"
+	desc = "A simple scarf, designed to be worn upon the shoulders."
+	item_state = "hijab_t"
+	icon_state = "deserthood_t"
+	color = "#b8252c"
+	hidesnoutADJ = FALSE
+	flags_inv = null
+	sleevetype = null
+	sleeved = null
+	icon = 'icons/roguetown/clothing/head.dmi'
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/head.dmi' //Overrides slot icon behavior
+	alternate_worn_layer  = 8.9 //On top of helmet
+	slot_flags = ITEM_SLOT_HEAD|ITEM_SLOT_MASK|ITEM_SLOT_MOUTH
+	armor = list("blunt" = 0, "slash" = 0, "stab" = 0, "piercing" = 0, "fire" = 0, "acid" = 0)
+	dynamic_hair_suffix = ""
+	edelay_type = 1
+	blocksound = SOFTHIT
+	max_integrity = 100
+	sewrepair = TRUE
+	muteinmouth = FALSE
+	spitoutmouth = FALSE
+
+/obj/item/clothing/head/roguetown/scarf/MiddleClick(mob/user)
+	overarmor = !overarmor
+	to_chat(user, span_info("I [overarmor ? "wear \the [src] under my hair" : "wear \the [src] over my hair"]."))
+	if(overarmor)
+		alternate_worn_layer = HOOD_LAYER //Below Hair Layer
+	else
+		alternate_worn_layer = BACK_LAYER //Above Hair Layer
+	user.update_inv_wear_mask()
+	user.update_inv_head()
 
 /obj/item/clothing/head/roguetown/roguehood/astrata
 	name = "sun hood"
@@ -328,7 +360,7 @@
 		spawn(30)
 			if(loc == user)
 				user.adjust_fire_stacks(5)
-				user.IgniteMob()
+				user.ignite_mob()
 
 /obj/item/clothing/head/roguetown/roguehood/red
 	color = CLOTHING_RED
@@ -351,7 +383,7 @@
 /obj/item/clothing/head/roguetown/dungeoneer
 	name = "sack hood"
 	desc = "A hood commonly worn by executioners to hide their face; The stigma of such a role, and all the grisly work it entails, makes many executioners outcasts in their own right."
-	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT	
+	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	dynamic_hair_suffix = ""
 	icon_state = "dungeoneer"
 	sewrepair = TRUE
@@ -423,6 +455,15 @@
 	name = "straw hat"
 	desc = "It's scratchy and rustic, but at least it keeps the sun off your head while you toil in the fields."
 	icon_state = "strawhat"
+	sewrepair = TRUE
+
+/obj/item/clothing/head/roguetown/gasa
+	name = "gasa"
+	desc = "A conical straw hat used to protect from the sun and rain.."
+	icon_state = "gasa"
+	mob_overlay_icon = 'icons/roguetown/clothing/onmob/64x64/head.dmi'
+	worn_x_dimension = 64
+	worn_y_dimension = 64
 	sewrepair = TRUE
 
 /obj/item/clothing/head/roguetown/puritan
@@ -602,7 +643,7 @@
 	desc = "To keep ones vision away from the heavens, and focused on the sin beneath the soil."
 	icon_state = "inqhat"
 	item_state = "inqhat"
-	max_integrity = 150
+	max_integrity = 200
 	prevent_crits = list(BCLASS_CUT, BCLASS_BLUNT, BCLASS_TWIST)
 	armor = ARMOR_SPELLSINGER // spellsinger hat stats
 	sewrepair = TRUE
@@ -1054,7 +1095,7 @@
 	if(!HAS_TRAIT(user, TRAIT_HORDE))
 		to_chat(user, "<font color='red'>UNWORTHY HANDS TOUCHING THIS HELM, CEASE OR BE RENDED ASUNDER!</font>")
 		user.adjust_fire_stacks(5)
-		user.IgniteMob()
+		user.ignite_mob()
 		user.Stun(40)
 	..()
 
@@ -1062,7 +1103,7 @@
 	if(!HAS_TRAIT(user, TRAIT_COMMIE))
 		to_chat(user, "<font color='yellow'>UNWORTHY HANDS TOUCH THE VISAGE, CEASE OR BE PUNISHED</font>")
 		user.adjust_fire_stacks(5)
-		user.IgniteMob()
+		user.ignite_mob()
 		user.Stun(40)
 	..()
 
@@ -1098,7 +1139,7 @@
 	if(!HAS_TRAIT(user, TRAIT_CABAL))
 		to_chat(user, "<font color='purple'>UNWORTHY HANDS TOUCH THE HELMET, CEASE OR BE PUNISHED</font>")
 		user.adjust_fire_stacks(5)
-		user.IgniteMob()
+		user.ignite_mob()
 		user.Stun(40)
 	..()
 
@@ -1478,7 +1519,7 @@
 	item_state = "psysallet"
 	flags_inv = HIDEEARS|HIDEFACE|HIDEHAIR|HIDESNOUT
 	adjustable = CAN_CADJUST
-	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL	
+	max_integrity = ARMOR_INT_HELMET_HEAVY_STEEL
 
 /obj/item/clothing/head/roguetown/helmet/heavy/nochelm
 	name = "noc helmet"
@@ -2079,7 +2120,7 @@
 			user.dropItemToGround(src)
 			user.put_in_hands(P)
 		P.obj_integrity = src.obj_integrity
-		user.adjustBruteLoss(25)	
+		user.adjustBruteLoss(25)
 		qdel(src)
 	else
 		user.visible_message(span_warning("[user] stops reshaping [src]."))
@@ -2365,7 +2406,7 @@
 
 /obj/item/clothing/head/roguetown/loudmouth/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/adjustable_clothing, (NECK|HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/foley/equip/cloak (3).ogg', null, (UPD_HEAD|UPD_MASK))	
+	AddComponent(/datum/component/adjustable_clothing, (NECK|HEAD|EARS|HAIR), (HIDEEARS|HIDEHAIR), null, 'sound/foley/equip/cloak (3).ogg', null, (UPD_HEAD|UPD_MASK))
 
 // new knight captain drip
 
@@ -2603,7 +2644,7 @@
 	block2add = FOV_BEHIND
 	smeltresult = /obj/item/ingot/steel // why would you
 	smelt_bar_num = 2
-	
+
 /obj/item/clothing/head/flowers
     name = "Flowers"
     desc = " "

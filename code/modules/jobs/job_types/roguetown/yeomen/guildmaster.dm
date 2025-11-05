@@ -5,7 +5,7 @@
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	min_pq = 0
+	min_pq = 15
 	selection_color = JCOLOR_YEOMAN
 
 	allowed_races = RACES_ALL_KINDS
@@ -70,14 +70,6 @@
 
 /datum/outfit/job/roguetown/guildmaster
 	has_loadout = TRUE
-
-/datum/job/roguetown/guildmaster/after_spawn(mob/living/L, mob/M, latejoin = TRUE)
-	..()
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		H.advsetup = 1
-		H.invisibility = INVISIBILITY_MAXIMUM
-		H.become_blind("advsetup")
 
 /datum/outfit/job/roguetown/guildmaster/choose_loadout(mob/living/carbon/human/H)
 	. = ..()
