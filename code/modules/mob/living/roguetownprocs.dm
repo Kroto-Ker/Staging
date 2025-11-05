@@ -277,6 +277,9 @@
 			if(HAS_TRAIT(user, TRAIT_GUIDANCE))
 				prob2defend -= 20
 
+			if(HAS_TRAIT(src, TRAIT_NODEF))
+				prob2defend = 0
+
 			// parrying while knocked down sucks ass
 			if(!(mobility_flags & MOBILITY_STAND))
 				prob2defend *= 0.65
@@ -608,6 +611,9 @@
 
 		if(HAS_TRAIT(U, TRAIT_GUIDANCE))
 			prob2defend -= 20
+
+		if(HAS_TRAIT(src, TRAIT_NODEF))
+			prob2defend = 0 
 
 		// dodging while knocked down sucks ass
 		if(!(L.mobility_flags & MOBILITY_STAND))

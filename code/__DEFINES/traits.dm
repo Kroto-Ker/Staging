@@ -72,6 +72,8 @@
 #define TRAIT_PERMAMUTE "Permanent Mute"
 #define TRAIT_HERESIARCH "Forbidden Knowledge" //allows entry to ascendant church
 #define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles of Ten or anastasia or cure rot
+#define TRAIT_SLAYER "Slayer Oath"
+#define TRAIT_NODEF "Recklessness"
 
 
 //Hearthstone port (Tracking)
@@ -381,7 +383,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PUZZLEMASTER = span_notice("I've solved an impossible puzzle!"),
 	TRAIT_ENGINEERING_GOGGLES = span_warning("I can see structural details others can't"),
 	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"), 
-	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"), 
+	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
+	TRAIT_SLAYER = span_warning("My vows forbid me from protecting my weakspots with armor."),
+	TRAIT_NODEF = span_warning("I expose myself in battle completely.")
 ))
 
 // trait accessor defines
