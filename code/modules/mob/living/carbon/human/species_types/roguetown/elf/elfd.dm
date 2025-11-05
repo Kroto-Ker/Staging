@@ -14,6 +14,7 @@
 	burning surface settlements. Entire cities under Otava emptied out when their people turned on the cruel lords and priests, \
 	slaughtering them to rejoin the surface after Psydon’s great sacrifice.<br>\
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 INT | +1 PER</b></span> </br>\
+	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> Cave Adaptation</b></span> </br>\
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> LANGUAGE: Elvish - ,e</b></span> </br>"
 /*
 	Former RT Desc: These guys were undead which doesn't really fit considering now you have a ton of them walking around.
