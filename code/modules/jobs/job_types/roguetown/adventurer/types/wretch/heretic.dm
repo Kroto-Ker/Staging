@@ -161,6 +161,7 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/mask/rogue/facemask/steel, SLOT_WEAR_MASK, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/labor/farming, SKILL_LEVEL_NOVICE, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/misc/climbing, SKILL_LEVEL_EXPERT, TRUE)
+			H.grant_language(/datum/language/beast) //dendor antags can talk to WWs and druids
 //		if(/datum/patron/divine/necra) // necrans kinda can be heretical but that'd require a different patron due to how grant_miracles functions
 //			cloak = /obj/item/clothing/cloak/templar/necran
 //			id = /obj/item/clothing/neck/roguetown/psicross/necra // and a different miracles list cos current ones are all anti-undead
@@ -360,6 +361,7 @@
 			H.equip_to_slot_or_del(new /obj/item/clothing/cloak/tabard/crusader/dendor, SLOT_CLOAK, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/labor/farming, SKILL_LEVEL_NOVICE, TRUE)
 			H.adjust_skillrank_up_to(/datum/skill/misc/climbing, SKILL_LEVEL_LEGENDARY, TRUE)
+			H.grant_language(/datum/language/beast) //dendor antags can talk to WWs and druids
 //		if(/datum/patron/divine/necra) // necrans kinda can be heretical but that'd require a different patron due to how grant_miracles functions
 //			id = /obj/item/clothing/neck/roguetown/psicross/necra // and a different miracles list cos current ones are all anti-undead
 //			ADD_TRAIT(H, TRAIT_NOSTINK, TRAIT_GENERIC)
