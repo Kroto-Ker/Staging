@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	spawn_positions = 1
 	selection_color = JCOLOR_CHURCH
 	f_title = "Priestess"
-	allowed_races = RACES_SECOND_CLASS_NO_GOLEM		//Too recent arrivals to ascend to priesthood.
+	allowed_races = RACES_SECOND_CLASS_UP // for some stupid reason we gate this by "too recent arrivals", how about fuck you: i cast doll/golem priest
 	disallowed_races = list(
 		/datum/species/lamia,
 		/datum/species/harpy,
