@@ -238,7 +238,7 @@
 	else
 		backl = /obj/item/storage/backpack/rogue/satchel/black
 	wrists = /obj/item/clothing/neck/roguetown/psicross/silver //there's no silver crosses of the ten so we just give everyone a psicross
-	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/iron
+	armor = /obj/item/clothing/suit/roguetown/armor/plate/half/fluted/ornate //host request
 	shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy/inq //drippy, doesn't cover legs. Could be psydon-locked but the normal paddy gamby covers legs which is too much for an adv imo
 	belt = /obj/item/storage/belt/rogue/leather/knifebelt/black/steel
 	shoes = /obj/item/clothing/shoes/roguetown/boots
