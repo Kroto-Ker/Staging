@@ -347,9 +347,9 @@
 				to_chat(user, "This one has pledged themselves whole. There's nothing to ABSOLVE.")
 				attempting_rez = FALSE
 
-			if(attempting_rez && alert(user, "REACH OUT AND PULL?", "THERE'S NO LUX IN THERE", "YES", "NO") != "YES")	
-				revert_cast()
-				attempting_rez = FALSE
+			if(attempting_rez)
+				if (alert(user, "REACH OUT AND PULL?", "THERE'S NO LUX IN THERE", "YES", "NO") != "YES")	
+					attempting_rez = FALSE
 			
 			if (attempting_rez)
 				to_chat(user, span_warning("You attempt to revive [H] by ABSOLVING them!"))
@@ -370,7 +370,7 @@
 					user.visible_message(span_warning("Winding strands of silvery lux snake from [user]'s touch along [H]'s arm, sinking and writhing beneath their skin in fitful bursts!"))
 					to_chat(user, span_boldwarning("A whisper of emptiness settles beneath your heart as your overtaxed lux wanes concerningly low..."))
 				// Revive the target
-				H.revive(full_heal = TRUE, admin_revive = FALSE)
+				H.revive(admin_revive = FALSE)
 				H.adjustOxyLoss(-H.getOxyLoss())
 				H.grab_ghost(force = TRUE) // even suicides
 				H.emote("breathgasp")
@@ -398,6 +398,11 @@
 	var/tox_transfer = H.getToxLoss()
 	var/oxy_transfer = H.getOxyLoss()
 	var/clone_transfer = H.getCloneLoss()
+
+	if (oxy_transfer >= 180)
+		if (alert(user, "THEY ARE ASHEN WITH STILLED BREATH. ABSOLUTION MAY INSTANTLY KILL YOU, LAMB. PROCEED?", "SELF-PRESERVATION", "YES", "NO") != "YES")
+			revert_cast()
+			return
 	
 	// Heal the target
 	H.adjustBruteLoss(-brute_transfer)

@@ -110,6 +110,11 @@
 	var/tox_transfer = H.getToxLoss()
 	var/oxy_transfer = H.getOxyLoss()
 	var/clone_transfer = H.getCloneLoss()
+
+	if (oxy_transfer >= 180)
+		if (alert(user, "THEY ARE ASHEN WITH STILLED BREATH. AMENDMENT MAY INSTANTLY KILL YOU, STIGMATA. PROCEED?", "SELF-PRESERVATION", "YES", "NO") != "YES")
+			revert_cast()
+			return
 	
 	// Heal the target
 	H.adjustBruteLoss(-brute_transfer)
