@@ -206,7 +206,7 @@
 #define TRAIT_SILVER_WEAK "Silver Weakness"
 #define TRAIT_DEADITE "Deadite"
 #define TRAIT_PUZZLEMASTER "Puzzle Master"
-#define TRAIT_CLERGY "Clergy" // Access to church gameloop
+#define TRAIT_CLERGY "Clergy" // City clergy
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
 
