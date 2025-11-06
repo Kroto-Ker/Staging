@@ -183,6 +183,26 @@
 		)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/survival/cheap_kitsune
+	name = "handcarved kitsune mask"
+	result = /obj/item/clothing/mask/rogue/facemask/cheap_kitsune
+	reqs = list(
+		/obj/item/natural/cloth = 1,
+		/obj/item/natural/fibers = 1,
+		/obj/item/grown/log/tree/small = 1,
+		)
+	craftdiff = 2
+
+/datum/crafting_recipe/roguetown/survival/cheap_oni
+	name = "handcarved oni mask"
+	result = /obj/item/clothing/mask/rogue/facemask/cheap_oni
+	reqs = list(
+		/obj/item/natural/cloth = 1,
+		/obj/item/natural/fibers = 1,
+		/obj/item/grown/log/tree/small = 1,
+		)
+	craftdiff = 2
+
 /datum/crafting_recipe/roguetown/survival/book_crafting_kit
 	name = "book crafting kit"
 	result = /obj/item/book_crafting_kit
