@@ -399,7 +399,7 @@
 	var/oxy_transfer = H.getOxyLoss()
 	var/clone_transfer = H.getCloneLoss()
 
-	if (oxy_transfer >= 180)
+	if (oxy_transfer >= 150)
 		if (alert(user, "THEY ARE ASHEN WITH STILLED BREATH. ABSOLUTION MAY INSTANTLY KILL YOU, LAMB. PROCEED?", "SELF-PRESERVATION", "YES", "NO") != "YES")
 			revert_cast()
 			return
