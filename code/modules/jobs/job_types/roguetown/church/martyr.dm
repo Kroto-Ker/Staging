@@ -573,6 +573,10 @@
 		added_def = 0,\
 	)
 
+/obj/item/rogueweapon/sword/long/martyr/Initialize()
+	AddComponent(/datum/component/martyrweapon)
+	..()
+
 /obj/item/rogueweapon/sword/long/martyr/attack_hand(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
