@@ -122,6 +122,7 @@
 #define TRAIT_CURSE_XYLIX "Curse of Xylix" //no fortune
 #define TRAIT_CURSE_EORA "Eora's Curse" //world is ugly
 #define TRAIT_CURSE_RESIST "Curse Resistance" //Some folk with a tendency to get cursed are resistant
+#define TRAIT_RITES_BLOCKED "Rites Expended" // used to block using rites
 
 //ASCENDANT GOD CURSES
 
@@ -199,8 +200,10 @@
 #define TRAIT_DYES "Dyemaster"
 #define TRAIT_GOODWRITER "Great Writer"
 #define TRAIT_ADRENALINE_RUSH "Adrenaline Rush"
+#define TRAIT_SILVER_WEAK "Silver Weakness"
 #define TRAIT_DEADITE "Deadite"
 #define TRAIT_PUZZLEMASTER "Puzzle Master"
+#define TRAIT_CLERGY "Clergy" // Access to church gameloop
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
 
@@ -212,6 +215,7 @@
 #define TRAIT_MASTER_MASON "Master Masonry"
 
 GLOBAL_LIST_INIT(roguetraits, list(
+	TRAIT_RITES_BLOCKED = span_bloody("I can't perform any rites for now."),
 	TRAIT_HERETIC_DEVOUT = span_necrosis("The scorn of Astrata shan't make me waiver, for my faith holds true."),
 	TRAIT_PACIFISM = span_info("I shall never harm a living being. Directly."),
 	TRAIT_STEELHEARTED = span_info("I have hardened nerves, and do not waiver from the sight of violence in battle."),
@@ -360,6 +364,7 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_GOODWRITER = span_notice("I'm proficient at writing. Any skillbooks made by me will allow the reader to learn the subject more quickly."),
 	TRAIT_BLOODLOSS_IMMUNE = span_notice("While I may bleed, I will feel nothing from it."),
 	TRAIT_ADRENALINE_RUSH = span_notice("I'm invigorated in the midst of battle! I don't feel my wounds!"),
+	TRAIT_SILVER_WEAK = span_notice("Silver is my bane."),
 	TRAIT_CURSE_ASTRATA = span_warning("I am forsaken by the Sun. I will find no rest under Her unwavering gaze."),
 	TRAIT_CURSE_NOC = span_warning("I am forsaken by the Moon. I will find no salvation in His grace."),
 	TRAIT_CURSE_DENDOR = span_warning("I am forsaken by the Treefather. Reason and common sense abandon me."),
@@ -379,7 +384,8 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_PUZZLEMASTER = span_notice("I've solved an impossible puzzle!"),
 	TRAIT_ENGINEERING_GOGGLES = span_warning("I can see structural details others can't"),
 	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"), 
-	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"), 
+	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
+	TRAIT_CLERGY = span_notice("I am a servant of the local House of the Ten.")
 ))
 
 // trait accessor defines
@@ -705,6 +711,15 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 				var/mob/living/carbon/human/H = src
 				H.update_heretic_commune()*/
 
+///The entity has AI 'access', so is either an AI, has an access wand, or is an admin ghost AI. Used to block off regular Silicons from things.
+///This is put on the mob, it is used on the client for Admins but they are the exception as they use `isAdminGhostAI`.
+#define TRAIT_AI_ACCESS "ai_access_trait"
+#define TRAIT_UI_BLOCKED "uiblocked"
+/// Prevents usage of manipulation appendages (picking, holding or using items, manipulating storage).
+#define TRAIT_HANDS_BLOCKED "handsblocked"
+/// This mob should never close UI even if it doesn't have a client
+#define TRAIT_PRESERVE_UI_WITHOUT_CLIENT "preserve_ui_without_client"
+
 //important_recursive_contents traits
 /*
  * Used for movables that need to be updated, via COMSIG_ENTER_AREA and COMSIG_EXIT_AREA, when transitioning areas.
@@ -713,3 +728,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_AREA_SENSITIVE "area-sensitive"
 ///every hearing sensitive atom has this trait
 #define TRAIT_HEARING_SENSITIVE "hearing_sensitive"
+/// Mobs that have this trait cannot be extinguished
+#define TRAIT_NO_EXTINGUISH "no_extinguish"

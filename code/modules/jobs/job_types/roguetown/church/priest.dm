@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	spawn_positions = 1
 	selection_color = JCOLOR_CHURCH
 	f_title = "Priestess"
-	allowed_races = RACES_SECOND_CLASS_NO_GOLEM		//Too recent arrivals to ascend to priesthood.
+	allowed_races = RACES_SECOND_CLASS_UP // for some stupid reason we gate this by "too recent arrivals", how about fuck you: i cast doll/golem priest
 	disallowed_races = list(
 		/datum/species/lamia,
 		/datum/species/harpy,
@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 	give_bank_account = 115
 	min_pq = 20 // You should know the basics of things if you're going to lead the town's entire religious sector
 	max_pq = null
-	round_contrib_points = 3
+	round_contrib_points = 4
 	social_rank = SOCIAL_RANK_ROYAL
 
 	//No nobility for you, being a member of the clergy means you gave UP your nobility. It says this in many of the church tutorial texts.
@@ -40,6 +40,7 @@ GLOBAL_LIST_EMPTY(heretical_players)
 		/datum/virtue/utility/noble,
 		/datum/virtue/utility/blueblooded,
 		/datum/virtue/combat/hollow_life,
+		/datum/virtue/combat/vampire,
 	)
 
 	job_traits = list(TRAIT_CHOSEN, TRAIT_RITUALIST, TRAIT_GRAVEROBBER, TRAIT_SOUL_EXAMINE)

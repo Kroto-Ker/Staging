@@ -165,7 +165,7 @@
 	if(isliving(target))
 		var/mob/living/M = target
 		M.adjust_fire_stacks(5)
-		M.IgniteMob()
+		M.ignite_mob()
 
 /datum/component/martyrweapon/proc/on_equip(datum/source, mob/user, slot)
 	if(!allow_all)
@@ -463,6 +463,7 @@
 		/datum/virtue/combat/dualwielder,
 		/datum/virtue/heretic/zchurch_keyholder,
 		/datum/virtue/combat/hollow_life,
+		/datum/virtue/combat/vampire,
 	)
 
 	advclass_cat_rolls = list(CTAG_MARTYR = 2)
@@ -541,7 +542,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/roguemartyr_righthand.dmi'
 	name = "martyr sword"
 	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
-	max_blade_int = 200
+	max_blade_int = 300
 	max_integrity = 300
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
@@ -561,6 +562,17 @@
 	is_silver = TRUE
 	toggle_state = null
 	is_important = TRUE
+
+/obj/item/rogueweapon/sword/long/martyr/ComponentInitialize()
+	AddComponent(\
+		/datum/component/silverbless,\
+		pre_blessed = BLESSING_TENNITE,\
+		silver_type = SILVER_TENNITE,\
+		added_force = 0,\
+		added_blade_int = 0,\
+		added_int = 0,\
+		added_def = 0,\
+	)
 
 /obj/item/rogueweapon/sword/long/martyr/Initialize()
 	AddComponent(/datum/component/martyrweapon)
@@ -584,7 +596,7 @@
 				visible_message(span_warning("[H] lets out a painful shriek as the sword lashes out at them!"))
 				H.emote("agony")
 				H.adjust_fire_stacks(5)
-				H.IgniteMob()
+				H.ignite_mob()
 			return FALSE
 		else	//Everyone else
 			to_chat(user, span_warning("A painful jolt across your entire body sends you to the ground. You cannot touch this thing."))
