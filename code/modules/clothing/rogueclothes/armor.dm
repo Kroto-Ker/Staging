@@ -1678,6 +1678,36 @@
 	max_integrity = 200
 	equip_delay_self = 30
 
+/obj/item/clothing/suit/roguetown/armor/royaljacket
+	name = "royal jacket"
+	desc = "A royal jacket meant to be worn by nobility."
+	icon_state = "royaljacket"
+	detail_tag = "_detail"
+	altdetail_tag = "_detailalt"
+	allowed_race = NON_DWARVEN_RACE_TYPES
+	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
+	break_sound = 'sound/foley/cloth_rip.ogg'
+	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
+	detail_tag = "_detail"
+	sewrepair = TRUE
+
+/obj/item/clothing/suit/roguetown/armor/royaljacket/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
+
+/obj/item/clothing/suit/roguetown/armor/royaljacket/Initialize()
+	. = ..()		
+	update_icon()
+
+/obj/item/clothing/suit/roguetown/armor/royaljacket/update_icon()
+	cut_overlays()
+	if(get_detail_tag())
+		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
+		pic.appearance_flags = RESET_COLOR
+		if(get_detail_color())
+			pic.color = get_detail_color()
+		add_overlay(pic)
+
 //Kazengun
 
 /obj/item/clothing/suit/roguetown/armor/haori
