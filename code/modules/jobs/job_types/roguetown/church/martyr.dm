@@ -541,7 +541,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/roguemartyr_righthand.dmi'
 	name = "martyr sword"
 	desc = "A relic from the Holy See's own vaults. It simmers with godly energies, and will only yield to the hands of those who have taken the Oath."
-	max_blade_int = 200
+	max_blade_int = 300
 	max_integrity = 300
 	parrysound = "bladedmedium"
 	swingsound = BLADEWOOSH_LARGE
