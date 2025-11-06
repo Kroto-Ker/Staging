@@ -268,7 +268,7 @@
 /atom/movable/screen/alert/status_effect/buff/axedance
     name = "Dance of the Axes"
     desc = span_bloody("I AM AN AVATAR OF RAVOXIAN MIGHT")
-    icon_state = "axedance"
+    icon_state = "buff"
     
 /datum/status_effect/buff/axedance
     var/outline_colour = "#EB4445"
