@@ -150,22 +150,9 @@
 	H.verbs += list(/mob/living/carbon/human/proc/devotionreport, /mob/living/carbon/human/proc/clericpray)
 
 	if(HAS_TRAIT(H, TRAIT_CLERGY))
-		var/exclude = FALSE
-		var/title = ""
-		if(H.job)
-			title = "[H.job]"
-		else if(H.mind?.assigned_role)
-			title = "[H.mind.assigned_role]"
-
-		if(length(title))
-			var/ltitle = lowertext(title)
-			if(ltitle == "priest" || ltitle == "martyr")
-				exclude = TRUE
-
-		if(!exclude)
-			if(!H.mind.has_spell(/obj/effect/proc_holder/spell/self/learnmiracle))
-				var/obj/effect/proc_holder/spell/self/learnmiracle/L = new
-				H.mind.AddSpell(L)
+		if(!H.mind.has_spell(/obj/effect/proc_holder/spell/self/learnmiracle))
+			var/obj/effect/proc_holder/spell/self/learnmiracle/L = new
+			H.mind.AddSpell(L)
 
 // Debug verb
 /mob/living/carbon/human/proc/devotionchange()
