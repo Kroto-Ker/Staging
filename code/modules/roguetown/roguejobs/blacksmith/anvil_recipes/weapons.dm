@@ -1165,7 +1165,7 @@
 	req_bar = /obj/item/ingot/silverblessed/bullion
 	craftdiff = 3
 	created_item = /obj/item/rogueweapon/halberd/psyhalberd
-	additional_items = list(/obj/item/ingot/silverblessed, /obj/item/grown/log/tree/small)
+	additional_items = list(/obj/item/ingot/silverblessed/bullion, /obj/item/grown/log/tree/small)
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/psy/gsword
@@ -1173,7 +1173,7 @@
 	req_bar = /obj/item/ingot/silverblessed/bullion
 	craftdiff = 3
 	created_item = /obj/item/rogueweapon/greatsword/psygsword
-	additional_items = list(/obj/item/ingot/silverblessed)
+	additional_items = list(/obj/item/ingot/silverblessed/bullion)
 	i_type = "Weapons"
 
 /datum/anvil_recipe/weapons/psy/sword
