@@ -1678,10 +1678,10 @@
 	max_integrity = 200
 	equip_delay_self = 30
 
-/obj/item/clothing/suit/roguetown/armor/royaljacket
-	name = "royal jacket"
-	desc = "A royal jacket meant to be worn by nobility."
-	icon_state = "royaljacket"
+/obj/item/clothing/suit/roguetown/armor/velvetcoat
+	name = "velvet coat"
+	desc = "A velvet coat made from the finest fabrics."
+	icon_state = "velvet"
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"
 	allowed_race = NON_DWARVEN_RACE_TYPES
