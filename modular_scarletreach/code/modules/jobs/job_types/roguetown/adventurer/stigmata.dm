@@ -19,7 +19,8 @@
 		TRAIT_EMPATH,
 		TRAIT_CRITICAL_RESISTANCE,
 		TRAIT_STEELHEARTED,
-		TRAIT_DODGEEXPERT
+		TRAIT_DODGEEXPERT,
+		TRAIT_RITUALIST
 	)
 
 	subclass_skills = list(
@@ -54,7 +55,8 @@
 		/obj/item/recipe_book/survival = 1,
 		/obj/item/flashlight/flare/torch = 1,
 		/obj/item/reagent_containers/glass/bottle/rogue/healthpot = 2,
-		/obj/item/storage/belt/rogue/pouch/medicine = 1
+		/obj/item/storage/belt/rogue/pouch/medicine = 1,
+		/obj/item/ritechalk = 1
 		)
 	
 	if (H.mind)
