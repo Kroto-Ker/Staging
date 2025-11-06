@@ -1681,7 +1681,7 @@
 /obj/item/clothing/suit/roguetown/armor/velvetcoat
 	name = "velvet coat"
 	desc = "A velvet coat made from the finest fabrics."
-	icon_state = "velvet"
+	icon_state = "velvetcoat"
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"
 	allowed_race = NON_DWARVEN_RACE_TYPES
