@@ -1684,18 +1684,14 @@
 	icon_state = "velvetcoat"
 	detail_tag = "_detail"
 	altdetail_tag = "_detailalt"
+	detail_color = CLOTHING_WHITE
 	allowed_race = NON_DWARVEN_RACE_TYPES
 	slot_flags = ITEM_SLOT_ARMOR|ITEM_SLOT_CLOAK
 	break_sound = 'sound/foley/cloth_rip.ogg'
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
-	detail_tag = "_detail"
 	sewrepair = TRUE
 	grid_width = 64
 	grid_height = 64
-
-/obj/item/clothing/suit/roguetown/armor/velvetcoat/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
 
 /obj/item/clothing/suit/roguetown/armor/velvetcoat/Initialize()
 	. = ..()		
@@ -1709,6 +1705,10 @@
 		if(get_detail_color())
 			pic.color = get_detail_color()
 		add_overlay(pic)
+
+/obj/item/clothing/suit/roguetown/armor/velvetcoat/ComponentInitialize()
+	. = ..()
+	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
 
 //Kazengun
 
