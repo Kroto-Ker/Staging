@@ -1690,16 +1690,18 @@
 	drop_sound = 'sound/foley/dropsound/cloth_drop.ogg'
 	detail_tag = "_detail"
 	sewrepair = TRUE
+	grid_width = 64
+	grid_height = 64
 
-/obj/item/clothing/suit/roguetown/armor/royaljacket/ComponentInitialize()
+/obj/item/clothing/suit/roguetown/armor/velvetcoat/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/storage/concrete/roguetown/cloak)
 
-/obj/item/clothing/suit/roguetown/armor/royaljacket/Initialize()
+/obj/item/clothing/suit/roguetown/armor/velvetcoat/Initialize()
 	. = ..()		
 	update_icon()
 
-/obj/item/clothing/suit/roguetown/armor/royaljacket/update_icon()
+/obj/item/clothing/suit/roguetown/armor/velvetcoat/update_icon()
 	cut_overlays()
 	if(get_detail_tag())
 		var/mutable_appearance/pic = mutable_appearance(icon(icon, "[icon_state][detail_tag]"))
