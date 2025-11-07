@@ -44,6 +44,7 @@
         beltr = /obj/item/storage/hip/headhook
         backpack_contents = list(
             /obj/item/rogueweapon/huntingknife = 1,
+			/obj/item/roguekey/mercenary = 1,
             /obj/item/rope/chain = 1,
             /obj/item/natural/head/troll = 1 // will spawn inside of the belt but I can't be bothered to make it spawn in the headhook
         )
