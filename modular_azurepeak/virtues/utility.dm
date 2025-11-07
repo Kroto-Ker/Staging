@@ -394,6 +394,7 @@
 /datum/virtue/species/moth/mercuriam
 	name = "(Fluvian) Mercuriam Initiate"
 	desc = "Through great intellectual rigor, I passed the trials of the Intolerabi and was granted leave to study in the city of Mercuriam. In their bronze halls, I learned intimately of Pestra's art; poison will no longer harm me."
+	races = list(/datum/species/moth)
 	custom_text = "Only available to fluvians."
 	added_traits = list(TRAIT_TOXIMMUNE)
 	added_skills = list(list(/datum/skill/craft/alchemy, 1, 5),
@@ -406,6 +407,7 @@
 /datum/virtue/species/elfd/spider
 	name = "(Dark Elf) Spider Speaker"
 	desc = "In the darkest depths of the underdark, I was taught the secrets of the Driderii. The methods of potion and poison were shown to me, as well as the art of traversing through webs. Spiders see me as one of their own."
+	races = list(/datum/species/elf/dark)
 	custom_text = "Only available to dark elves."
 	added_traits = list(TRAIT_WEBWALK)
 	added_skills = list(list(/datum/skill/craft/alchemy, 2, 4),
@@ -422,6 +424,7 @@
 /datum/virtue/species/dwarf/dvergr
 	name = "(Dwarf) Dvergr"
 	desc = "My lineage descends from the Dvergr, a clan of dwarves under Graggar’s tyrannical patronage, exiled to the Underdark. They are renowned slavers; many lords covet a servant broken by Dvergr technique. I know a little of the clan's magics, rendering me invisible to the scrying arts."
+	races = list(/datum/species/dwarf/mountain)
 	custom_text = "Grants enlarge spell.<br>Colors your body grey.<br>Only available to dwarves."
 	added_traits = list(TRAIT_ANTISCRYING, TRAIT_DVERGR, TRAIT_UNDERDARK)
 	added_skills = list(list(/datum/skill/magic/arcane, 1, 3))
