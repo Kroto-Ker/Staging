@@ -17,7 +17,7 @@
         STATKEY_STR = 3, 
         STATKEY_CON = 5,
         STATKEY_END = 4,
-        STATKEY_SPD = 1,
+        STATKEY_INT = -2,
     )
 
     subclass_skills = list(
@@ -139,7 +139,7 @@
     slot_flags = ITEM_SLOT_BACK
     equip_delay_self = 1.5 SECONDS
     unequip_delay_self = 1.5 SECONDS
-    wlength = WLENGTH_LONG
+    wlength = WLENGTH_NORMAL
     resistance_flags = FIRE_PROOF
     max_blade_int = 350
     minstr = 13
