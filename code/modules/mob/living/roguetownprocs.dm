@@ -618,7 +618,7 @@
 		if(HAS_TRAIT(L, TRAIT_NODEF))
 			prob2defend = 0 
 
-		if(HAS_TRAIT(src, TRAIT_SLAYER))
+		if(HAS_TRAIT(L, TRAIT_SLAYER))
 			prob2defend *= 0.7
 
 		// dodging while knocked down sucks ass
