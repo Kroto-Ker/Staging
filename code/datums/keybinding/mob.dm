@@ -218,6 +218,13 @@
 				to_chat(C, span_red("I can't fly up there!!"))
 		else
 			to_chat(C, span_red("I can't farking fly!!"))
+	else if(istype(user.mob, /mob/living/simple_animal/hostile/retaliate/bat))
+		var/mob/living/simple_animal/hostile/retaliate/bat/mobius = user.mob
+		var/turf/open/transparent/openspace/turf_above = get_step_multiz(mobius, UP)
+		if(mobius.canZMove(UP, turf_above))
+			if(!do_after(mobius, mobius.fly_time))
+				return
+			mobius.forceMove(turf_above)
 	else if(user.mob.flying)
 		var/mob/mobius = user.mob
 		if(mobius.zMove(UP, TRUE))
@@ -258,6 +265,13 @@
 				to_chat(C, span_red("I can't fly up there!!"))
 		else
 			to_chat(C, span_red("I can't farking fly!!"))
+	else if(istype(user.mob, /mob/living/simple_animal/hostile/retaliate/bat))
+		var/mob/living/simple_animal/hostile/retaliate/bat/mobius = user.mob
+		var/turf/open/transparent/openspace/turf_below = get_step_multiz(mobius, DOWN)
+		if(mobius.canZMove(DOWN, turf_below))
+			if(!do_after(mobius, mobius.fly_time))
+				return
+			mobius.forceMove(turf_below)
 	else if(user.mob.flying)
 		var/mob/mobius = user.mob
 		if(mobius.zMove(DOWN, TRUE))
