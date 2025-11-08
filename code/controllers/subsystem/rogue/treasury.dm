@@ -1,7 +1,7 @@
 #define RURAL_TAX 50 // Free money. A small safety pool for lowpop mostly
 #define TREASURY_TICK_AMOUNT 6 MINUTES
 #define EXPORT_ANNOUNCE_THRESHOLD 100
-#define FOREIGNER_TAX_SURCHARGE 0.05
+#define FOREIGNER_TAX_SURCHARGE 0.05 //Amount extra that non-noble foreigners are charged as tax
 
 /proc/send_ooc_note(msg, name, job)
 	var/list/names_to = list()
