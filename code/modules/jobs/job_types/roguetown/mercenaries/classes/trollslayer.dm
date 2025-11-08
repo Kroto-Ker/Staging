@@ -40,7 +40,7 @@
         armor = /obj/item/clothing/suit/roguetown/armor/skin_armor/slayer
         pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
         backr = /obj/item/storage/backpack/rogue/satchel
-        belt = /obj/item/storage/belt/rogue/leather
+        belt = /obj/item/storage/belt/rogue/leather/slayer
         beltr = /obj/item/storage/hip/headhook
         backpack_contents = list(
             /obj/item/rogueweapon/huntingknife = 1,
@@ -303,4 +303,11 @@
 
 #undef AXEDANCE_FILTER
 
-// KARAK KADRIN ATTACK
+/obj/item/storage/belt/rogue/leather/slayer
+    name = "rugged dwarven belt"
+    desc = "The golden beard of the face plate doubles as a codpiece."
+    icon_state = "slayer"
+    item_state = "slayer" // only has dwarven onmob sprites. for whatever reason it doesn't compile if I race restrict it 
+    sellprice = 50
+    detail_tag = "_belt"
+    sewrepair = FALSE
