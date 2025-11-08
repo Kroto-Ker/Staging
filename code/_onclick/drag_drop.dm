@@ -223,8 +223,7 @@
 	if(tcompare)
 		var/atom/target_atom = object
 		if(istype(target_atom) && tcompare != mob && (mob.atkswinging == "middle" || (mob.atkswinging && object != tcompare)))
-			if(mob.atkswinging == "middle" || (mob.atkswinging && object != tcompare))
-				target_atom.Click(location, control, params)
+			target_atom.Click(location, control, params)
 		tcompare = null
 
 //	mouse_pointer_icon = 'icons/effects/mousemice/human.dmi'
