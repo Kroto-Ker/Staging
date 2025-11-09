@@ -483,7 +483,7 @@
 	light_beam_distance = 3
 	light_object_power = 1
 
-	emp_act(severity)
+/obj/item/organ/eyes/t1/emp_act(severity)
 		return
 
 /obj/item/organ/eyes/t2

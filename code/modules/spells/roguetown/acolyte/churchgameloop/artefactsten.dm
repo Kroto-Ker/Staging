@@ -88,7 +88,7 @@ Malum's tool
 
 //shit made helper
 
-proc/_malum_recipe_requires_extras(datum/anvil_recipe/R)
+/proc/_malum_recipe_requires_extras(datum/anvil_recipe/R)
 	if(!R) return FALSE
 	if(ispath(R:needed_item)) return TRUE
 	var/ai = R:additional_items
