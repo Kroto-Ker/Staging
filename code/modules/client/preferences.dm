@@ -2731,8 +2731,6 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 	character.nickname = nickname
 
 	character.eye_color = eye_color
-	if((extra_language && extra_language != "None") && virtue_origin.extra_language == TRUE)
-		character.grant_language(extra_language)
 	character.voice_color = voice_color
 	character.voice_pitch = voice_pitch
 	var/obj/item/organ/eyes/organ_eyes = character.getorgan(/obj/item/organ/eyes)

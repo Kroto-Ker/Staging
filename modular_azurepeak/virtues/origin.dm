@@ -136,7 +136,7 @@
 )
 	origin_desc = " "
 
-/datum/virtue/origin/Avar
+/datum/virtue/origin/avar
 	name = "Aavnic"
 	desc = "I originate from Avar."
 	restricted = TRUE
@@ -172,7 +172,7 @@
 
 /datum/virtue/origin/reach/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Scarlet Reach"
-	recipient.grant_language(/datum/language/otavan)
+	recipient.grant_language(/datum/language/elvish)
 
 /datum/virtue/origin/grenzelhoft/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Grenzelhoft"
@@ -192,7 +192,7 @@
 
 /datum/virtue/origin/raneshen/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Raneshen"
-	recipient.grant_language(/datum/language/elvish)
+	recipient.grant_language(/datum/language/celestial)
 
 /datum/virtue/origin/naledi/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Naledi"

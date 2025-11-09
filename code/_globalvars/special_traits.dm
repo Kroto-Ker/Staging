@@ -65,6 +65,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	var/datum/virtue/virtue_type = player.prefs.virtue
 	var/datum/virtue/virtuetwo_type = player.prefs.virtuetwo
 	var/datum/virtue/origin_type = player.prefs.virtue_origin
+	var/datum/virtue/language_type = player.prefs.extra_language
 	if(virtue_type)
 		if(virtue_check(virtue_type, heretic, species))
 			apply_virtue(character, virtue_type)
@@ -76,6 +77,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		else
 			to_chat(character, "Incorrect Second Virtue parameters! It will not be applied.")
 	if(origin_type)
+		if((language_type && language_type != "None") && origin_type.extra_language == TRUE)
+			character.grant_language(language_type)
 		if(character.job_origin == TRUE)
 			apply_virtue(character, origin_type)
 		else
