@@ -423,7 +423,7 @@
 /datum/outfit/proc/change_origin(mob/living/carbon/human/H, new_origin = /datum/virtue/none, wording = "Custom")
 	var/client/player = H?.client
 	if(player?.prefs)
-		var/origin_memory = new player.prefs.virtue_origin
+		var/origin_memory = player.prefs.virtue_origin
 		player.prefs.virtue_origin = new new_origin
 		H.dna.species.skin_tone_wording = wording
 		player.prefs.virtue_origin.job_origin = TRUE

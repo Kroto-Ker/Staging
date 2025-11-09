@@ -81,6 +81,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 			character.grant_language(language_type)
 		if(origin_type.job_origin == TRUE)
 			apply_virtue(character, origin_type)
+			player.prefs.virtue_origin = origin_type.last_origin
 		else
 			if(origin_check(origin_type, species))
 				apply_virtue(character, origin_type)
