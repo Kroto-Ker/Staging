@@ -72,6 +72,8 @@
 #define TRAIT_PERMAMUTE "Permanent Mute"
 #define TRAIT_HERESIARCH "Forbidden Knowledge" //allows entry to ascendant church
 #define TRAIT_EXCOMMUNICATED "Excommunicated" //cannot be target of healing miracles of Ten or anastasia or cure rot
+#define TRAIT_SLAYER "Slayer Oath"
+#define TRAIT_NODEF "Recklessness"
 
 
 //Hearthstone port (Tracking)
@@ -203,7 +205,7 @@
 #define TRAIT_SILVER_WEAK "Silver Weakness"
 #define TRAIT_DEADITE "Deadite"
 #define TRAIT_PUZZLEMASTER "Puzzle Master"
-#define TRAIT_CLERGY "Clergy" // Access to church gameloop
+#define TRAIT_CLERGY "Clergy" // City clergy
 // ARMOR / CLOTHING GIVEN TRAITS (GIVEN BY WEARING CLOTHES/ARMOR PIECES)
 #define TRAIT_MONK_ROBE	"Holy Vestatures"
 
@@ -385,6 +387,9 @@ GLOBAL_LIST_INIT(roguetraits, list(
 	TRAIT_ENGINEERING_GOGGLES = span_warning("I can see structural details others can't"),
 	TRAIT_MASTER_CARPENTER = span_warning("I've been trained to make the most of wood"), 
 	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"),
+	TRAIT_SLAYER = span_warning("My vows forbid me from protecting my weakspots with armor."),
+	TRAIT_NODEF = span_warning("I expose myself in battle completely."),
+	TRAIT_MASTER_MASON = span_warning("I've been trained to make the most of stone"), 
 	TRAIT_CLERGY = span_notice("I am a servant of the local House of the Ten.")
 ))
 

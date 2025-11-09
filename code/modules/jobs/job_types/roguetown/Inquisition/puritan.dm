@@ -24,6 +24,7 @@
 	min_pq = 20
 	max_pq = null
 	round_contrib_points = 4
+	social_rank = SOCIAL_RANK_NOBLE
 
 	virtue_restrictions = list(
 		/datum/virtue/combat/hollow_life,
