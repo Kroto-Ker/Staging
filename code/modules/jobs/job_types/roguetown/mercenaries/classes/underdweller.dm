@@ -65,10 +65,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 	)
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/underdark
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/underdark)
 
 //Clothing here to avoid overcrowding the hats.dm with snowflake gear. It's just a kettle with a light.
 /obj/item/clothing/head/roguetown/helmet/kettle/minershelm

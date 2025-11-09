@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(origin_type)
 		if((language_type && language_type != "None") && origin_type.extra_language == TRUE)
 			character.grant_language(language_type)
-		if(character.job_origin == TRUE)
+		if(origin_type.job_origin == TRUE)
 			apply_virtue(character, origin_type)
 		else
 			if(origin_check(origin_type, species))

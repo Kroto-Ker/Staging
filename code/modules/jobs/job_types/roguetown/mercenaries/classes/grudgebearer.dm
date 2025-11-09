@@ -59,10 +59,7 @@
 			/obj/item/clothing/head/roguetown/helmet/heavy/dwarven,
 			)
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/hammerhold
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/hammerhold)
 
 /datum/advclass/mercenary/grudgebearer/soldier
 	name = "Grudgebearer Soldier"
@@ -118,10 +115,7 @@
 			if("Mace")
 				backr = /obj/item/rogueweapon/mace/goden/steel
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/hammerhold
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/hammerhold)
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven
 	name = "grudgebearer dwarven plate"

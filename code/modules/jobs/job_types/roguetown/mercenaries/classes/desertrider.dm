@@ -80,10 +80,7 @@
 	beltl = /obj/item/rogueweapon/scabbard/sword
 	l_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/raneshen
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/raneshen)
 
 /datum/advclass/mercenary/desert_rider/zeybek
 	name = "Desert Rider Zeybek"
@@ -163,10 +160,7 @@
 	beltl = /obj/item/rogueweapon/scabbard/sword
 	l_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/raneshen
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/raneshen)
 
 /datum/advclass/mercenary/desert_rider/almah
 	name = "Desert Rider Almah"
@@ -236,7 +230,4 @@
 	beltr = /obj/item/rogueweapon/scabbard/sword
 	l_hand = /obj/item/rogueweapon/sword/sabre/shamshir
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/raneshen
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/raneshen)

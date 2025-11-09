@@ -67,10 +67,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/gronn
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/gronn)
 
 /datum/advclass/mercenary/atgervi/shaman
 	name = "Atgervi Shaman"
@@ -133,10 +130,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/gronn
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/gronn)
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
 	name = "vagarian hauberk"

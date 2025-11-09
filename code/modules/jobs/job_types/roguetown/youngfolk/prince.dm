@@ -37,11 +37,7 @@
 	..()
 	H.verbs |= /mob/living/carbon/human/proc/declarechampion
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/reach
-		H.dna.species.skin_tone_wording = "Royal line"
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/reach, "Royal line")
 
 /datum/advclass/heir/daring
 	name = "Daring Twit"

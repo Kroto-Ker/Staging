@@ -137,8 +137,6 @@
 	var/second_voice	// Virtue-specific. Can be swapped to / from and changed.
 	var/original_voice
 
-	var/job_origin = FALSE
-
 	/// Whether our FOV cone is overridden to be hidden. Simple bool.
 	var/viewcone_override
 

@@ -78,10 +78,7 @@
 		/obj/item/flashlight/flare/torch = 1,
 		)
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/reach
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/reach)
 
 /datum/advclass/mercenary/blackoak/ranger
 	name = "Black Oak's Ranger"
@@ -139,7 +136,4 @@
 		/obj/item/flashlight/flare/torch = 1,
 		)
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/reach
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/reach)

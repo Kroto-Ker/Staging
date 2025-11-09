@@ -48,10 +48,7 @@
 		/obj/item/flashlight/flare/torch/lantern,
 		)
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/kazengun
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/kazengun)
 
 /datum/advclass/mercenary/rumaclan/ishu
 	name = "Ruma Clan Ishu"
@@ -107,7 +104,4 @@
 		if("Smokebombs")
 			belt = /obj/item/storage/belt/rogue/leather/smokebelt/black
 
-	var/client/player = H?.client
-	if(player?.prefs)
-		player.prefs.virtue_origin = new /datum/virtue/origin/kazengun
-		H.job_origin = TRUE
+	change_origin(H, /datum/virtue/origin/kazengun)
