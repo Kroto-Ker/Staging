@@ -14,8 +14,6 @@
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 FOR</b></span> </br>\
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> LANGUAGE: Celestial - ,c</b></span> </br>"
 
-	skin_tone_wording = "Craft"
-
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,STUBBLE,OLDGREY)
 	inherent_traits = list(TRAIT_NOMOBSWAP)
 	default_features = MANDATORY_FEATURE_LIST

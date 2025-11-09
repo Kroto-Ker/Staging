@@ -23,7 +23,6 @@
 	inherent_traits = list(TRAIT_NASTY_EATER)
 	possible_ages = ALL_AGES_LIST
 	use_skintones = TRUE
-	skin_tone_wording = "Skin Color"
 	limbs_icon_m = 'icons/roguetown/mob/bodies/m/goblin.dmi'
 	limbs_icon_f = 'icons/roguetown/mob/bodies/f/dwarf.dmi'
 	dam_icon = 'icons/roguetown/mob/bodies/dam/dam_male.dmi'

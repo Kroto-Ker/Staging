@@ -149,6 +149,7 @@
 	name = "The Underdark"
 	desc = "I originate from the Underdark."
 	restricted = TRUE
+	extra_language = TRUE
 	restricted_races = list(/datum/species/golem/metal,
 							/datum/species/golem/porcelain,
 							/datum/species/human/northern,
@@ -171,33 +172,43 @@
 
 /datum/virtue/origin/reach/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Scarlet Reach"
+	recipient.grant_language(/datum/language/otavan)
 
 /datum/virtue/origin/grenzelhoft/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Grenzelhoft"
+	recipient.grant_language(/datum/language/grenzelhoftian)
 
 /datum/virtue/origin/etrusca/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Etrusca"
+	recipient.grant_language(/datum/language/etruscan)
 
 /datum/virtue/origin/otava/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Otava"
+	recipient.grant_language(/datum/language/otavan)
 
 /datum/virtue/origin/gronn/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Gronn"
+	recipient.grant_language(/datum/language/orcish)
 
 /datum/virtue/origin/raneshen/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Raneshen"
+	recipient.grant_language(/datum/language/elvish)
 
 /datum/virtue/origin/naledi/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Naledi"
+	recipient.grant_language(/datum/language/celestial)
 
 /datum/virtue/origin/kazengun/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Kazengun"
+	recipient.grant_language(/datum/language/kazengunese)
 
 /datum/virtue/origin/hammerhold/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Hammerhold"
+	recipient.grant_language(/datum/language/dwarvish)
 
 /datum/virtue/origin/avar/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Avar"
+	recipient.grant_language(/datum/language/aavnic)
 
 /datum/virtue/origin/underdark/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "the Underdark"

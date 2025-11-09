@@ -34,7 +34,7 @@
 	without careful upkeep...\
 	They typically trace their beginnings to how their progenator died before being raised."
 */
-	skin_tone_wording = "Origin City-State"
+	skin_tone_wording = "City-State"
 
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,OLDGREY)
 	default_features = MANDATORY_FEATURE_LIST

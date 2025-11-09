@@ -19,6 +19,8 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/list/added_stats = list()
 	/// Whether the virtue uses racial restrictions
 	var/restricted = FALSE
+	/// Whether the origin lets you choose a language freely.
+	var/extra_language = FALSE
 	/// A list of races restricted.
 	var/list/restricted_races = list()
 	/// The cost of the virtue to apply in TRIUMPH points, if any.
