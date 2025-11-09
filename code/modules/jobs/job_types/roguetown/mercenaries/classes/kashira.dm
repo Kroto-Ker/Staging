@@ -50,3 +50,8 @@
 		/obj/item/flashlight/flare/torch/lantern,
 	)
 	H.adjust_blindness(-3)
+
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/kazengun
+		H.job_origin = TRUE

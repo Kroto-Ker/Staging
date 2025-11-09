@@ -59,6 +59,11 @@
 			/obj/item/clothing/head/roguetown/helmet/heavy/dwarven,
 			)
 
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/hammerhold
+		H.job_origin = TRUE
+
 /datum/advclass/mercenary/grudgebearer/soldier
 	name = "Grudgebearer Soldier"
 	tutorial = "Bound by eternal grudges of eons past that have not been forgotten, the Grudgebearers are left to wander the surface, as every other clan has a grudge against you, and you against them. This putrid swampland of a Duchy has also wronged you and your people, you care little for it. Coins are a means to an end -- something you can mine and forge yourself. Trinkets -- made by true smiths, now that will carry respect among your clan. However, such artifacts might not buy you food, or a roof."
@@ -113,6 +118,10 @@
 			if("Mace")
 				backr = /obj/item/rogueweapon/mace/goden/steel
 
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/hammerhold
+		H.job_origin = TRUE
 
 /obj/item/clothing/suit/roguetown/armor/plate/full/dwarven
 	name = "grudgebearer dwarven plate"

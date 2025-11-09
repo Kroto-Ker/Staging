@@ -54,3 +54,8 @@
 		/obj/item/roguekey/mercenary,
 		/obj/item/rogueweapon/scabbard/sheath,
 	)
+
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/raneshen
+		H.job_origin = TRUE

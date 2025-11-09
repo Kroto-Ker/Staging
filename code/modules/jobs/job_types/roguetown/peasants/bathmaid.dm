@@ -24,6 +24,10 @@
 	round_contrib_points = 2
 	advjob_examine = TRUE
 
+	virtue_restrictions = list(
+		/datum/virtue/origin/grenzelhoft,
+	)
+
 	job_traits = list(TRAIT_EMPATH, TRAIT_GOODLOVER)
 	job_subclasses = list(
 		/datum/advclass/nightmaiden,

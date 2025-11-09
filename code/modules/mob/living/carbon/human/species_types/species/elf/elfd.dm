@@ -4,6 +4,10 @@
 /datum/species/elf/dark
 	name = "Dark Elf"
 	id = "elfd"
+	is_subrace = TRUE
+	origin_default = /datum/virtue/origin/otava
+	origin = "Otava"
+	base_name = "Elf"
 	desc = "<b>Dark Elf: A People Divided</b><br>\
 	When the elves were created, some took an arrogant pride that was undue to them, some even claimed themselves equal to Psydon. \
 	When he was about to unleash his wrath, the most arrogant elves tapped into another plane to combat him. \

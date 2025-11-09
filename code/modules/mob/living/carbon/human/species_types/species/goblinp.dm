@@ -4,6 +4,10 @@
 /datum/species/goblinp
 	name = "Goblin"
 	id = "goblinp"
+	origin_default = /datum/virtue/origin/gronn
+	origin = "Gronn"
+	is_subrace = TRUE
+	base_name = "Ogroid"
 	desc = "<b>Goblin: Nomadic Tribes of the Night</b><br>\
 	Created by the hand of Noc as a creative and inquisitive species, \
 	tribes of goblins spread across the world from the wind-whipped steppes of Gronn. \

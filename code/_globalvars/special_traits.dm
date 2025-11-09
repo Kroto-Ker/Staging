@@ -54,6 +54,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 
 	var/virtuous = FALSE
 	var/heretic = FALSE
+	var/species = character.dna.species.type
+
 	if(istype(player.prefs.selected_patron, /datum/patron/inhumen))
 		heretic = TRUE
 
@@ -62,21 +64,49 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 
 	var/datum/virtue/virtue_type = player.prefs.virtue
 	var/datum/virtue/virtuetwo_type = player.prefs.virtuetwo
+	var/datum/virtue/origin_type = player.prefs.virtue_origin
 	if(virtue_type)
-		if(virtue_check(virtue_type, heretic))
+		if(virtue_check(virtue_type, heretic, species))
 			apply_virtue(character, virtue_type)
 		else
-			to_chat(character, "Incorrect Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
+			to_chat(character, "Incorrect Virtue parameters! It will not be applied.")
 	if(virtuetwo_type && virtuous)
-		if(virtue_check(virtuetwo_type, heretic))
+		if(virtue_check(virtuetwo_type, heretic, species))
 			apply_virtue(character, virtuetwo_type)
 		else
-			to_chat(character, "Incorrect Second Virtue parameters! (Heretic virtue on a non-heretic) It will not be applied.")
+			to_chat(character, "Incorrect Second Virtue parameters! It will not be applied.")
+	if(origin_type)
+		if(character.job_origin == TRUE)
+			apply_virtue(character, origin_type)
+		else
+			if(origin_check(origin_type, species))
+				apply_virtue(character, origin_type)
+			else
+				to_chat(character, "Incorrect Origin parameters! Resetting to default.")
+				origin_type = new character.dna.species.origin_default
+				apply_virtue(character, origin_type)
 
-/proc/virtue_check(var/datum/virtue/V, heretic = FALSE)
+/proc/virtue_check(var/datum/virtue/V, heretic = FALSE, species)
 	if(V)
-		if(istype(V,/datum/virtue/heretic) && !heretic)
+		log_game(V.restricted_races)
+		log_game(species)
+		if((istype(V,/datum/virtue/heretic) && !heretic) || istype(V,/datum/virtue/origin))
 			return FALSE
+		if(V.restricted == TRUE)
+			for(var/A in V.restricted_races)
+				if(A == species)
+					return FALSE
+		return TRUE
+	return FALSE
+
+/proc/origin_check(var/datum/virtue/V, species)
+	if(V)
+		if(!istype(V,/datum/virtue/origin))
+			return FALSE
+		if(V.restricted == TRUE)
+			for(var/A in V.restricted_races)
+				if(A == species)
+					return FALSE
 		return TRUE
 	return FALSE
 

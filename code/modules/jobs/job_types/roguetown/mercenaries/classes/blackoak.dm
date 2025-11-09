@@ -78,6 +78,11 @@
 		/obj/item/flashlight/flare/torch = 1,
 		)
 
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/reach
+		H.job_origin = TRUE
+
 /datum/advclass/mercenary/blackoak/ranger
 	name = "Black Oak's Ranger"
 	tutorial = "A shady guardian of the Black Oaks. Half mercenary band, half irregular militia fighting for control of their ancestral elven homeland of the Reach. Thankfully, you are not here today to shed the blood of the Duke's men — unless someone pays you to..."
@@ -133,3 +138,8 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1,
 		/obj/item/flashlight/flare/torch = 1,
 		)
+
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/reach
+		H.job_origin = TRUE

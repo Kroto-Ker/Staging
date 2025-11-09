@@ -97,6 +97,11 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 	)
 
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/naledi
+		H.job_origin = TRUE
+
 /datum/advclass/mercenary/warscholar/pontifex
 	name = "Naledi Pontifex"
 	tutorial = "You are a Naledi Pontifex, a warrior trained into a hybridized style of movement-controlling magic and hand-to-hand combat. Though your abilities in magical fields are lacking, you are far more dangerous than other magi in a straight fight. You manifest your calm, practiced skill into a killing intent that takes the shape of an arcyne blade."
@@ -181,6 +186,11 @@
 		/obj/item/rogueweapon/huntingknife,
 		/obj/item/rogueweapon/scabbard/sheath = 1
 	)
+
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/naledi
+		H.job_origin = TRUE
 
 /datum/advclass/mercenary/warscholar/vizier
 	name = "Naledi Vizier"
@@ -268,7 +278,10 @@
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/convergence)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/stasis)
 
-
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/naledi
+		H.job_origin = TRUE
 
 /datum/outfit/job/roguetown/mercenary/warscholar/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	. = ..()

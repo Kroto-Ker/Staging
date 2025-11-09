@@ -4,6 +4,8 @@
 /datum/species/kobold
 	name = "Kobold"
 	id = "kobold"
+	is_subrace = TRUE
+	base_name = "Zard"
 	desc = "<b>Kobold: Slaves of the Burrow</b><br>\
 	Collectives of kobolds once inhabited the great mountain ranges of Gronn, \
 	these tribes safe from the savage whipping winds of the plains and well defended by their terrain from mounted raiders. \

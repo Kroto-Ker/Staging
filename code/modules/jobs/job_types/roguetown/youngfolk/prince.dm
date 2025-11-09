@@ -36,6 +36,12 @@
 	..()
 	H.verbs |= /mob/living/carbon/human/proc/declarechampion
 
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/reach
+		H.dna.species.skin_tone_wording = "Royal line"
+		H.job_origin = TRUE
+
 /datum/advclass/heir/daring
 	name = "Daring Twit"
 	tutorial = "You're a somebody, someone important. It only makes sense you want to make a name for yourself, to gain your own glory so people see how great you really are beyond your bloodline. Plus, if you're beloved by the people for your exploits you'll be chosen! Probably. Shame you're as useful and talented as a squire, despite your delusions to the contrary."

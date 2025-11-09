@@ -4,6 +4,10 @@
 /datum/species/tabaxi
 	name = "Tabaxi"
 	id = "tabaxi"
+	is_subrace = TRUE
+	origin_default = /datum/virtue/origin/raneshen
+	origin = "Raneshen"
+	base_name = "Beastvolk"
 	desc = "<b>Tabaxi: Of A Mood Mercurial</b><br>\
 		Slender and taller than a typical human, these wildkin tend to stand equally with elves, \
 		infuriating dwarves with their height. Hailing first from the deep jungles of Etrusca, \

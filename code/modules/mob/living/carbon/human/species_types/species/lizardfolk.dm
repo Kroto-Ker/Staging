@@ -4,6 +4,7 @@
 /datum/species/lizardfolk
 	name = "Zardman"
 	id = "lizardfolk"
+	base_name = "Zard"
 	desc = "<b>Zardman: Children of the Wetland</b><br>\
 	Created by Abyssor’s hand they are believed to be savage, some even think them Graggarites. \
 	Native to the wetlands of the Scarlet Reach so infused with mana and crawling with undead, \

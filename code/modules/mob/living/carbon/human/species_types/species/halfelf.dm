@@ -4,6 +4,9 @@
 /datum/species/human/halfelf
 	name = "Half-Elf"
 	id = "helf"
+	psydonic = TRUE
+	is_subrace = TRUE
+	base_name = "Humen"
 	desc = "<b>Half-Elf: A history divided</b><br>\
 	Between the elves of the hidden sacred groves or those of the undercities, and the humans of  Enigma, at times a bond is formed. \
 	While most species can crossbreed the odds of a healthy birth or even conception remains low between two species, \

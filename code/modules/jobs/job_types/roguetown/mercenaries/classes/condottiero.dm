@@ -63,3 +63,8 @@
 		/obj/item/rogueweapon/huntingknife/idagger/navaja,
 		/obj/item/lockpick = 1
 	)
+
+	var/client/player = H?.client
+	if(player?.prefs)
+		player.prefs.virtue_origin = new /datum/virtue/origin/etrusca
+		H.job_origin = TRUE
