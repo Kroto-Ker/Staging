@@ -43,10 +43,7 @@
 	races = list(/datum/species/elf/dark,
 				/datum/species/moth,
 				/datum/species/halforc,
-				/datum/species/goblinp,
-				/datum/species/vulpkanin,
-				/datum/species/lupian,
-				/datum/species/moth
+				/datum/species/goblinp
 )
 	origin_desc = "An archipelago of maritime city-states located off the eastern coast of the Otavan countryside.<br> Etrusca is not one unified state, existing instead as \
 	many different polities, each with their own regional traditions and dialects. Etruscans are known for their seafaring technology and typically make for strong \
