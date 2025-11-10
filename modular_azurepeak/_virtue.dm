@@ -15,12 +15,12 @@ GLOBAL_LIST_EMPTY(virtues)
 	var/list/added_languages = list()
 	/// An associative list containing any extra stats we need to add to the mob. NOTE: virtues should GENERALLY NOT add stats unless they impose serious downsides.
 	var/list/added_stats = list()
+	/// A list of races restricted.
+	var/list/races = list()
 	/// The cost of the virtue to apply in TRIUMPH points, if any.
 	var/triumph_cost = 0
 	/// A custom addendum that explains what the virtue does outside of the traits / skill adjustments.
 	var/custom_text
-	/// A list dictating which races are allowed to take the virtue.
-	var/list/races = list()
 
 /datum/virtue/New()
 	. = ..()

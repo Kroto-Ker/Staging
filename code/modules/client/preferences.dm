@@ -2049,6 +2049,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						var/datum/virtue/V = GLOB.virtues[path]
 						if (!V.name)
 							continue
+						if (istype(V, /datum/virtue/racial))
+							if(!(pref_species.type in V.races))
+								continue
 						if (V.name == virtue.name || V.name == virtuetwo.name)
 							continue
 						if (istype(V, /datum/virtue/heretic) && !istype(selected_patron, /datum/patron/inhumen))
@@ -2069,6 +2072,9 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 						var/datum/virtue/V = GLOB.virtues[path]
 						if (!V.name)
 							continue
+						if (istype(V, /datum/virtue/racial))
+							if(!(pref_species.type in V.races))
+								continue
 						if (V.name == virtue.name || V.name == virtuetwo.name)
 							continue
 						if (istype(V, /datum/virtue/heretic) && !istype(selected_patron, /datum/patron/inhumen))

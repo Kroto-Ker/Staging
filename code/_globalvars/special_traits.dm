@@ -79,10 +79,9 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 	if(V)
 		if(istype(V,/datum/virtue/heretic) && !heretic)
 			return FALSE
-		if(istype(V,/datum/virtue/species))
-			for(var/A in V.races)
-				if(A != species)
-					return FALSE
+		if(istype(V,/datum/virtue/racial))
+			if(!(species in V.races))
+				return FALSE
 		return TRUE
 	return FALSE
 

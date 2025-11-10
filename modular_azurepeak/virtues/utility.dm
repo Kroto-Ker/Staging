@@ -391,7 +391,7 @@
 	desc = "The 'Holy' See has their blood-stained grounds, and so do we. Underneath their noses, we pray to the true gods - I know the location of the local heretic conclave. Secrecy is paramount. If found out, I will surely be killed."
 	added_traits = list(TRAIT_HERESIARCH)
 
-/datum/virtue/species/moth/mercuriam
+/datum/virtue/racial/moth/mercuriam
 	name = "(Fluvian) Mercuriam Initiate"
 	desc = "Through great intellectual rigor, I passed the trials of the Intolerabi and was granted leave to study in the city of Mercuriam. In their bronze halls, I learned intimately of Pestra's art; poison will no longer harm me."
 	races = list(/datum/species/moth)
@@ -404,7 +404,7 @@
 		"Bronze Lamptern" = /obj/item/flashlight/flare/torch/lantern/bronzelamptern
 )
 
-/datum/virtue/species/elfd/spider
+/datum/virtue/racial/elfd/spider
 	name = "(Dark Elf) Spider Speaker"
 	desc = "In the darkest depths of the underdark, I was taught the secrets of the Driderii. The methods of potion and poison were shown to me, as well as the art of traversing through webs. Spiders see me as one of their own."
 	races = list(/datum/species/elf/dark)
@@ -418,10 +418,10 @@
 		"Spider Gland" = /obj/item/reagent_containers/spidervenom_inert
 )
 
-/datum/virtue/species/elfd/spider/apply_to_human(mob/living/carbon/human/recipient)
+/datum/virtue/racial/elfd/spider/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.faction += "spiders"
 
-/datum/virtue/species/dwarf/dvergr
+/datum/virtue/racial/dwarf/dvergr
 	name = "(Dwarf) Dvergr"
 	desc = "My lineage descends from the Dvergr, a clan of dwarves under Graggar’s tyrannical patronage, exiled to the Underdark. They are renowned slavers; many lords covet a servant broken by Dvergr technique. I know a little of the clan's magics, rendering me invisible to the scrying arts."
 	races = list(/datum/species/dwarf/mountain)
@@ -429,7 +429,7 @@
 	added_traits = list(TRAIT_ANTISCRYING, TRAIT_DVERGR, TRAIT_UNDERDARK)
 	added_skills = list(list(/datum/skill/magic/arcane, 1, 3))
 
-/datum/virtue/species/dwarf/dvergr/apply_to_human(mob/living/carbon/human/recipient)
+/datum/virtue/racial/dwarf/dvergr/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.update_body()
 	recipient.mind?.AddSpell(new /obj/effect/proc_holder/spell/invoked/enlarge)
 	recipient.dna.species.stress_examine = TRUE
