@@ -191,7 +191,7 @@
 
 /datum/virtue/origin/racial/gronn/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Gronn"
-	recipient.grant_language(/datum/language/orcish)
+	recipient.grant_language(/datum/language/gronnic)
 
 /datum/virtue/origin/raneshen/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "Raneshen"
