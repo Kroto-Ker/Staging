@@ -263,16 +263,77 @@
 	desc = "I can barely feel my limbs!"
 	icon_state = "chilled"
 
-
-/datum/status_effect/debuff/ritesexpended
-	id = "ritesexpended"
-	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended
+/datum/status_effect/debuff/ritesexpended_high
+	id = "ritesexpended_high"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended_high
 	duration = 30 MINUTES
 
-/atom/movable/screen/alert/status_effect/debuff/ritesexpended
+/atom/movable/screen/alert/status_effect/debuff/ritesexpended_high
 	name = "Rites Complete"
 	desc = "It will take time before I can next perform a rite."
 	icon_state = "ritesexpended"
+
+/datum/status_effect/debuff/ritesexpended_high/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_high/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_medium
+	id = "ritesexpended_medium"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended_medium
+	duration = 20 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/ritesexpended_medium
+	name = "Rites Complete"
+	desc = "It will take time before I can next perform a rite."
+	icon_state = "ritesexpended"
+
+/datum/status_effect/debuff/ritesexpended_medium/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_medium/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_low
+	id = "ritesexpended_low"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended_low
+	duration = 10 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/ritesexpended_low
+	name = "Rites Complete"
+	desc = "It will take time before I can next perform a rite."
+	icon_state = "ritesexpended"
+
+/datum/status_effect/debuff/ritesexpended_low/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_low/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_low_very
+	id = "ritesexpended_low_very"
+	alert_type = /atom/movable/screen/alert/status_effect/debuff/ritesexpended_low_very
+	duration = 5 MINUTES
+
+/atom/movable/screen/alert/status_effect/debuff/ritesexpended_low_very
+	name = "Rites Complete"
+	desc = "It will take time before I can next perform a rite."
+	icon_state = "ritesexpended"
+
+/datum/status_effect/debuff/ritesexpended_low_very/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
+
+/datum/status_effect/debuff/ritesexpended_low_very/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_RITES_BLOCKED, TRAIT_MIRACLE)
 
 /datum/status_effect/debuff/call_to_arms
 	id = "call_to_arms"
@@ -611,6 +672,7 @@
 	harpy.add_movespeed_modifier(MOVESPEED_ID_SPECIES, TRUE, 100, override=TRUE, multiplicative_slowdown = harpy.dna.species.speedmod)
 	harpy.apply_status_effect(/datum/status_effect/debuff/flight_sound_loop)
 	ADD_TRAIT(harpy, TRAIT_SPELLCOCKBLOCK, ORGAN_TRAIT)
+	harpy.flying = TRUE
 	init_signals()
 
 /datum/status_effect/debuff/harpy_flight/tick()
@@ -652,6 +714,7 @@
 	remove_signals()
 	animate(harpy)
 	REMOVE_TRAIT(harpy, TRAIT_SPELLCOCKBLOCK, ORGAN_TRAIT)
+	harpy.flying = FALSE
 	if(harpy.is_holding_item_of_type(/obj/item/rogueweapon/huntingknife/idagger/harpy_talons))
 		for(var/obj/item/rogueweapon/huntingknife/idagger/harpy_talons/talons in harpy.held_items)
 			harpy.dropItemToGround(talons, TRUE)

@@ -18,6 +18,7 @@
 	min_pq = 10 //Should...probably actually be a veteran of at least a few weeks before trying to teach others
 	max_pq = null
 	round_contrib_points = 2
+	social_rank = SOCIAL_RANK_YEOMAN
 
 	cmode_music = 'sound/music/combat_veteran.ogg'
 
@@ -299,7 +300,7 @@
 			head = /obj/item/clothing/head/roguetown/grenzelhofthat
 			armor = /obj/item/clothing/suit/roguetown/armor/plate/half
 			pants = /obj/item/clothing/under/roguetown/heavy_leather_pants/grenzelpants
-			shoes = /obj/item/clothing/shoes/roguetown/grenzelhoft
+			shoes = /obj/item/clothing/shoes/roguetown/boots/grenzelhoft
 			gloves = /obj/item/clothing/gloves/roguetown/angle/grenzelgloves
 			beltl = /obj/item/rogueweapon/sword/short
 			beltr = /obj/item/storage/keyring/guardcastle
