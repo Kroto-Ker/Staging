@@ -5,6 +5,8 @@
 	name = "Humen"
 	id = "humen"
 	psydonic = TRUE
+	origin_default = /datum/virtue/origin/grenzelhoft
+	origin = "Grenzelhoft"
 	sub_name = "Northern Humen"
 	desc = "<b>Humen: Objectively the Best</b><br>\
 	Created directly by Psydon’s hands the humans were made in his image, determined and proud. \

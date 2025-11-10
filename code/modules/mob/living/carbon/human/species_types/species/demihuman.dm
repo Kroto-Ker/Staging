@@ -10,6 +10,8 @@
 	id = "demihuman"
 	psydonic = TRUE
 	is_subrace = TRUE
+	origin_default = /datum/virtue/origin/grenzelhoft
+	origin = "Grenzelhoft"
 	base_name = "Humen"
 	desc = "<b>Half-Kin: A Beastblood Thinned	</b><br>\
 	The result of union between the major or minor furskinned species, and the humanlike races of the world. \

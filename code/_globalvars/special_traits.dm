@@ -92,14 +92,11 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 
 /proc/virtue_check(var/datum/virtue/V, heretic = FALSE, species)
 	if(V)
-		log_game(V.restricted_races)
-		log_game(species)
 		if((istype(V,/datum/virtue/heretic) && !heretic) || istype(V,/datum/virtue/origin))
 			return FALSE
 		if(V.restricted == TRUE)
-			for(var/A in V.restricted_races)
-				if(A == species)
-					return FALSE
+			if((species in V.races))
+				return FALSE
 		return TRUE
 	return FALSE
 
@@ -108,9 +105,11 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 		if(!istype(V,/datum/virtue/origin))
 			return FALSE
 		if(V.restricted == TRUE)
-			for(var/A in V.restricted_races)
-				if(A == species)
-					return FALSE
+			if((species in V.races))
+				return FALSE
+		if(istype(V,/datum/virtue/origin/racial))
+			if(!(species in V.races))
+				return FALSE
 		return TRUE
 	return FALSE
 

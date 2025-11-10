@@ -5,6 +5,8 @@
 	name = "Harpy"
 	id = "harpy"
 	is_subrace = TRUE
+	origin_default = /datum/virtue/origin/etrusca
+	origin = "Etrusca"
 	base_name = "Beastvolk"
 	desc = "<b>Harpy: Songbirds in Flight</b><br>\
 	Called ‘magpies’ by those distrusting or irritated, some mistake this species for a halfkin race. \

@@ -501,8 +501,8 @@ GLOBAL_LIST_EMPTY(chosen_names)
 			if(ispath(extra_language, /datum/language))
 				selected_lang = extra_language
 				lang_output = initial(selected_lang.name)
-			if(virtue_origin.extra_language == TRUE)
-				dat += "<b>Extra Language: </b><a href='?_src_=prefs;preference=extra_language;task=input'>[lang_output]</a>"
+
+			dat += "<b>Free Language: </b><a href='?_src_=prefs;preference=extra_language;task=input'>[lang_output]</a>"
 			dat += "<br><b>Voice Color: </b><a href='?_src_=prefs;preference=voice;task=input'>Change</a>"
 			dat += "<br><b>Nickname Color: </b> </b><a href='?_src_=prefs;preference=highlight_color;task=input'>Change</a>"
 			dat += "<br><b>Voice Pitch: </b><a href='?_src_=prefs;preference=voice_pitch;task=input'>[voice_pitch]</a>"
@@ -1728,6 +1728,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 
 					var/chosen_language = tgui_input_list(user, "Choose your character's extra language:", "EXTRA LANGUAGE", choices)
 					if(chosen_language)
+						to_chat(user, "<span class='notice'>Language will not be applied unless selected Origin provides a free language.</span>")
 						if(chosen_language == "None")
 							extra_language = "None"
 						else
@@ -2113,7 +2114,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							continue
 						if(V.restricted == TRUE)
 							var/skip_virtue = FALSE
-							for(var/A in V.restricted_races)
+							for(var/A in V.races)
 								if(A == pref_species.type)
 									skip_virtue = TRUE
 									break
@@ -2141,7 +2142,7 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							continue
 						if(V.restricted == TRUE)
 							var/skip_virtue = FALSE
-							for(var/A in V.restricted_races)
+							for(var/A in V.races)
 								if(A == pref_species.type)
 									skip_virtue = TRUE
 									break
@@ -2168,13 +2169,11 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							continue
 						if (!istype(V, /datum/virtue/origin))
 							continue
-						if(V.restricted == TRUE)
-							var/skip_virtue = FALSE
-							for(var/A in V.restricted_races)
-								if(A == pref_species.type)
-									skip_virtue = TRUE
-									break
-							if(skip_virtue == TRUE)
+						if (V.restricted == TRUE)
+							if((pref_species.type in V.races))
+								continue
+						if (istype(V, /datum/virtue/origin/racial))
+							if(!(pref_species.type in V.races))
 								continue
 						virtue_choices[V.name] = V
 					var/result = tgui_input_list(user, "From where do you come?", "ORIGINS",virtue_choices)

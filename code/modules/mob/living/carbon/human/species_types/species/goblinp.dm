@@ -4,7 +4,7 @@
 /datum/species/goblinp
 	name = "Goblin"
 	id = "goblinp"
-	origin_default = /datum/virtue/origin/gronn
+	origin_default = /datum/virtue/origin/racial/gronn
 	origin = "Gronn"
 	is_subrace = TRUE
 	base_name = "Ogroid"

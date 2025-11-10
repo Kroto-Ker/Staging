@@ -5,6 +5,8 @@
 	name = "Lamia"
 	id = "lamia"
 	is_subrace = TRUE
+	origin_default = /datum/virtue/origin/etrusca
+	origin = "Etrusca"
 	base_name = "Beastvolk"
 	desc = "<b>Lamia: Raiders of the Coast</b><br>\
 	Like the wildkin of the lands of Enigma, Lamia are a catch-all umbrella term for various humanized spawn of the deep made by Abyssor’s hand. \

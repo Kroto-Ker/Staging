@@ -67,7 +67,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 
-	change_origin(H, /datum/virtue/origin/gronn)
+	change_origin(H, /datum/virtue/origin/racial/gronn)
 
 /datum/advclass/mercenary/atgervi/shaman
 	name = "Atgervi Shaman"
@@ -130,7 +130,7 @@
 		/obj/item/rogueweapon/scabbard/sheath = 1
 		)
 
-	change_origin(H, /datum/virtue/origin/gronn)
+	change_origin(H, /datum/virtue/origin/racial/gronn)
 
 /obj/item/clothing/suit/roguetown/armor/chainmail/hauberk/atgervi
 	name = "vagarian hauberk"

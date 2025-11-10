@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(virtues)
 	/// For use in outfits applying origins.
 	var/last_origin
 	/// A list of races restricted.
-	var/list/restricted_races = list()
+	var/list/races = list()
 	/// The cost of the virtue to apply in TRIUMPH points, if any.
 	var/triumph_cost = 0
 	/// A custom addendum that explains what the virtue does outside of the traits / skill adjustments.

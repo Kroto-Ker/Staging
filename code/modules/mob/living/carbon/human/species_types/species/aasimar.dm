@@ -4,6 +4,8 @@
 /datum/species/aasimar
 	name = "Aasimar"
 	id = "aasimar"
+	origin_default = /datum/virtue/origin/otava
+	origin = "Otava"
 	desc = "<b>Aasimar: Child of Destiny</b><br>\
 	Created by Psydon was the Divine Family, ten sibling gods who helped to create \
 	the world and safeguard it from decay and destruction; and from the gods came the angels, \

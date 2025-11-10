@@ -5,6 +5,8 @@
 	name = "Kobold"
 	id = "kobold"
 	is_subrace = TRUE
+	origin_default = /datum/virtue/origin/racial/gronn
+	origin = "Gronn"
 	base_name = "Zard"
 	desc = "<b>Kobold: Slaves of the Burrow</b><br>\
 	Collectives of kobolds once inhabited the great mountain ranges of Gronn, \

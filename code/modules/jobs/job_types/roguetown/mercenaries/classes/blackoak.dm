@@ -78,7 +78,7 @@
 		/obj/item/flashlight/flare/torch = 1,
 		)
 
-	change_origin(H, /datum/virtue/origin/reach)
+	change_origin(H, /datum/virtue/origin/racial/reach)
 
 /datum/advclass/mercenary/blackoak/ranger
 	name = "Black Oak's Ranger"
@@ -136,4 +136,4 @@
 		/obj/item/flashlight/flare/torch = 1,
 		)
 
-	change_origin(H, /datum/virtue/origin/reach)
+	change_origin(H, /datum/virtue/origin/racial/reach)

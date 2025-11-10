@@ -4,7 +4,7 @@
 /datum/species/halforc
 	name = "Half-Orc"
 	id = "halforc"
-	origin_default = /datum/virtue/origin/gronn
+	origin_default = /datum/virtue/origin/racial/gronn
 	origin = "Gronn"
 	base_name = "Ogroid"
 	desc = "<b>Half Orcs: Conquerors yet Conquered</b><br>\
