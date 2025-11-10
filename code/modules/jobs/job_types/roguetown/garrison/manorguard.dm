@@ -150,16 +150,16 @@
 	//Garrison ranged/speed class. Time to go wild
 	traits_applied = list(TRAIT_DODGEEXPERT)
 	subclass_stats = list(
-		STATKEY_SPD = 1, // 90% dodging a VL is aids stop that we want 85% thank you
+		STATKEY_SPD = 2,// seems kinda lame but remember guardsman bonus!!
 		STATKEY_PER = 2,
 		STATKEY_END = 1
 	)
 	extra_context = "Chooses between Light Armor (Dodge Expert) & Medium Armor."
 
 	subclass_skills = list(
-		/datum/skill/combat/swords = SKILL_LEVEL_JOURNEYMAN, // Lowered Expert > Journeyman. You gave up the blade to study the bow.
+		/datum/skill/combat/swords = SKILL_LEVEL_EXPERT,
 		/datum/skill/combat/knives = SKILL_LEVEL_EXPERT,
-		/datum/skill/combat/maces = SKILL_LEVEL_JOURNEYMAN, 		// Still have a cugel. They can use it, but not super well.
+		/datum/skill/combat/maces = SKILL_LEVEL_APPRENTICE, 		// Still have a cugel.
 		/datum/skill/combat/crossbows = SKILL_LEVEL_MASTER,		//Only effects draw and reload time.
 		/datum/skill/combat/bows = SKILL_LEVEL_MASTER,			//Only effects draw times.
 		/datum/skill/combat/slings = SKILL_LEVEL_MASTER,
