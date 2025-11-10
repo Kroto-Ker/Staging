@@ -2112,13 +2112,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							continue
 						if (istype(V, /datum/virtue/heretic) && !istype(selected_patron, /datum/patron/inhumen))
 							continue
-						if(V.restricted == TRUE)
-							var/skip_virtue = FALSE
-							for(var/A in V.races)
-								if(A == pref_species.type)
-									skip_virtue = TRUE
-									break
-							if(skip_virtue == TRUE)
+						if (V.restricted == TRUE)
+							if((pref_species.type in V.races))
 								continue
 						virtue_choices[V.name] = V
 					var/result = tgui_input_list(user, "What strength shall you wield?", "VIRTUES",virtue_choices)
@@ -2140,13 +2135,8 @@ Slots: [job.spawn_positions] [job.round_contrib_points ? "RCP: +[job.round_contr
 							continue
 						if (istype(V, /datum/virtue/heretic) && !istype(selected_patron, /datum/patron/inhumen))
 							continue
-						if(V.restricted == TRUE)
-							var/skip_virtue = FALSE
-							for(var/A in V.races)
-								if(A == pref_species.type)
-									skip_virtue = TRUE
-									break
-							if(skip_virtue == TRUE)
+						if (V.restricted == TRUE)
+							if((pref_species.type in V.races))
 								continue
 						virtue_choices[V.name] = V
 					var/result = tgui_input_list(user, "What strength shall you wield?", "VIRTUES",virtue_choices)
