@@ -220,7 +220,7 @@
 	priority = 100 //it's an indicator you're dying, so it's very high priority
 	colour = "red"
 
-obj/item/organ/heart/t1
+/obj/item/organ/heart/t1
 	name = "completed heart"
 	icon_state = "heart"
 	desc = "The perfect art, it feels... Completed."
