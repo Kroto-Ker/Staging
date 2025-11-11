@@ -143,7 +143,6 @@
 	races = list(/datum/species/elf/dark,
 				/datum/species/tabaxi,
 				/datum/species/moth,
-				/datum/species/akula,
 				/datum/species/lizardfolk,
 				/datum/species/tieberian
 )
@@ -170,6 +169,7 @@
 				/datum/species/kobold,
 				/datum/species/halforc,
 				/datum/species/goblinp,
+				/datum/species/anthromorph,
 				/datum/species/anthromorphsmall
 )
 	origin_desc = " "
