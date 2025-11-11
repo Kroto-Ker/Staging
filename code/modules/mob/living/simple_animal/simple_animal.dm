@@ -10,7 +10,7 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	gender = PLURAL //placeholder
 
 	status_flags = CANPUSH
-
+	fire_stack_decay_rate = -3
 	var/icon_living = ""
 	///Icon when the animal is dead. Don't use animated icons for this.
 	var/icon_dead = ""
@@ -129,6 +129,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 	///List of things spawned at mob's loc when it dies.
 	var/list/loot = list()
+	//Devalue the worth of the items they drop, for things that inflate the economy BADLY 
+	var/purge_worth = FALSE 
 	///Causes mob to be deleted on death, useful for mobs that spawn lootable corpses.
 	var/del_on_death = 0
 	var/deathmessage = ""
@@ -207,7 +209,6 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	set_new_cells()
 
 /mob/living/simple_animal/Destroy()
-	our_cells = null
 	GLOB.simple_animals[AIStatus] -= src
 	if (SSnpcpool.state == SS_PAUSED && LAZYLEN(SSnpcpool.currentrun))
 		SSnpcpool.currentrun -= src
@@ -224,7 +225,8 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 	if (T && AIStatus == AI_Z_OFF)
 		SSidlenpcpool.idle_mobs_by_zlevel[T.z] -= src
 
-	return ..()
+	. = ..()
+	our_cells = null
 
 /mob/living/simple_animal/attackby(obj/item/O, mob/user, params)
 	if(!is_type_in_list(O, food_type))
@@ -564,8 +566,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 
 /mob/living/simple_animal/proc/drop_loot()
 	if(loot.len)
-		for(var/i in loot)
-			new i(loc)
+		for(var/i in loot) // If someone puts a turf in this list I'm going to kill you.
+			var/atom/movable/spawned_loot = new i(loc)
+			if(purge_worth)
+				spawned_loot.sellprice = 0
 
 /mob/living/simple_animal/death(gibbed)
 	movement_type &= ~FLYING
@@ -609,19 +613,10 @@ GLOBAL_VAR_INIT(farm_animals, FALSE)
 			return FALSE
 	return TRUE
 
-/mob/living/simple_animal/handle_fire()
-	. = ..()
-	if(!on_fire)
-		return TRUE
-	if(fire_stacks + divine_fire_stacks > 0)
-		apply_damage(5, BURN)
-		if(fire_stacks + divine_fire_stacks > 5)
-			apply_damage(10, BURN)
-
-//mob/living/simple_animal/IgniteMob()
+//mob/living/simple_animal/ignite_mob()
 //	return FALSE
 
-///mob/living/simple_animal/ExtinguishMob()
+///mob/living/simple_animal/extinguish_mob()
 //	return
 
 /mob/living/simple_animal/revive(full_heal = FALSE, admin_revive = FALSE)

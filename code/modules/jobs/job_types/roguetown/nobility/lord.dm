@@ -35,11 +35,16 @@ GLOBAL_LIST_EMPTY(lord_titles)
 	give_bank_account = 1000
 	required = TRUE
 	cmode_music = 'sound/music/combat_noble.ogg'
+	social_rank = SOCIAL_RANK_ROYAL
 
 	job_subclasses = list(
 		/datum/advclass/lord/warrior,
 		/datum/advclass/lord/merchant,
 		/datum/advclass/lord/inbred
+	)
+
+	virtue_restrictions = list(
+		/datum/virtue/combat/hollow_life,
 	)
 
 /datum/outfit/job/roguetown/lord
@@ -142,6 +147,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/outfit/job/roguetown/lord/warrior/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/tyrant()
 	l_hand = /obj/item/rogueweapon/lordscepter // If you put something in l hand with a mother outfit
 	// It will dupe
 	if(H.age == AGE_OLD)
@@ -187,6 +193,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/outfit/job/roguetown/lord/merchant/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/tyrant()
 	l_hand = /obj/item/rogueweapon/lordscepter
 	if(H.mind)
 		H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/appraise/secular)
@@ -228,6 +235,7 @@ GLOBAL_LIST_EMPTY(lord_titles)
 
 /datum/outfit/job/roguetown/lord/inbred/pre_equip(mob/living/carbon/human/H)
 	..()
+	H.dna.species.soundpack_m = new /datum/voicepack/male/tyrant()
 	l_hand = /obj/item/rogueweapon/lordscepter
 
 	H.adjust_skillrank(/datum/skill/combat/crossbows, pick(0,1), TRUE)

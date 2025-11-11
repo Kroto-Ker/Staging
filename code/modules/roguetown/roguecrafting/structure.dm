@@ -656,11 +656,11 @@
 /datum/crafting_recipe/roguetown/structure/operatingtable
 	name = "operating table"
 	result = /obj/structure/table/optable
-	reqs = list(/obj/item/grown/log/tree/small = 2)
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/ingot/iron = 1)
 	verbage_simple = "construct"
 	verbage = "constructs"
 	skillcraft = /datum/skill/craft/carpentry
-	craftdiff = 2
+	craftdiff = 4
 
 /datum/crafting_recipe/roguetown/structure/stonetable
 	name = "stone table"
@@ -864,9 +864,19 @@
 	skillcraft = /datum/skill/craft/carpentry
 	craftdiff = 2
 
+
+/datum/crafting_recipe/roguetown/structure/bee_smoker
+	name = "bee smoker"
+	result = /obj/item/bee_smoker
+	reqs = list(/obj/item/grown/log/tree/small = 2, /obj/item/natural/cloth = 2)
+	verbage_simple = "build"
+	verbage = "builds"
+	skillcraft = /datum/skill/craft/carpentry
+	craftdiff = 2
+
 // Here for now until we get a new file for anything trap related.
 /datum/crafting_recipe/roguetown/structure/spike_pit
-	name = "spike pit (3 stakes + Shovel + Dirt Floor)"
+	name = "spike pit (Dirt Floor needed)"
 	result = list(/obj/structure/spike_pit)
 	tools = list(/obj/item/rogueweapon/shovel = 1)
 	reqs = list(/obj/item/grown/log/tree/stake = 3)
