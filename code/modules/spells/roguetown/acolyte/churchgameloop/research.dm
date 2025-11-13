@@ -2,7 +2,6 @@
 // research.dm
 //=========================================================================
 
-#undef  MIRACLE_RADIAL_DMI
 #define MIRACLE_RADIAL_DMI 'icons/mob/actions/roguespells.dmi'
 
 #ifndef QUEST_COOLDOWN_DS
@@ -191,11 +190,11 @@ var/global/list/PATRON_ARTIFACTS = list(
 	desc = "A token blessed by a patron."
 	var/patron_name = ""
 
-	New(loc, p_name)
-		..()
-		if(istext(p_name))
-			patron_name = p_name
-			name = "Sacred Artefact of [p_name]"
+/obj/item/church_artefact/New(loc, p_name)
+	..()
+	if(istext(p_name))
+		patron_name = p_name
+		name = "Sacred Artefact of [p_name]"
 
 /obj/effect/proc_holder/spell/self/learnmiracle
 	name = "Miracles"
@@ -485,10 +484,11 @@ var/global/list/PATRON_ARTIFACTS = list(
 						html += "<tr><th align='left'>Artefact</th><th width='160'>Action</th></tr>"
 						for(var/T in art_list)
 							var/name_txt = "[T]"
-							var/tmp/obj/O = new T
+							var/obj/O = new T
 							if(O && length(O.name))
 								name_txt = O.name
-							if(O) qdel(O)
+							if(O) 
+								qdel(O)
 
 							html += "<tr><td>[html_attr(name_txt)]</td><td align='center'>"
 							if(HAS_TRAIT(H, TRAIT_CLERGY))
