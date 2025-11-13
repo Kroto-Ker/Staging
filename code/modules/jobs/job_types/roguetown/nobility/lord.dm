@@ -110,6 +110,8 @@ GLOBAL_LIST_EMPTY(lord_titles)
 			mask = /obj/item/clothing/mask/rogue/lordmask/l
 	ADD_TRAIT(H, TRAIT_NOBLE, TRAIT_GENERIC)
 
+	change_origin(H, /datum/virtue/origin/racial/reach, "Royal line")
+
 //	SSticker.rulermob = H
 /** 
 	Warrior Lord subclass. An evolution from the Daring Twit. This is the original Lord Class.

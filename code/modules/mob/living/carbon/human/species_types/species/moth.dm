@@ -4,6 +4,10 @@
 /datum/species/moth
 	name = "Fluvian"
 	id = "moth"
+	is_subrace = TRUE
+	origin_default = /datum/virtue/origin/racial/underdark
+	origin = "the Underdark"
+	base_name = "Beastvolk"
 	desc = "<b>Fluvian</b><br>\
 	An insectoid species native to the Underdark. Indigenous to Effluvia, a loathsome underground region known for its poisonous waters.<br>\
 	Fluvians are known as the archetypal species for drow slaves, few surface-dwellers realize they have a city of their own: \

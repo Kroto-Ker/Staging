@@ -64,6 +64,8 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 
 	var/datum/virtue/virtue_type = player.prefs.virtue
 	var/datum/virtue/virtuetwo_type = player.prefs.virtuetwo
+	var/datum/virtue/origin_type = player.prefs.virtue_origin
+	var/datum/virtue/language_type = player.prefs.extra_language
 	if(virtue_type)
 		if(virtue_check(virtue_type, heretic, species))
 			apply_virtue(character, virtue_type)
@@ -74,12 +76,41 @@ GLOBAL_LIST_INIT(special_traits, build_special_traits())
 			apply_virtue(character, virtuetwo_type)
 		else
 			to_chat(character, "Incorrect Second Virtue parameters! It will not be applied.")
+	if(origin_type)
+		if((language_type && language_type != "None") && origin_type.extra_language == TRUE)
+			character.grant_language(language_type)
+		if(origin_type.job_origin == TRUE)
+			apply_virtue(character, origin_type)
+			player.prefs.virtue_origin = origin_type.last_origin
+		else
+			if(origin_check(origin_type, species))
+				apply_virtue(character, origin_type)
+			else
+				to_chat(character, "Incorrect Origin parameters! Resetting to default.")
+				origin_type = new character.dna.species.origin_default
+				apply_virtue(character, origin_type)
 
 /proc/virtue_check(var/datum/virtue/V, heretic = FALSE, species)
 	if(V)
-		if(istype(V,/datum/virtue/heretic) && !heretic)
+		if((istype(V,/datum/virtue/heretic) && !heretic) || istype(V,/datum/virtue/origin))
 			return FALSE
+		if(V.restricted == TRUE)
+			if((species in V.races))
+				return FALSE
 		if(istype(V,/datum/virtue/racial))
+			if(!(species in V.races))
+				return FALSE
+		return TRUE
+	return FALSE
+
+/proc/origin_check(var/datum/virtue/V, species)
+	if(V)
+		if(!istype(V,/datum/virtue/origin))
+			return FALSE
+		if(V.restricted == TRUE)
+			if((species in V.races))
+				return FALSE
+		if(istype(V,/datum/virtue/origin/racial))
 			if(!(species in V.races))
 				return FALSE
 		return TRUE
