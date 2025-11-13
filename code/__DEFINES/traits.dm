@@ -60,7 +60,7 @@
 #define TRAIT_INQUISITION "Member of the Otavan Inquisition"
 #define TRAIT_GOODTRAINER "Good Trainer"
 #define TRAIT_BADTRAINER "Bad Trainer"
-#define TRAIT_UNDERDARK "Underdark Ancestry" // Night vision in caves
+#define TRAIT_UNDERDARK "Cave Adaptation" // Night vision in caves
 #define TRAIT_UNDERSIGHT "Undersight" // For the underdark trait
 #define TRAIT_DVERGR "Dvergr"
 #define TRAIT_OUTDOORSMAN "Outdoorsman"

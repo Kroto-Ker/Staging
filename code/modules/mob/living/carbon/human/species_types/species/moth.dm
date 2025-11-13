@@ -15,7 +15,7 @@
 	only the educated are allowed to pass its bronze gates. Denied fluvians must eke out a primitive life in the rotting wilds of Effluvia.<br>\
 	According to the fluvians of Mercuriam, their god, Pestra, has not yet been born. She lies in a nascent cocoon, bestowing wisdom from a time to come.<br>\
 	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b> +1 SPD | -1 CON</b></span> </br>\
-	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Long Jump | Can Eat Clothes | Cave Adaptation</b></span> </br>\
+	<span style='color: #6a8cb7;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Long Jump | Can Eat Clothes</b></span> </br>\
 	<span style='color: #cc0f0f;text-shadow:-1px -1px 0 #000,1px -1px 0 #000,-1px 1px 0 #000,1px 1px 0 #000;'><b>Can't wear cloaks</span></b>"
 
 	species_traits = list(EYECOLOR,LIPS,MUTCOLORS,HAIR)
@@ -41,7 +41,6 @@
 		OFFSET_SHIRT_F = list(0,0), OFFSET_ARMOR_F = list(0,0), OFFSET_UNDIES_F = list(0,-1), \
 		)
 	race_bonus = list(STAT_SPEED = 1, STAT_CONSTITUTION = -1)
-	inherent_traits = list(TRAIT_UNDERDARK)
 	enflamed_icon = "widefire"
 	attack_verb = "slash"
 	attack_sound = 'sound/blank.ogg'

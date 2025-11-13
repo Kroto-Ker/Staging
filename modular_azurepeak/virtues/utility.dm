@@ -430,7 +430,7 @@
 	desc = "My lineage descends from the Dvergr, a clan of dwarves under Graggar’s tyrannical patronage, exiled to the Underdark. They are renowned slavers; many lords covet a servant broken by Dvergr technique. I know a little of the clan's magics, rendering me invisible to the scrying arts."
 	races = list(/datum/species/dwarf/mountain)
 	custom_text = "Grants enlarge spell.<br>Colors your body grey.<br>Only available to dwarves."
-	added_traits = list(TRAIT_ANTISCRYING, TRAIT_DVERGR, TRAIT_UNDERDARK)
+	added_traits = list(TRAIT_ANTISCRYING, TRAIT_DVERGR)
 	added_skills = list(list(/datum/skill/magic/arcane, 1, 3))
 
 /datum/virtue/racial/dwarf/dvergr/apply_to_human(mob/living/carbon/human/recipient)
@@ -439,3 +439,9 @@
 	recipient.dna.species.stress_examine = TRUE
 	recipient.dna.species.stress_desc = span_red("A Dvergr! I should watch my back.")
 	recipient.dna.species.name = "Dvergr"
+	var/client/player = recipient?.client
+	if(player?.prefs)
+		var/origin_memory = player.prefs.virtue_origin
+		player.prefs.virtue_origin = new /datum/virtue/origin/racial/underdark
+		player.prefs.virtue_origin.job_origin = TRUE
+		player.prefs.virtue_origin.last_origin = origin_memory

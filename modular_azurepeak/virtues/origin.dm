@@ -164,6 +164,7 @@
 /datum/virtue/origin/racial/underdark
 	name = "Underdweller"
 	desc = "I originate from the treacherous Underdark, a cavernous region beneath Otava and Grenzelhoft. This unforgiving land is dominated by the prosperous and cruel dark elves and their pets. Most surfacedwellers only come here in chains.<br>"
+	added_traits = list(TRAIT_UNDERDARK)
 	races = list(/datum/species/elf/dark,
 				/datum/species/moth,
 				/datum/species/kobold,
