@@ -574,7 +574,7 @@
 
 	.=..()
 	var/area/rogue/our_area = get_area(owner)
-	if(!(our_area.outdoors))
+	if(!(our_area.outdoors) || GLOB.tod != "day")
 		owner.remove_status_effect(/datum/status_effect/debuff/sensitivity)
 		owner.remove_stress(/datum/stressevent/sensitivity)
 
