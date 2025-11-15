@@ -249,6 +249,11 @@
 			recipient.dna.species.skin_tone_wording = "Custom"
 			var/datum/virtue/virtue_chosen = virtue_choices[result]
 			apply_virtue(recipient, virtue_chosen)
+		else
+			var/chosen_virtue = new recipient.dna.species.origin_default
+			apply_virtue(recipient, chosen_virtue)
+			to_chat(recipient, "Denied foreign origin! Resetting to default. Triumph cost refunded!")
+			recipient.adjust_triumphs(3)
 	else
 		var/chosen_virtue = new recipient.dna.species.origin_default
 		apply_virtue(recipient, chosen_virtue)
