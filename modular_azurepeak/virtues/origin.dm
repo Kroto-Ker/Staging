@@ -164,8 +164,6 @@
 /datum/virtue/origin/racial/underdark
 	name = "Underdweller"
 	desc = "I originate from the treacherous Underdark, a cavernous region beneath Otava and Grenzelhoft. This unforgiving land is dominated by the prosperous and cruel dark elves and their pets. Most surfacedwellers only come here in chains."
-	custom_text = "Grants free language."
-	extra_language = TRUE
 	races = list(/datum/species/elf/dark,
 				/datum/species/moth,
 				/datum/species/kobold,
@@ -223,6 +221,7 @@
 
 /datum/virtue/origin/racial/underdark/apply_to_human(mob/living/carbon/human/recipient)
 	recipient.dna.species.origin = "the Underdark"
+	recipient.grant_language(/datum/language/otavan)
 
 /datum/virtue/origin/unusual/apply_to_human(mob/living/carbon/human/recipient)
 	addtimer(CALLBACK(src, .proc/unusual_apply, recipient), 50)
