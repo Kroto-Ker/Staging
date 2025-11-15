@@ -259,7 +259,7 @@
 	name = "moth tongue"
 	say_mod = "flutters"
 
-/obj/item/organ/tongue/lamia_forked
+/obj/item/organ/tongue/wild_tongue/lamia_forked
 	name = "forked tongue"
 	desc = "A forked tongue, like that of a snake. Hssss."
 	icon_state = "tonguelizard"
@@ -267,7 +267,7 @@
 	taste_sensitivity = 5
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/lamia_forked/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/tongue/wild_tongue/lamia_forked/handle_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")
 	var/static/regex/lizard_hiSS = new("S+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
