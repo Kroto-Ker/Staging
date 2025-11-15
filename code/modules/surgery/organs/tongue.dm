@@ -272,8 +272,12 @@
 	var/static/regex/lizard_hiSS = new("S+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = lizard_hiss.Replace(message, "sss")
-		message = lizard_hiSS.Replace(message, "Sss")
+		if(uppertext(message) == message)
+			message = lizard_hiss.Replace(message, "sss")
+			message = lizard_hiSS.Replace(message, "SSS")
+		else
+			message = lizard_hiss.Replace(message, "sss")
+			message = lizard_hiSS.Replace(message, "Sss")
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/harpy
